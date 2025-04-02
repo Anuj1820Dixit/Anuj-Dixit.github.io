@@ -8,35 +8,41 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
+    <header class="bg-dark text-white text-center py-4 position-relative">
         <h1>My Skills</h1>
         <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="education.html">Education</a></li>
-                <li><a href="experience.html">Experience</a></li>
+            <ul class="d-flex justify-content-end position-absolute top-0 end-0 m-3">
+                <li class="mx-3"><a href="index.html" class="text-white">Home</a></li>
+                <li class="mx-3"><a href="portfolio.html" class="text-white">Portfolio</a></li>
+                <li class="mx-3"><a href="education.html" class="text-white">Education</a></li>
+                <li class="mx-3"><a href="experience.html" class="text-white">Experience</a></li>
             </ul>
         </nav>
     </header>
-    <section>
-        <h2>Technical Skills</h2>
-        <ul>
-            <li><strong>Programming:</strong> Python, R, C, C++, SQL, etc.</li>
-            <li><strong>Data Science Packages:</strong> Pandas, Numpy, sklearn, TensorFlow, PyTorch, Keras, Excel, Power BI.</li>
-            <li><strong>Data Science Algorithms:</strong> Classification (Naïve Bayes, KNN, SVM, Decision Tree, Random Forest, etc.), Regression (Linear, Multiple Linear, Random Forest, SVR, etc.), Clustering (K-Means, Hierarchical), Deep Learning (RNN, CNN), Reinforcement Learning.</li>
-            <li><strong>Other Tools:</strong> Tableau, KNIME, Kibana, n8n, Selenium, Flask, Django, FastAPI (basic), Google Looker Studio.</li>
-        </ul>
-    </section>
-    <section>
-        <h2>Languages</h2>
-        <p>Hindi, English</p>
-    </section>
-    <section>
-        <h2>Interests</h2>
-        <p>Meditation, Chess, Cricket, Football, Reading, Social Work</p>
-    </section>
-    <footer>
+
+    <div class="container mt-4">
+        <section class="p-4 bg-light rounded shadow">
+            <h2>Technical Skills</h2>
+            <ul>
+                <li><strong>Programming:</strong> Python, R, C, C++, SQL, etc.</li>
+                <li><strong>Data Science Packages:</strong> Pandas, Numpy, sklearn, TensorFlow, PyTorch, Keras, Excel, Power BI.</li>
+                <li><strong>Data Science Algorithms:</strong> Classification (Naïve Bayes, KNN, SVM, Decision Tree, Random Forest, etc.), Regression (Linear, Multiple Linear, Random Forest, SVR, etc.), Clustering (K-Means, Hierarchical), Deep Learning (RNN, CNN), Reinforcement Learning.</li>
+                <li><strong>Other Tools:</strong> Tableau, KNIME, Kibana, n8n, Selenium, Flask, Django, FastAPI (basic), Google Looker Studio.</li>
+            </ul>
+        </section>
+
+        <section class="p-4 bg-light rounded shadow mt-4">
+            <h2>Languages</h2>
+            <p>Hindi, English</p>
+        </section>
+
+        <section class="p-4 bg-light rounded shadow mt-4">
+            <h2>Interests</h2>
+            <p>Meditation, Chess, Cricket, Football, Reading, Social Work</p>
+        </section>
+    </div>
+
+    <footer class="text-center bg-dark text-white py-3 mt-4">
         <p>&copy; 2025 Son Goku. All rights reserved.</p>
     </footer>
 </body>
