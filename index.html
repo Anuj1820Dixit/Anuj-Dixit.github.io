@@ -6,9 +6,34 @@
     <title>Son Goku - Portfolio</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        nav {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 15px;
+        }
+        nav ul li {
+            display: inline;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <header class="bg-dark text-white text-center py-4">
+    <header class="bg-dark text-white text-center py-4 position-relative">
         <h1>Welcome to My Portfolio</h1>
         <p>Hi, I'm Son Goku, a Data Scientist.</p>
         <nav>
@@ -22,37 +47,14 @@
     </header>
 
     <div class="container mt-4">
-        <div class="row">
-            <!-- Left Side: About Me -->
-            <div class="col-md-8">
-                <section class="p-4 bg-light rounded shadow">
-                    <h2>About Me</h2>
-                    <p>I am a passionate Data Scientist. This is my personal site where I showcase my skills, education, and professional experience.</p>
-                    <p>More designs and visualizations related to Data Science will be added soon.</p>
-                </section>
-            </div>
-
-            <!-- Right Side: Portfolio, Education, Skills, Experience -->
-            <div class="col-md-4">
-                <aside class="d-flex flex-column">
-                    <section class="p-3 mb-3 bg-white shadow rounded">
-                        <h3><a href="#">Portfolio</a></h3>
-                    </section>
-                    <section class="p-3 mb-3 bg-white shadow rounded">
-                        <h3><a href="#">Education</a></h3>
-                    </section>
-                    <section class="p-3 mb-3 bg-white shadow rounded">
-                        <h3><a href="#">Skills</a></h3>
-                    </section>
-                    <section class="p-3 bg-white shadow rounded">
-                        <h3><a href="#">Experience</a></h3>
-                    </section>
-                </aside>
-            </div>
-        </div>
+        <section class="p-4 bg-light rounded shadow">
+            <h2>About Me</h2>
+            <p>I am a passionate Data Scientist. This is my personal site where I showcase my skills, education, and professional experience.</p>
+            <p>More designs and visualizations related to Data Science will be added soon.</p>
+        </section>
     </div>
 
-    <footer class="text-center bg-dark text-white py-3">
+    <footer class="text-center bg-dark text-white py-3 mt-4">
         <p>Contact me at: <a href="mailto:your.email@example.com" class="text-white">your.email@example.com</a></p>
     </footer>
 </body>
