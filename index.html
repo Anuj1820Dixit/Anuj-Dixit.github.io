@@ -4,205 +4,184 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>The Data Whisperer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Roboto', sans-serif;
       margin: 0;
       padding: 0;
-      background: radial-gradient(circle at top, #0f2027, #203a43, #2c5364);
-      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(145deg, #0f0f0f, #1a1a2e);
+      color: #f0f0f0;
+      overflow-x: hidden;
     }
 
     header {
-      background: #141e30;
-      padding: 15px 20px;
+      background: #111;
+      padding: 20px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0,255,255,0.1);
+    }
+
+    nav a {
+      margin: 0 20px;
+      color: #00ffff;
+      text-decoration: none;
+      font-size: 1.1em;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    nav a:hover {
+      text-shadow: 0 0 10px #00ffff;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 80px auto;
+      padding: 20px;
       text-align: center;
     }
 
-    nav ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
+    h1 {
+      font-size: 2.5em;
+      color: #00ffff;
+      margin-bottom: 10px;
     }
 
-    nav ul li {
-      display: inline;
-      margin-right: 20px;
+    p {
+      font-size: 1.2em;
+      line-height: 1.6;
+      color: #ccc;
     }
 
-    nav ul li a {
-      color: #00d9ff;
-      text-decoration: none;
+    /* Quiz Modal Section */
+    #quizModal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .quiz-box {
+      background: #1c1c2e;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+    }
+
+    .quiz-box h2 {
+      color: #00ffff;
+      margin-bottom: 15px;
+    }
+
+    .quiz-box input {
+      padding: 10px;
+      width: 80%;
+      margin-top: 10px;
+      border-radius: 6px;
+      border: none;
+    }
+
+    .quiz-box button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: #00ffff;
+      color: #000;
+      border: none;
+      border-radius: 6px;
       font-weight: bold;
-      font-size: 1.1rem;
-    }
-
-    nav ul li a:hover {
-      text-shadow: 0 0 5px #00d9ff;
-    }
-
-    .glow-box {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0, 217, 255, 0.1);
-      margin: 20px;
-      padding: 20px;
-      transition: transform 0.3s;
-      backdrop-filter: blur(4px);
-    }
-
-    .glow-box:hover {
-      transform: scale(1.02);
-    }
-
-    h1, h2 {
-      font-family: 'Orbitron', sans-serif;
-      color: #00d9ff;
-    }
-
-    input[type="text"] {
-      padding: 8px;
-      font-size: 1rem;
-      margin-top: 10px;
-      width: 60%;
-      border: none;
-      border-radius: 4px;
-    }
-
-    button {
-      padding: 8px 15px;
-      margin-top: 10px;
-      background-color: #00d9ff;
-      color: black;
-      border: none;
-      border-radius: 5px;
       cursor: pointer;
-      font-weight: bold;
+      transition: 0.3s;
     }
 
-    button:hover {
-      background-color: #00aaff;
-    }
-
-    #threejs-container {
-      width: 100%;
-      height: 400px;
-      margin-top: 10px;
-      border-radius: 12px;
-      overflow: hidden;
+    .quiz-box button:hover {
+      background: #007acc;
+      color: #fff;
     }
 
     footer {
       text-align: center;
       padding: 20px;
-      background: #141e30;
-      color: #00d9ff;
-    }
-
-    #message {
-      margin-top: 10px;
-      font-weight: bold;
-      font-size: 1.1rem;
+      color: #aaa;
+      margin-top: 50px;
+      background: #111;
     }
   </style>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="#" onclick="promptUnlock('skills.html')">Skills</a></li>
-        <li><a href="#" onclick="promptUnlock('education.html')">Education</a></li>
-        <li><a href="#" onclick="promptUnlock('projects.html')">Projects</a></li>
-        <li><a href="#" onclick="promptUnlock('experience.html')">Experience</a></li>
-      </ul>
-    </nav>
-  </header>
-<main>
-  <section id="bio" class="glow-box">
-    <h1>The Data Whisperer</h1>
-    <p>Most people see data as numbers. I see it as a language—a cryptic dialect spoken by the universe itself.</p>
-    <p>Imagine standing in a vast library where every book holds answers to problems we haven’t even thought of yet. But the books are locked. Data Science is the key that unlocks them.</p>
-    <p>I’ve spent years decoding this language—teaching machines to see patterns, make predictions, and even dream in algorithms. From automating web ecosystems to building AI-powered financial models, I turn data into decisions.</p>
-    <p>💡 I created an autonomous real estate scraper with cloud sync and a stock prediction model using deep learning. I've worked at <strong>Blackcoffer</strong>, <strong>Green Rider</strong>, and <strong>IIT Jodhpur</strong>, solving real-world AI problems.</p>
-  </section>
 
-  <section id="3d-visualization" class="glow-box">
-    <h2>Data Visualization</h2>
-    <div id="threejs-container"></div>
-  </section>
+<header>
+  <nav>
+    <a onclick="promptUnlock('skills.html')">Skills</a>
+    <a onclick="promptUnlock('education.html')">Education</a>
+    <a onclick="promptUnlock('projects.html')">Projects</a>
+    <a onclick="promptUnlock('experience.html')">Experience</a>
+  </nav>
+</header>
 
-  <section id="question-box" class="glow-box">
-    <h2>Unlock the Next Section</h2>
-    <p id="question">What is the capital of France?</p>
-    <input type="text" id="answer" placeholder="Your Answer">
+<div class="container">
+  <h1>The Data Whisperer</h1>
+  <p>I don't just analyze data — I translate its whispers into actions. From building autonomous systems to decoding human behavior through algorithms, my mission is to let data speak where humans pause.</p>
+  <p>🧠 Past: Blackcoffer, IIT Jodhpur, Green Rider<br>🚀 Built: AI market predictors, real estate data miners, automated bots.</p>
+  <p>Ready to uncover what lies beyond the zeros and ones? Let's begin.</p>
+</div>
+
+<!-- Quiz Modal -->
+<div id="quizModal">
+  <div class="quiz-box">
+    <h2>🔍 The Whisperer is Analyzing...</h2>
+    <p>Decrypt this knowledge barrier to proceed:</p>
+    <p><strong>What is the output of: 2 + '2' in JavaScript?</strong></p>
+    <input type="text" id="answerInput" placeholder="Type your answer...">
+    <br>
     <button onclick="checkAnswer()">Submit</button>
-    <p id="attempts">Attempts left: <span id="tries">2</span></p>
-    <p id="message"></p>
-  </section>
-</main>
+    <p id="feedback" style="margin-top: 10px;"></p>
+  </div>
+</div>
 
 <footer>
-  <p>📧 Contact: <a href="mailto:anuj1820dixit@gmail.com">anuj1820dixit@gmail.com</a></p>
+  📧 Contact: <a href="mailto:anuj1820dixit@gmail.com" style="color: #00ffff;">anuj1820dixit@gmail.com</a>
 </footer>
 
 <script>
-  // Three.js Visualization
-  const container = document.getElementById('threejs-container');
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
-  const renderer = new THREE.WebGLRenderer();
-  renderer.setSize(container.clientWidth, container.clientHeight);
-  container.appendChild(renderer.domElement);
+  let destination = "";
+  const correctAnswer = "22"; // JS adds string + number as string
 
-  const geometry = new THREE.BoxGeometry();
-  const material = new THREE.MeshBasicMaterial({ color: 0x00d9ff });
-  const cube = new THREE.Mesh(geometry, material);
-  scene.add(cube);
-  camera.position.z = 5;
-
-  function animate() {
-    requestAnimationFrame(animate);
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
-    renderer.render(scene, camera);
-  }
-  animate();
-
-  // Quiz Unlock System
-  let correctAnswer = "paris";
-  let triesLeft = 2;
-  let redirectPage = "";
-
-  function promptUnlock(page) {
-    redirectPage = page;
-    document.getElementById('question-box').scrollIntoView({ behavior: 'smooth' });
-    document.getElementById('answer').value = '';
-    document.getElementById('tries').innerText = triesLeft;
-    document.getElementById('message').innerText = '';
+  function promptUnlock(target) {
+    destination = target;
+    document.getElementById("quizModal").style.display = "flex";
+    document.getElementById("feedback").innerText = "";
+    document.getElementById("answerInput").value = "";
   }
 
   function checkAnswer() {
-    const userAnswer = document.getElementById('answer').value.toLowerCase().trim();
-    const message = document.getElementById('message');
+    const userAnswer = document.getElementById("answerInput").value.trim().toLowerCase();
+    const feedback = document.getElementById("feedback");
+
     if (userAnswer === correctAnswer) {
-      message.style.color = "lightgreen";
-      message.innerText = "✅ Correct! Unlocking...";
-      setTimeout(() => window.location.href = redirectPage, 1500);
+      feedback.style.color = "lightgreen";
+      feedback.innerText = "✅ Correct! Unlocking your path...";
+      setTimeout(() => {
+        window.location.href = destination;
+      }, 1500);
     } else {
-      triesLeft--;
-      document.getElementById('tries').innerText = triesLeft;
-      if (triesLeft <= 0) {
-        message.style.color = "orange";
-        message.innerText = "❌ Attempts over. Unlocking anyway...";
-        setTimeout(() => window.location.href = redirectPage, 1500);
-      } else {
-        message.style.color = "red";
-        message.innerText = "❌ Incorrect! Try again.";
-      }
+      feedback.style.color = "red";
+      feedback.innerText = "❌ That's not it. Try again.";
     }
   }
 </script>
+
 </body>
 </html>
