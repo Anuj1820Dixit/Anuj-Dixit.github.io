@@ -1,185 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Data Whisperer - Portfolio</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-      background-color: black;
-      color: white;
-      font-family: 'Courier New', monospace;
-    }
-    #bgCanvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-    }
-    header {
-      text-align: center;
-      padding-top: 10vh;
-    }
-    nav {
-      position: fixed;
-      top: 20px;
-      right: 30px;
-      z-index: 10;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-    }
-    nav ul li a {
-      color: #0ff;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1.1rem;
-    }
-    .section-content {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 50px;
-      background: rgba(0, 0, 0, 0.6);
-      border-radius: 10px;
-      box-shadow: 0 0 10px #0ff;
-      z-index: 5;
-      position: relative;
-    }
-    .quiz-container {
-      display: none;
-      justify-content: center;
-      align-items: center;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.95);
-      z-index: 20;
-    }
-    .quiz-box {
-      text-align: center;
-      padding: 30px;
-      background-color: #111;
-      border: 2px solid #0ff;
-      border-radius: 15px;
-      box-shadow: 0 0 20px #0ff;
-    }
-    input[type=text] {
-      margin-top: 20px;
-      background: black;
-      color: white;
-      border: 1px solid #0ff;
-      padding: 5px;
-    }
-    .fade-in {
-      animation: fadeIn 0.8s ease-in-out;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Whisperer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        body {
+            background: black;
+            color: #0ff;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+            overflow: hidden;
+        }
+        .container {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .question-box {
+            display: none;
+            position: absolute;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #0ff;
+            padding: 20px;
+            font-size: 1.5rem;
+            width: 400px;
+            box-shadow: 0 0 10px #0ff;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .question-box input {
+            margin-top: 10px;
+            padding: 5px;
+            font-size: 1rem;
+        }
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
 </head>
 <body>
-<canvas id="bgCanvas"></canvas>
+    <div class="container">
+        <h1>Welcome to the Data Whisperer's Realm</h1>
+        <p>Click on a section to unlock knowledge...</p>
+        <div id="scene-container"></div>
+        <div class="question-box" id="question-box">
+            <p id="question-text"></p>
+            <input type="text" id="answer" placeholder="Your Answer...">
+            <button onclick="checkAnswer()">Submit</button>
+        </div>
+    </div>
 
-<nav>
-  <ul>
-    <li><a href="#" onclick="askQuestion('Experience')">Experience</a></li>
-    <li><a href="#" onclick="askQuestion('Education')">Education</a></li>
-    <li><a href="#" onclick="askQuestion('Skills')">Skills</a></li>
-    <li><a href="#" onclick="askQuestion('Projects')">Projects</a></li>
-  </ul>
-</nav>
+    <script>
+        let scene, camera, renderer, globe;
+        
+        function init() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            renderer = new THREE.WebGLRenderer({ alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.getElementById('scene-container').appendChild(renderer.domElement);
+            
+            let geometry = new THREE.SphereGeometry(2, 32, 32);
+            let material = new THREE.MeshBasicMaterial({ color: 0x00ffff, wireframe: true });
+            globe = new THREE.Mesh(geometry, material);
+            scene.add(globe);
+            
+            camera.position.z = 5;
+            animate();
+        }
+        
+        function animate() {
+            requestAnimationFrame(animate);
+            globe.rotation.y += 0.01;
+            renderer.render(scene, camera);
+        }
 
-<header>
-  <div class="section-content fade-in">
-    <h1>Welcome to the Data Whisperer's Realm</h1>
-    <p>I see data as a language—a cryptic dialect spoken by the universe itself.<br>Turning data into decisions is what I do best.</p>
-    <p>From crawling real estate listings to building stock prediction AIs, every project is a story of algorithms and automation.</p>
-  </div>
-</header>
+        function showQuestion() {
+            const questions = ["AI", "Data", "Model", "Predict", "Stats"];
+            document.getElementById("question-text").innerText = `Answer this: ${questions[Math.floor(Math.random() * questions.length)]}`;
+            document.getElementById("question-box").style.display = "block";
+        }
 
-<div id="quizModal" class="quiz-container">
-  <div class="quiz-box">
-    <h3 id="quizMessage">Data Whisperer is analyzing you...</h3>
-    <div id="quizQuestion"></div>
-    <input type="text" id="quizAnswer" placeholder="Your Answer..." />
-    <button onclick="submitAnswer()">Submit</button>
-  </div>
-</div>
+        function checkAnswer() {
+            document.getElementById("question-box").style.display = "none";
+        }
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
-<script>
-  // Starfield background
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-  const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bgCanvas') });
-  renderer.setSize(window.innerWidth, window.innerHeight);
-
-  const stars = [];
-  for (let i = 0; i < 800; i++) {
-    const starGeo = new THREE.SphereGeometry(0.1, 24, 24);
-    const starMat = new THREE.MeshBasicMaterial({ color: 0x00ffcc });
-    const star = new THREE.Mesh(starGeo, starMat);
-    star.position.set(Math.random() * 800 - 400, Math.random() * 800 - 400, Math.random() * 800 - 400);
-    scene.add(star);
-    stars.push(star);
-  }
-
-  camera.position.z = 1;
-  function animate() {
-    requestAnimationFrame(animate);
-    stars.forEach(star => star.position.z += 0.2);
-    renderer.render(scene, camera);
-  }
-  animate();
-
-  // Gamified Question Section
-  const questions = {
-    'Experience': ['regression', 'clustering', 'reinforcement'],
-    'Education': ['entropy', 'variance', 'normalization'],
-    'Skills': ['pandas', 'numpy', 'scikit'],
-    'Projects': ['scraping', 'forecasting', 'autoencoder']
-  };
-  let currentSection = '';
-  let currentAnswer = '';
-  let attempts = 0;
-
-  function askQuestion(section) {
-    currentSection = section;
-    currentAnswer = questions[section][Math.floor(Math.random() * questions[section].length)];
-    document.getElementById('quizQuestion').innerHTML = `<h4>${section.toUpperCase()} Challenge: One-word answer only</h4>`;
-    document.getElementById('quizAnswer').value = '';
-    document.getElementById('quizMessage').textContent = `Data Whisperer brings a question for you...`;
-    document.getElementById('quizModal').style.display = 'flex';
-    attempts = 0;
-  }
-
-  function submitAnswer() {
-    const ans = document.getElementById('quizAnswer').value.trim().toLowerCase();
-    if (ans === currentAnswer) {
-      document.getElementById('quizMessage').textContent = `Correct! Welcome to ${currentSection}.`;
-      setTimeout(() => document.getElementById('quizModal').style.display = 'none', 1500);
-    } else {
-      attempts++;
-      if (attempts < 3) {
-        document.getElementById('quizMessage').textContent = `Hmm... not quite. Try again, Data Whisperer is still watching.`;
-      } else {
-        document.getElementById('quizMessage').textContent = `The answer eludes you... but the Whisperer opens ${currentSection} anyway.`;
-        setTimeout(() => document.getElementById('quizModal').style.display = 'none', 2000);
-      }
-    }
-  }
-</script>
+        document.body.addEventListener("click", showQuestion);
+        
+        init();
+    </script>
 </body>
 </html>
