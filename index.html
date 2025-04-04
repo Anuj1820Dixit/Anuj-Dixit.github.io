@@ -3,63 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Son Goku - Portfolio</title>
+    <title>Son Goku - Data Scientist</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        nav {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-        }
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            gap: 15px;
-        }
-        nav ul li {
-            display: inline;
-        }
-        nav ul li a {
+        body {
+            background-color: #0a0a0a;
             color: white;
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #1f1f1f, #0a0a0a);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            animation: fadeIn 2s ease-in-out;
+        }
+        .data-animation {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: pulse 3s infinite;
+            transform: translate(-50%, -50%);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 0.5; }
+        }
+        .navbar {
+            background: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            padding: 10px 20px;
+            z-index: 1000;
+        }
+        .navbar a {
+            color: white;
+            margin: 0 15px;
             text-decoration: none;
             font-weight: bold;
+            transition: color 0.3s;
         }
-        nav ul li a:hover {
-            text-decoration: underline;
+        .navbar a:hover {
+            color: #00ffcc;
+        }
+        .section-lock {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .unlock-btn {
+            background: #00ffcc;
+            color: black;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+        .unlock-btn:hover {
+            background: #00ddaa;
         }
     </style>
 </head>
 <body>
-    <header class="bg-dark text-white text-center py-4 position-relative">
+    <nav class="navbar">
+        <a href="#" id="portfolio-link" class="locked">Portfolio</a>
+        <a href="#" id="skills-link" class="locked">Skills</a>
+        <a href="#" id="experience-link" class="locked">Experience</a>
+    </nav>
+    
+    <section class="hero">
+        <div class="data-animation"></div>
         <h1>Welcome to My Portfolio</h1>
-        <p>Hi, I'm Son Goku, a Data Scientist.</p>
-        <nav>
-            <ul>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="Education.html">Education</a></li>
-                <li><a href="skills.html">Skills</a></li>
-                <li><a href="experience.html">Experience</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <div class="container mt-4">
-        <section class="p-4 bg-light rounded shadow">
-            <h2>The Data Whisperer</h2>
-           <p>Most people see data as numbers. I see it as a language—a cryptic dialect spoken by the universe itself.</p>
-                    <p>Imagine standing in a vast library where every book holds answers to problems we haven’t even thought of yet. But the books are locked. Data Science is the key that unlocks them.</p>
-                    <p>I have spent years decoding this language—teaching machines to see patterns, make predictions, and even dream in algorithms. From automating entire web ecosystems to building AI-powered financial models, my work revolves around one thing: turning data into decisions.</p>
-                    <p>💡 Did you know? In one of my projects, I created an autonomous web scraper that could crawl, extract, and organize real estate data while directly uploading images to cloud storage—no human needed. Another time, I built an AI model that could predict stock movements with deep learning techniques, bringing automation to financial forecasting.</p>
-                    <p>At <strong>Blackcoffer, as an Associate Data Scientist</strong>, I work on solving real-world AI challenges. Previously, at <strong>Green Rider Technology</strong>, I trained AI models to understand and generate human-like responses, pushing the boundaries of generative AI. At <strong>IIT Jodhpur</strong>, I worked on Reinforcement Learning and Image Processing, teaching algorithms to recognize patterns in soft cloth textures—an area few have explored.</p>
-                    <p>📈 Want to uncover more hidden insights? Dive into my <a href="portfolio.html">projects</a>, <a href="skills.html">skills</a>, and <a href="experience.html">research</a>—or let’s decode the next big problem together. 🚀</p>
-                </section>
-    </div>
-
-    <footer class="text-center bg-dark text-white py-3 mt-4">
-        <p>Contact me at: <a href="anuj1820dixit@gmail.com" class="text-white">anuj1820dixit@gmail.com</a></p>
-    </footer>
+        <p>Unlocking the secrets of data, one algorithm at a time.</p>
+    </section>
+    
+    <section class="section-lock">
+        <p>Answer this to unlock the sections: What is the square root of 256?</p>
+        <input type="text" id="answer" placeholder="Enter answer here">
+        <button class="unlock-btn" onclick="checkAnswer()">Submit</button>
+    </section>
+    
+    <script>
+        function checkAnswer() {
+            let answer = document.getElementById("answer").value;
+            if(answer == "16") {
+                document.querySelectorAll(".locked").forEach(link => {
+                    link.classList.remove("locked");
+                    link.style.color = "#00ffcc";
+                    link.href = link.innerText.toLowerCase() + ".html";
+                });
+                alert("Correct! Sections Unlocked.");
+            } else {
+                alert("Try Again!");
+            }
+        }
+    </script>
 </body>
 </html>
