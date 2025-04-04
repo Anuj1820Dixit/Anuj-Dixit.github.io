@@ -3,147 +3,184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Data Whisperer</title>
+    <title>Son Goku - Portfolio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
-        
         body {
-            margin: 0;
-            padding: 0;
-            background: black;
-            color: #0f0;
-            font-family: 'Orbitron', sans-serif;
-            overflow: hidden;
+            background-color: #000;
+            color: #fff;
+            font-family: 'Segoe UI', sans-serif;
+            background-image: radial-gradient(circle, #0f2027, #203a43, #2c5364);
+            background-size: cover;
+            overflow-x: hidden;
         }
-
-        .background {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            background: url('https://i.imgur.com/QJnHjNt.gif') repeat;
-            opacity: 0.2;
-            z-index: -1;
-        }
-        
-        .container {
-            text-align: center;
-            padding: 50px;
-        }
-
-        .bio-box {
-            background: rgba(0, 0, 0, 0.8);
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0px 0px 20px #0f0;
-            display: inline-block;
-            max-width: 700px;
-            border: 2px solid #0f0;
-            animation: glow 2s infinite alternate;
-        }
-
-        @keyframes glow {
-            0% { box-shadow: 0px 0px 10px #0f0; }
-            100% { box-shadow: 0px 0px 20px #0f0; }
-        }
-        
-        .holo-effect {
+        header {
+            padding: 40px;
             position: relative;
-            overflow: hidden;
+            text-align: center;
         }
-        
-        .holo-effect::before {
-            content: '';
+        nav {
             position: absolute;
+            top: 20px;
+            right: 30px;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+            padding: 0;
+        }
+        nav ul li a {
+            color: #00ffe7;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+        .bio {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
             width: 100%;
             height: 100%;
-            background: rgba(0, 255, 0, 0.2);
-            top: -100%;
-            left: 0;
-            animation: holoScan 3s linear infinite;
+            background: black;
         }
-
-        @keyframes holoScan {
-            0% { top: -100%; }
-            100% { top: 100%; }
-        }
-        
-        .buttons-container button {
-            background: rgba(0, 255, 0, 0.2);
-            border: 2px solid #0f0;
-            padding: 10px 20px;
-            margin: 10px;
-            color: #0f0;
-            font-size: 18px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .buttons-container button:hover {
-            background: #0f0;
-            color: black;
-            box-shadow: 0px 0px 10px #0f0;
-        }
-        
-        .question-box {
-            display: none;
-            margin-top: 20px;
-        }
-
-        .question-box.active {
+        canvas {
             display: block;
         }
-
-        .matrix-lines {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            background: url('https://i.imgur.com/4mjUj2I.gif') repeat;
-            opacity: 0.3;
-            z-index: -2;
+        .modal-content {
+            background-color: #111;
+            color: white;
+            border: 2px solid #00ffe7;
         }
     </style>
 </head>
 <body>
-    <div class="background"></div>
-    <div class="matrix-lines"></div>
-    <div class="container">
-        <div class="bio-box holo-effect">
-            <h1>The Data Whisperer</h1>
-            <p>Hi, I'm Son Goku, a Data Scientist.</p>
-            <p>Most people see data as numbers. I see it as a language—a cryptic dialect spoken by the universe itself.</p>
-            <p>Imagine standing in a vast library where every book holds answers to problems we haven’t even thought of yet. But the books are locked. Data Science is the key that unlocks them.</p>
-            <p>I have spent years decoding this language—teaching machines to see patterns, make predictions, and even dream in algorithms.</p>
-            <p>Currently at <strong>Blackcoffer</strong>, previously at <strong>Green Rider</strong> & <strong>IIT Jodhpur</strong>.</p>
-        </div>
-        
-        <div class="buttons-container">
-            <button onclick="askQuestion('education')">Education</button>
-            <button onclick="askQuestion('skills')">Skills</button>
-            <button onclick="askQuestion('experience')">Experience</button>
-            <button onclick="askQuestion('projects')">Projects</button>
-        </div>
-        
-        <div class="question-box" id="question-box">
-            <p id="question-text">What is the use of confusion matrix?</p>
-            <input type="text" id="answer" placeholder="Your answer">
-            <button onclick="checkAnswer()">Submit</button>
+    <div class="matrix-bg">
+        <canvas id="matrixCanvas"></canvas>
+    </div>
+    <header>
+        <h1>Welcome to My Portfolio</h1>
+        <p>Hi, I'm Son Goku, a Data Scientist.</p>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="askQuestion('education.html')">Education</a></li>
+                <li><a href="#" onclick="askQuestion('skills.html')">Skills</a></li>
+                <li><a href="#" onclick="askQuestion('experience.html')">Experience</a></li>
+                <li><a href="#" onclick="askQuestion('portfolio.html')">Projects</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container bio">
+        <h2>The Data Whisperer</h2>
+        <p>Most people see data as numbers. I see it as a language—a cryptic dialect spoken by the universe itself.</p>
+        <p>Imagine standing in a vast library where every book holds answers to problems we haven’t even thought of yet. But the books are locked. Data Science is the key that unlocks them.</p>
+        <p>I have spent years decoding this language—teaching machines to see patterns, make predictions, and even dream in algorithms. From automating entire web ecosystems to building AI-powered financial models, my work revolves around one thing: turning data into decisions.</p>
+        <p>💡 Did you know? In one of my projects, I created an autonomous web scraper that could crawl, extract, and organize real estate data while directly uploading images to cloud storage—no human needed. Another time, I built an AI model that could predict stock movements with deep learning techniques, bringing automation to financial forecasting.</p>
+        <p>At <strong>Blackcoffer, as an Associate Data Scientist</strong>, I work on solving real-world AI challenges. Previously, at <strong>Green Rider Technology</strong>, I trained AI models to understand and generate human-like responses, pushing the boundaries of generative AI. At <strong>IIT Jodhpur</strong>, I worked on Reinforcement Learning and Image Processing, teaching algorithms to recognize patterns in soft cloth textures—an area few have explored.</p>
+        <p>📈 Want to uncover more hidden insights? Dive into my <a href="#" onclick="askQuestion('portfolio.html')">projects</a>, <a href="#" onclick="askQuestion('skills.html')">skills</a>, and <a href="#" onclick="askQuestion('experience.html')">research</a>—or let’s decode the next big problem together. 🚀</p>
+    </div>
+
+    <footer class="text-center py-4">
+        <p>Contact me at: <a href="mailto:anuj1820dixit@gmail.com" class="text-info">anuj1820dixit@gmail.com</a></p>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal fade" id="questionModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">The Data Whisperer has a question...</h5>
+                </div>
+                <div class="modal-body">
+                    <p id="questionText">Analyzing the challenge...</p>
+                    <input type="text" id="answerInput" class="form-control mt-3" placeholder="Your Answer">
+                    <button class="btn btn-info mt-3" onclick="checkAnswer()">Submit</button>
+                    <p id="feedback" class="mt-2"></p>
+                </div>
+            </div>
         </div>
     </div>
-    
+
     <script>
-        function askQuestion(section) {
-            document.getElementById('question-box').classList.add('active');
+        const questions = [
+            { q: "What is the output of a confusion matrix used for?", a: "evaluation" },
+            { q: "Which algorithm is best for classification?", a: "random forest" },
+            { q: "What does PCA stand for?", a: "principal component analysis" },
+            { q: "Which method reduces multicollinearity?", a: "regularization" }
+        ];
+        let currentPage = '';
+        let currentQuestion = {};
+        let attempts = 0;
+
+        function askQuestion(page) {
+            currentPage = page;
+            attempts = 0;
+            currentQuestion = questions[Math.floor(Math.random() * questions.length)];
+            document.getElementById('questionText').textContent = 'Analyzing the challenge...';
+            document.getElementById('answerInput').value = '';
+            document.getElementById('feedback').textContent = '';
+            setTimeout(() => {
+                document.getElementById('questionText').textContent = currentQuestion.q;
+            }, 1500);
+            const modal = new bootstrap.Modal(document.getElementById('questionModal'));
+            modal.show();
         }
 
         function checkAnswer() {
-            let answer = document.getElementById('answer').value.toLowerCase();
-            if (answer === 'accuracy' || answer === 'classification') {
-                alert('Correct! Access Granted.');
-                document.getElementById('question-box').classList.remove('active');
+            const input = document.getElementById('answerInput').value.trim().toLowerCase();
+            const feedback = document.getElementById('feedback');
+            attempts++;
+            if (input === currentQuestion.a) {
+                feedback.textContent = "Correct! Unlocking the next realm... 🚀";
+                setTimeout(() => {
+                    window.location.href = currentPage;
+                }, 1200);
+            } else if (attempts < 3) {
+                feedback.textContent = `Hmm... the data is still speaking. Try again. (${attempts}/3)`;
             } else {
-                alert('Incorrect. Try again.');
+                feedback.textContent = "Insight unlocked automatically! 🧠";
+                setTimeout(() => {
+                    window.location.href = currentPage;
+                }, 1200);
             }
         }
+
+        // Matrix background
+        const canvas = document.getElementById('matrixCanvas');
+        const ctx = canvas.getContext('2d');
+        canvas.height = window.innerHeight;
+        canvas.width = window.innerWidth;
+        const letters = "1010101011".split("");
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        const drops = Array.from({ length: columns }, () => 1);
+
+        function drawMatrix() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#0f0";
+            ctx.font = fontSize + "px monospace";
+            drops.forEach((y, i) => {
+                const text = letters[Math.floor(Math.random() * letters.length)];
+                ctx.fillText(text, i * fontSize, y * fontSize);
+                if (y * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
+            });
+        }
+        setInterval(drawMatrix, 50);
     </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
