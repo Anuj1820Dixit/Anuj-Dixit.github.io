@@ -2,22 +2,126 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>The Data Whisperer</title>
-  <link rel="stylesheet" href="style.css" />
-
-  <!-- React and ReactDOM via CDN -->
-  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-
-  <!-- THREE.js and OrbitControls -->
-  <script src="https://unpkg.com/three/build/three.min.js"></script>
-  <script src="https://unpkg.com/three/examples/js/controls/OrbitControls.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Whisperer</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: black;
+      color: #00ffcc;
+      overflow-x: hidden;
+    }
+    .container {
+      padding: 40px;
+      text-align: center;
+    }
+    .title {
+      font-size: 2.5em;
+      color: #00ffcc;
+      margin-bottom: 0.3em;
+    }
+    .bio {
+      font-size: 1.2em;
+      margin-bottom: 2em;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    #globe-container {
+      width: 100%;
+      height: 400px;
+      margin: auto;
+    }
+    .question-section {
+      margin-top: 40px;
+      font-size: 1.1em;
+    }
+    .contact {
+      margin-top: 60px;
+      font-size: 1.5em;
+    }
+    .lottery-text span {
+      display: inline-block;
+      animation: spinChar 1s ease-in-out;
+      color: #00ffcc;
+    }
+    @keyframes spinChar {
+      0% { transform: rotateX(90deg); opacity: 0; }
+      50% { transform: rotateX(0); opacity: 1; }
+      100% { transform: rotateX(0); opacity: 1; }
+    }
+  </style>
 </head>
 <body>
-  <div id="root"></div>
+  <div class="container">
+    <h1 class="title">The Data Whisperer</h1>
+    <p class="bio">Most people see data as numbers. I see it as a language — a cryptic dialect spoken by the universe itself.</p>
 
-  <!-- Main Script -->
-  <script type="text/javascript" src="app.js"></script>
+    <div id="globe-container"></div>
+
+    <div class="question-section">
+      <h3>Answer to proceed:</h3>
+      <p id="ml-question"></p>
+      <input type="text" id="user-answer" placeholder="Your answer..." />
+      <button onclick="checkAnswer()">Submit</button>
+    </div>
+
+    <div class="contact">
+      <h2>Contact</h2>
+      <p id="contact-animation" class="lottery-text"></p>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
+  <script>
+    // === 3D Globe ===
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ alpha: true });
+    renderer.setSize(window.innerWidth, 400);
+    document.getElementById('globe-container').appendChild(renderer.domElement);
+
+    const geometry = new THREE.SphereGeometry(2, 32, 32);
+    const material = new THREE.MeshBasicMaterial({ wireframe: true, color: 0x00ffcc });
+    const globe = new THREE.Mesh(geometry, material);
+    scene.add(globe);
+
+    camera.position.z = 5;
+    function animate() {
+      requestAnimationFrame(animate);
+      globe.rotation.y += 0.002;
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // === Random ML Questions ===
+    const questions = [
+      "Which ML model is ideal for high-dimensional anomaly detection?",
+      "What does PCA stand for in data preprocessing?",
+      "Which algorithm is best suited for non-linear classification?",
+      "What does R^2 score signify in regression?",
+      "What technique reduces overfitting in deep learning?"
+    ];
+    document.getElementById("ml-question").innerText = questions[Math.floor(Math.random() * questions.length)];
+
+    function checkAnswer() {
+      alert("Your answer has been recorded.");
+    }
+
+    // === Spinning Contact Effect ===
+    const contact = "contact@dataverse.com";
+    const contactContainer = document.getElementById("contact-animation");
+    function animateContact() {
+      contact.split("").forEach((char, i) => {
+        const span = document.createElement("span");
+        span.innerText = char;
+        span.style.animationDelay = `${i * 0.1}s`;
+        contactContainer.appendChild(span);
+      });
+    }
+    animateContact();
+  </script>
 </body>
 </html>
