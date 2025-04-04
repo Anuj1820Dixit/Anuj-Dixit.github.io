@@ -1,186 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Son Goku - Portfolio</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <style>
-        body {
-            background-color: #000;
-            color: #fff;
-            font-family: 'Segoe UI', sans-serif;
-            background-image: radial-gradient(circle, #0f2027, #203a43, #2c5364);
-            background-size: cover;
-            overflow-x: hidden;
-        }
-        header {
-            padding: 40px;
-            position: relative;
-            text-align: center;
-        }
-        nav {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-        }
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 15px;
-            padding: 0;
-        }
-        nav ul li a {
-            color: #00ffe7;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        nav ul li a:hover {
-            text-decoration: underline;
-        }
-        .bio {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: rgba(255, 255, 255, 0.05);
-            padding: 20px;
-            border-radius: 10px;
-        }
-        .matrix-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            width: 100%;
-            height: 100%;
-            background: black;
-        }
-        canvas {
-            display: block;
-        }
-        .modal-content {
-            background-color: #111;
-            color: white;
-            border: 2px solid #00ffe7;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Whisperer - Portfolio</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      background-color: black;
+      color: white;
+      font-family: 'Courier New', monospace;
+    }
+    #bgCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+    header {
+      text-align: center;
+      padding-top: 10vh;
+    }
+    nav {
+      position: fixed;
+      top: 20px;
+      right: 30px;
+      z-index: 10;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+    nav ul li a {
+      color: #0ff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    .section-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 50px;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 10px;
+      box-shadow: 0 0 10px #0ff;
+      z-index: 5;
+      position: relative;
+    }
+    .quiz-container {
+      display: none;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 20;
+    }
+    .quiz-box {
+      text-align: center;
+      padding: 30px;
+      background-color: #111;
+      border: 2px solid #0ff;
+      border-radius: 15px;
+      box-shadow: 0 0 20px #0ff;
+    }
+    input[type=text] {
+      margin-top: 20px;
+      background: black;
+      color: white;
+      border: 1px solid #0ff;
+      padding: 5px;
+    }
+    .fade-in {
+      animation: fadeIn 0.8s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
-    <div class="matrix-bg">
-        <canvas id="matrixCanvas"></canvas>
-    </div>
-    <header>
-        <h1>Welcome to My Portfolio</h1>
-        <p>Hi, I'm Son Goku, a Data Scientist.</p>
-        <nav>
-            <ul>
-                <li><a href="#" onclick="askQuestion('education.html')">Education</a></li>
-                <li><a href="#" onclick="askQuestion('skills.html')">Skills</a></li>
-                <li><a href="#" onclick="askQuestion('experience.html')">Experience</a></li>
-                <li><a href="#" onclick="askQuestion('portfolio.html')">Projects</a></li>
-            </ul>
-        </nav>
-    </header>
+<canvas id="bgCanvas"></canvas>
 
-    <div class="container bio">
-        <h2>The Data Whisperer</h2>
-        <p>Most people see data as numbers. I see it as a language—a cryptic dialect spoken by the universe itself.</p>
-        <p>Imagine standing in a vast library where every book holds answers to problems we haven’t even thought of yet. But the books are locked. Data Science is the key that unlocks them.</p>
-        <p>I have spent years decoding this language—teaching machines to see patterns, make predictions, and even dream in algorithms. From automating entire web ecosystems to building AI-powered financial models, my work revolves around one thing: turning data into decisions.</p>
-        <p>💡 Did you know? In one of my projects, I created an autonomous web scraper that could crawl, extract, and organize real estate data while directly uploading images to cloud storage—no human needed. Another time, I built an AI model that could predict stock movements with deep learning techniques, bringing automation to financial forecasting.</p>
-        <p>At <strong>Blackcoffer, as an Associate Data Scientist</strong>, I work on solving real-world AI challenges. Previously, at <strong>Green Rider Technology</strong>, I trained AI models to understand and generate human-like responses, pushing the boundaries of generative AI. At <strong>IIT Jodhpur</strong>, I worked on Reinforcement Learning and Image Processing, teaching algorithms to recognize patterns in soft cloth textures—an area few have explored.</p>
-        <p>📈 Want to uncover more hidden insights? Dive into my <a href="#" onclick="askQuestion('portfolio.html')">projects</a>, <a href="#" onclick="askQuestion('skills.html')">skills</a>, and <a href="#" onclick="askQuestion('experience.html')">research</a>—or let’s decode the next big problem together. 🚀</p>
-    </div>
+<nav>
+  <ul>
+    <li><a href="#" onclick="askQuestion('Experience')">Experience</a></li>
+    <li><a href="#" onclick="askQuestion('Education')">Education</a></li>
+    <li><a href="#" onclick="askQuestion('Skills')">Skills</a></li>
+    <li><a href="#" onclick="askQuestion('Projects')">Projects</a></li>
+  </ul>
+</nav>
 
-    <footer class="text-center py-4">
-        <p>Contact me at: <a href="mailto:anuj1820dixit@gmail.com" class="text-info">anuj1820dixit@gmail.com</a></p>
-    </footer>
+<header>
+  <div class="section-content fade-in">
+    <h1>Welcome to the Data Whisperer's Realm</h1>
+    <p>I see data as a language—a cryptic dialect spoken by the universe itself.<br>Turning data into decisions is what I do best.</p>
+    <p>From crawling real estate listings to building stock prediction AIs, every project is a story of algorithms and automation.</p>
+  </div>
+</header>
 
-    <!-- Modal -->
-    <div class="modal fade" id="questionModal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">The Data Whisperer has a question...</h5>
-                </div>
-                <div class="modal-body">
-                    <p id="questionText">Analyzing the challenge...</p>
-                    <input type="text" id="answerInput" class="form-control mt-3" placeholder="Your Answer">
-                    <button class="btn btn-info mt-3" onclick="checkAnswer()">Submit</button>
-                    <p id="feedback" class="mt-2"></p>
-                </div>
-            </div>
-        </div>
-    </div>
+<div id="quizModal" class="quiz-container">
+  <div class="quiz-box">
+    <h3 id="quizMessage">Data Whisperer is analyzing you...</h3>
+    <div id="quizQuestion"></div>
+    <input type="text" id="quizAnswer" placeholder="Your Answer..." />
+    <button onclick="submitAnswer()">Submit</button>
+  </div>
+</div>
 
-    <script>
-        const questions = [
-            { q: "What is the output of a confusion matrix used for?", a: "evaluation" },
-            { q: "Which algorithm is best for classification?", a: "random forest" },
-            { q: "What does PCA stand for?", a: "principal component analysis" },
-            { q: "Which method reduces multicollinearity?", a: "regularization" }
-        ];
-        let currentPage = '';
-        let currentQuestion = {};
-        let attempts = 0;
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
+<script>
+  // Starfield background
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bgCanvas') });
+  renderer.setSize(window.innerWidth, window.innerHeight);
 
-        function askQuestion(page) {
-            currentPage = page;
-            attempts = 0;
-            currentQuestion = questions[Math.floor(Math.random() * questions.length)];
-            document.getElementById('questionText').textContent = 'Analyzing the challenge...';
-            document.getElementById('answerInput').value = '';
-            document.getElementById('feedback').textContent = '';
-            setTimeout(() => {
-                document.getElementById('questionText').textContent = currentQuestion.q;
-            }, 1500);
-            const modal = new bootstrap.Modal(document.getElementById('questionModal'));
-            modal.show();
-        }
+  const stars = [];
+  for (let i = 0; i < 800; i++) {
+    const starGeo = new THREE.SphereGeometry(0.1, 24, 24);
+    const starMat = new THREE.MeshBasicMaterial({ color: 0x00ffcc });
+    const star = new THREE.Mesh(starGeo, starMat);
+    star.position.set(Math.random() * 800 - 400, Math.random() * 800 - 400, Math.random() * 800 - 400);
+    scene.add(star);
+    stars.push(star);
+  }
 
-        function checkAnswer() {
-            const input = document.getElementById('answerInput').value.trim().toLowerCase();
-            const feedback = document.getElementById('feedback');
-            attempts++;
-            if (input === currentQuestion.a) {
-                feedback.textContent = "Correct! Unlocking the next realm... 🚀";
-                setTimeout(() => {
-                    window.location.href = currentPage;
-                }, 1200);
-            } else if (attempts < 3) {
-                feedback.textContent = `Hmm... the data is still speaking. Try again. (${attempts}/3)`;
-            } else {
-                feedback.textContent = "Insight unlocked automatically! 🧠";
-                setTimeout(() => {
-                    window.location.href = currentPage;
-                }, 1200);
-            }
-        }
+  camera.position.z = 1;
+  function animate() {
+    requestAnimationFrame(animate);
+    stars.forEach(star => star.position.z += 0.2);
+    renderer.render(scene, camera);
+  }
+  animate();
 
-        // Matrix background
-        const canvas = document.getElementById('matrixCanvas');
-        const ctx = canvas.getContext('2d');
-        canvas.height = window.innerHeight;
-        canvas.width = window.innerWidth;
-        const letters = "1010101011".split("");
-        const fontSize = 14;
-        const columns = canvas.width / fontSize;
-        const drops = Array.from({ length: columns }, () => 1);
+  // Gamified Question Section
+  const questions = {
+    'Experience': ['regression', 'clustering', 'reinforcement'],
+    'Education': ['entropy', 'variance', 'normalization'],
+    'Skills': ['pandas', 'numpy', 'scikit'],
+    'Projects': ['scraping', 'forecasting', 'autoencoder']
+  };
+  let currentSection = '';
+  let currentAnswer = '';
+  let attempts = 0;
 
-        function drawMatrix() {
-            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "#0f0";
-            ctx.font = fontSize + "px monospace";
-            drops.forEach((y, i) => {
-                const text = letters[Math.floor(Math.random() * letters.length)];
-                ctx.fillText(text, i * fontSize, y * fontSize);
-                if (y * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
-                drops[i]++;
-            });
-        }
-        setInterval(drawMatrix, 50);
-    </script>
+  function askQuestion(section) {
+    currentSection = section;
+    currentAnswer = questions[section][Math.floor(Math.random() * questions[section].length)];
+    document.getElementById('quizQuestion').innerHTML = `<h4>${section.toUpperCase()} Challenge: One-word answer only</h4>`;
+    document.getElementById('quizAnswer').value = '';
+    document.getElementById('quizMessage').textContent = `Data Whisperer brings a question for you...`;
+    document.getElementById('quizModal').style.display = 'flex';
+    attempts = 0;
+  }
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  function submitAnswer() {
+    const ans = document.getElementById('quizAnswer').value.trim().toLowerCase();
+    if (ans === currentAnswer) {
+      document.getElementById('quizMessage').textContent = `Correct! Welcome to ${currentSection}.`;
+      setTimeout(() => document.getElementById('quizModal').style.display = 'none', 1500);
+    } else {
+      attempts++;
+      if (attempts < 3) {
+        document.getElementById('quizMessage').textContent = `Hmm... not quite. Try again, Data Whisperer is still watching.`;
+      } else {
+        document.getElementById('quizMessage').textContent = `The answer eludes you... but the Whisperer opens ${currentSection} anyway.`;
+        setTimeout(() => document.getElementById('quizModal').style.display = 'none', 2000);
+      }
+    }
+  }
+</script>
 </body>
 </html>
