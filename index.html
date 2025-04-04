@@ -2,190 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Data Whisperer Portfolio</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-      overflow-x: hidden;
-      background: black;
-      color: white;
-    }
-    canvas#bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: -1;
-    }
-    header {
-      text-align: center;
-      padding: 4rem 2rem 2rem;
-    }
-    header h1 {
-      font-size: 3rem;
-      background: linear-gradient(to right, #00ffcc, #00ff88);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    header p {
-      max-width: 700px;
-      margin: 0 auto;
-      font-size: 1.1rem;
-      color: #ccc;
-    }
-    .sections {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin: 3rem auto;
-    }
-    .section {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid #0f0;
-      padding: 1rem 2rem;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .section:hover {
-      background: #0f0;
-      color: black;
-    }
-    #question-box {
-      margin: 2rem auto;
-      text-align: center;
-      max-width: 600px;
-      display: none;
-    }
-    .contact {
-      margin-top: 5rem;
-      text-align: center;
-      font-size: 1.5rem;
-      letter-spacing: 0.2rem;
-    }
-    .contact span {
-      display: inline-block;
-      animation: spinIn 1.2s ease forwards;
-    }
-    @keyframes spinIn {
-      from {
-        transform: rotateY(360deg);
-        opacity: 0;
-      }
-      to {
-        transform: rotateY(0deg);
-        opacity: 1;
-      }
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Data Whisperer</title>
+  <link rel="stylesheet" href="style.css"/>
+
+  <!-- React + Babel + Framer Motion CDN -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/framer-motion/dist/framer-motion.umd.js"></script>
+
+  <!-- THREE.js + OrbitControls -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.150.1/examples/js/controls/OrbitControls.js"></script>
 </head>
 <body>
-  <canvas id="bg"></canvas>
-  <header>
-    <h1>The Data Whisperer</h1>
-    <p>
-      Most people see data as numbers. I see it as a language—a cryptic dialect spoken by the universe itself.<br><br>
-      Imagine standing in a vast library where every book holds answers to problems we haven’t even thought of yet. But the books are locked. Data Science is the key that unlocks them.<br><br>
-      I have spent years decoding this language—teaching machines to see patterns, make predictions, and even dream in algorithms. From automating entire web ecosystems to building AI-powered financial models, my work revolves around one thing: turning data into decisions.
-    </p>
-  </header>
-
-  <div class="sections">
-    <div class="section" onclick="askQuestion('Experience')">Experience</div>
-    <div class="section" onclick="askQuestion('Education')">Education</div>
-    <div class="section" onclick="askQuestion('Skills')">Skills</div>
-    <div class="section" onclick="askQuestion('Projects')">Projects</div>
-  </div>
-
-  <div id="question-box">
-    <h2 id="dataWhisperer">Data Whisperer brings a challenge for you...</h2>
-    <p id="mlQuestion">Analyzing...</p>
-    <input type="text" id="userAnswer" placeholder="Your one-word answer" />
-    <button onclick="checkAnswer()">Submit</button>
-    <p id="feedback"></p>
-  </div>
-
-  <div class="contact">
-    <p>
-      <span style="animation-delay: 0s">C</span>
-      <span style="animation-delay: 0.1s">O</span>
-      <span style="animation-delay: 0.2s">N</span>
-      <span style="animation-delay: 0.3s">T</span>
-      <span style="animation-delay: 0.4s">A</span>
-      <span style="animation-delay: 0.5s">C</span>
-      <span style="animation-delay: 0.6s">T</span>
-      <br>
-      anuj1820dixit@gmail.com
-    </p>
-  </div>
-
-  <script>
-    const questionBank = {
-      Experience: ["tensorflow", "deployment", "docker"],
-      Education: ["statistics", "probability", "regression"],
-      Skills: ["pandas", "numpy", "visualization"],
-      Projects: ["clustering", "forecasting", "scraping"]
-    };
-
-    let currentSection = '';
-    let attempts = 0;
-
-    function askQuestion(section) {
-      currentSection = section;
-      attempts = 0;
-      const qList = questionBank[section];
-      const random = qList[Math.floor(Math.random() * qList.length)];
-      document.getElementById('mlQuestion').textContent = `What keyword fits this area? Hint: ${random[0].toUpperCase()}...`;
-      document.getElementById('question-box').style.display = 'block';
-    }
-
-    function checkAnswer() {
-      const ans = document.getElementById('userAnswer').value.trim().toLowerCase();
-      const validAnswers = questionBank[currentSection];
-
-      if (validAnswers.includes(ans)) {
-        document.getElementById('feedback').innerHTML = "✅ Correct! You may proceed.";
-        window.location.href = currentSection.toLowerCase() + ".html";
-      } else {
-        attempts++;
-        if (attempts >= 3) {
-          document.getElementById('feedback').innerHTML = `🔓 Access unlocked automatically. Even AI models need retries.`;
-          setTimeout(() => {
-            window.location.href = currentSection.toLowerCase() + ".html";
-          }, 1500);
-        } else {
-          document.getElementById('feedback').innerHTML = `❌ Hmm... not quite right. Try again, Analyst.`;
-        }
-      }
-    }
-
-    // Background animated matrix
-    const canvas = document.getElementById("bg");
-    const ctx = canvas.getContext("2d");
-    canvas.height = window.innerHeight;
-    canvas.width = window.innerWidth;
-    const chars = "0123456789ABCDEF";
-    const fontSize = 14;
-    const columns = canvas.width / fontSize;
-    const drops = Array.from({length: columns}).fill(1);
-
-    function draw() {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = "#0f0";
-      ctx.font = fontSize + "px monospace";
-      for(let i = 0; i < drops.length; i++) {
-        const text = chars[Math.floor(Math.random()*chars.length)];
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-        if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-          drops[i] = 0;
-        }
-        drops[i]++;
-      }
-    }
-    setInterval(draw, 33);
-  </script>
+  <div id="root"></div>
+  <script type="text/babel" src="app.js"></script>
 </body>
 </html>
