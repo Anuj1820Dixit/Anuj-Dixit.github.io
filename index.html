@@ -3,182 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Son Goku - Data Whisperer</title>
+    <title>The Data Whisperer</title>
     <style>
-        html, body {
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+        
+        body {
             margin: 0;
             padding: 0;
-            height: 100%;
-            font-family: 'Courier New', Courier, monospace;
-            color: #00ffcc;
-            overflow: hidden;
             background: black;
+            color: #0f0;
+            font-family: 'Orbitron', sans-serif;
+            overflow: hidden;
         }
 
-        canvas {
+        .background {
             position: fixed;
-            top: 0;
-            left: 0;
-            z-index: -2;
+            width: 100%;
+            height: 100%;
+            background: url('https://i.imgur.com/QJnHjNt.gif') repeat;
+            opacity: 0.2;
+            z-index: -1;
         }
-
-        .overlay {
-            position: relative;
-            z-index: 10;
-            padding: 2rem;
+        
+        .container {
             text-align: center;
-            max-width: 1000px;
-            margin: auto;
+            padding: 50px;
         }
 
         .bio-box {
-            background: rgba(0, 0, 0, 0.7);
-            padding: 2rem;
-            border-radius: 10px;
-            border: 1px solid #00ffcc;
-            box-shadow: 0 0 20px #00ffcc;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 20px #0f0;
+            display: inline-block;
+            max-width: 700px;
+            border: 2px solid #0f0;
+            animation: glow 2s infinite alternate;
         }
 
-        h1 {
-            font-size: 2.5rem;
-            color: #00ffe5;
+        @keyframes glow {
+            0% { box-shadow: 0px 0px 10px #0f0; }
+            100% { box-shadow: 0px 0px 20px #0f0; }
+        }
+        
+        .holo-effect {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .holo-effect::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 255, 0, 0.2);
+            top: -100%;
+            left: 0;
+            animation: holoScan 3s linear infinite;
         }
 
-        nav {
-            margin-top: 2rem;
+        @keyframes holoScan {
+            0% { top: -100%; }
+            100% { top: 100%; }
         }
-
-        nav button {
-            background: #003333;
-            color: #00ffe5;
-            border: 1px solid #00ffe5;
-            padding: 0.75rem 1.5rem;
-            margin: 0.5rem;
+        
+        .buttons-container button {
+            background: rgba(0, 255, 0, 0.2);
+            border: 2px solid #0f0;
+            padding: 10px 20px;
+            margin: 10px;
+            color: #0f0;
+            font-size: 18px;
             cursor: pointer;
-            font-size: 1rem;
-            border-radius: 5px;
+            transition: 0.3s;
         }
 
-        nav button:hover {
-            background: #00ffe5;
+        .buttons-container button:hover {
+            background: #0f0;
             color: black;
+            box-shadow: 0px 0px 10px #0f0;
         }
-
-        .analyzing, .quiz, .result {
+        
+        .question-box {
             display: none;
-            margin-top: 1rem;
-            font-size: 1.2rem;
+            margin-top: 20px;
         }
 
-        .quiz input {
-            padding: 0.5rem;
-            margin-right: 0.5rem;
-            border: none;
-            border-radius: 3px;
+        .question-box.active {
+            display: block;
         }
 
-        .quiz button {
-            padding: 0.5rem 1rem;
-            background: #00ffe5;
-            color: black;
-            border: none;
-            cursor: pointer;
+        .matrix-lines {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('https://i.imgur.com/4mjUj2I.gif') repeat;
+            opacity: 0.3;
+            z-index: -2;
         }
     </style>
 </head>
 <body>
-    <canvas id="matrix"></canvas>
-    <div class="overlay">
-        <div class="bio-box">
+    <div class="background"></div>
+    <div class="matrix-lines"></div>
+    <div class="container">
+        <div class="bio-box holo-effect">
             <h1>The Data Whisperer</h1>
             <p>Hi, I'm Son Goku, a Data Scientist.</p>
             <p>Most people see data as numbers. I see it as a language—a cryptic dialect spoken by the universe itself.</p>
             <p>Imagine standing in a vast library where every book holds answers to problems we haven’t even thought of yet. But the books are locked. Data Science is the key that unlocks them.</p>
-            <p>I have spent years decoding this language—teaching machines to see patterns, make predictions, and even dream in algorithms. From automating entire web ecosystems to building AI-powered financial models, my work revolves around one thing: turning data into decisions.</p>
-            <p>💡 Fun Fact: I once built a web scraper that auto-uploaded images to cloud storage with zero human touch.</p>
+            <p>I have spent years decoding this language—teaching machines to see patterns, make predictions, and even dream in algorithms.</p>
             <p>Currently at <strong>Blackcoffer</strong>, previously at <strong>Green Rider</strong> & <strong>IIT Jodhpur</strong>.</p>
         </div>
-
-        <nav>
-            <button onclick="startQuiz('education')">Education</button>
-            <button onclick="startQuiz('skills')">Skills</button>
-            <button onclick="startQuiz('experience')">Experience</button>
-            <button onclick="startQuiz('projects')">Projects</button>
-        </nav>
-
-        <div class="analyzing">Data Whisperer is analyzing your mind...</div>
-        <div class="quiz">
-            <p id="question"></p>
-            <input type="text" id="answer" placeholder="Your answer...">
-            <button onclick="submitAnswer()">Submit</button>
+        
+        <div class="buttons-container">
+            <button onclick="askQuestion('education')">Education</button>
+            <button onclick="askQuestion('skills')">Skills</button>
+            <button onclick="askQuestion('experience')">Experience</button>
+            <button onclick="askQuestion('projects')">Projects</button>
         </div>
-        <div class="result" id="resultMsg"></div>
+        
+        <div class="question-box" id="question-box">
+            <p id="question-text">What is the use of confusion matrix?</p>
+            <input type="text" id="answer" placeholder="Your answer">
+            <button onclick="checkAnswer()">Submit</button>
+        </div>
     </div>
-
+    
     <script>
-        // Matrix animation with more colors
-        const canvas = document.getElementById('matrix');
-        const ctx = canvas.getContext('2d');
-        canvas.height = window.innerHeight;
-        canvas.width = window.innerWidth;
-        const letters = '01XΔΣΠλωβμξφζ'.split('');
-        const fontSize = 16;
-        const columns = canvas.width / fontSize;
-        const drops = Array.from({ length: columns }).fill(1);
-
-        function draw() {
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = '#00ffcc';
-            ctx.font = fontSize + 'px monospace';
-            drops.forEach((y, i) => {
-                const text = letters[Math.floor(Math.random() * letters.length)];
-                ctx.fillText(text, i * fontSize, y * fontSize);
-                if (y * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
-                drops[i]++;
-            });
-        }
-        setInterval(draw, 35);
-
-        // Quiz mechanics
-        const questions = {
-            education: { q: 'What is supervised learning?', a: 'training with labeled data' },
-            skills: { q: 'What is overfitting in machine learning?', a: 'model fits noise' },
-            experience: { q: 'What does PCA stand for?', a: 'principal component analysis' },
-            projects: { q: 'What is the use of confusion matrix?', a: 'evaluate model performance' }
-        };
-
-        let currentSection = '';
-        let attempts = 0;
-
-        function startQuiz(section) {
-            currentSection = section;
-            attempts = 0;
-            document.querySelector('.analyzing').style.display = 'block';
-            document.querySelector('.quiz').style.display = 'none';
-            document.getElementById('resultMsg').innerText = '';
-
-            setTimeout(() => {
-                document.querySelector('.analyzing').style.display = 'none';
-                document.querySelector('.quiz').style.display = 'block';
-                document.getElementById('question').innerText = questions[section].q;
-            }, 2000);
+        function askQuestion(section) {
+            document.getElementById('question-box').classList.add('active');
         }
 
-        function submitAnswer() {
-            const userAns = document.getElementById('answer').value.trim().toLowerCase();
-            const correctAns = questions[currentSection].a;
-            const resultBox = document.getElementById('resultMsg');
-
-            if (userAns.includes(correctAns)) {
-                resultBox.innerText = `✅ Correct! Section "${currentSection}" is now unlocked!`;
+        function checkAnswer() {
+            let answer = document.getElementById('answer').value.toLowerCase();
+            if (answer === 'accuracy' || answer === 'classification') {
+                alert('Correct! Access Granted.');
+                document.getElementById('question-box').classList.remove('active');
             } else {
-                attempts++;
-                if (attempts < 3) {
-                    resultBox.innerText = `❌ Not quite! The data is still analyzing... (${3 - attempts} attempts left)`;
-                } else {
-                    resultBox.innerText = `🔓 AI has granted you access to "${currentSection}" after multiple failed attempts. Keep learning, Data Whisperer!`;
-                }
+                alert('Incorrect. Try again.');
             }
         }
     </script>
