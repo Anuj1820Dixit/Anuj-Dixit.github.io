@@ -1,71 +1,186 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import "tailwindcss/tailwind.css";
-
-export default function Portfolio() {
-  const [unlocked, setUnlocked] = useState(false);
-  const [answer, setAnswer] = useState("");
-  const correctAnswer = "Gradient Descent";
-
-  const handleSubmit = () => {
-    if (answer.trim().toLowerCase() === correctAnswer.toLowerCase()) {
-      setUnlocked(true);
-    } else {
-      alert("Incorrect! Try again.");
-    }
-  };
-
-  return (
-    <div className="relative h-screen bg-black text-white flex flex-col items-center justify-center overflow-hidden">
-      {/* Background Animation */}
-      <motion.div
-        className="absolute inset-0 z-0"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
-        {/* Simulating moving graphs/code effect */}
-        <div className="absolute top-0 left-0 w-full h-full bg-green-900 opacity-10 animate-pulse"></div>
-        <div className="absolute inset-0 flex justify-center items-center">
-          <motion.div
-            className="w-64 h-64 border-4 border-green-500 rounded-full opacity-30"
-            animate={{ rotate: 360 }}
-            transition={{ repeat: Infinity, duration: 10, ease: "linear" }}
-          ></motion.div>
-        </div>
-      </motion.div>
-
-      {/* Foreground Content */}
-      <div className="relative z-10 text-center">
-        <h1 className="text-4xl font-bold">Welcome to My Portfolio</h1>
-        <p className="text-lg text-gray-400">Unlocking the secrets of data, one algorithm at a time.</p>
-        <br />
-        <p className="text-gray-300">Answer this to unlock the sections: What optimization algorithm helps in training neural networks?</p>
-        <input
-          type="text"
-          value={answer}
-          onChange={(e) => setAnswer(e.target.value)}
-          className="mt-4 p-2 text-black rounded"
-        />
-        <button
-          onClick={handleSubmit}
-          className="ml-2 bg-green-500 p-2 rounded text-black hover:bg-green-700"
-        >
-          Submit
-        </button>
-      </div>
-
-      {/* Sections */}
-      {unlocked && (
-        <motion.div
-          className="mt-10 text-center text-xl"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-        >
-          <p>🎉 Sections Unlocked! You can now access Portfolio, Skills, and Experience.</p>
-        </motion.div>
-      )}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Son Goku - Portfolio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Segoe UI', sans-serif;
+            background-image: radial-gradient(circle, #0f2027, #203a43, #2c5364);
+            background-size: cover;
+            overflow-x: hidden;
+        }
+        header {
+            padding: 40px;
+            position: relative;
+            text-align: center;
+        }
+        nav {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+            padding: 0;
+        }
+        nav ul li a {
+            color: #00ffe7;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+        .bio {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            background: black;
+        }
+        canvas {
+            display: block;
+        }
+        .modal-content {
+            background-color: #111;
+            color: white;
+            border: 2px solid #00ffe7;
+        }
+    </style>
+</head>
+<body>
+    <div class="matrix-bg">
+        <canvas id="matrixCanvas"></canvas>
     </div>
-  );
-}
+    <header>
+        <h1>Welcome to My Portfolio</h1>
+        <p>Hi, I'm Son Goku, a Data Scientist.</p>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="askQuestion('education.html')">Education</a></li>
+                <li><a href="#" onclick="askQuestion('skills.html')">Skills</a></li>
+                <li><a href="#" onclick="askQuestion('experience.html')">Experience</a></li>
+                <li><a href="#" onclick="askQuestion('portfolio.html')">Projects</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container bio">
+        <h2>The Data Whisperer</h2>
+        <p>Most people see data as numbers. I see it as a language—a cryptic dialect spoken by the universe itself.</p>
+        <p>Imagine standing in a vast library where every book holds answers to problems we haven’t even thought of yet. But the books are locked. Data Science is the key that unlocks them.</p>
+        <p>I have spent years decoding this language—teaching machines to see patterns, make predictions, and even dream in algorithms. From automating entire web ecosystems to building AI-powered financial models, my work revolves around one thing: turning data into decisions.</p>
+        <p>💡 Did you know? In one of my projects, I created an autonomous web scraper that could crawl, extract, and organize real estate data while directly uploading images to cloud storage—no human needed. Another time, I built an AI model that could predict stock movements with deep learning techniques, bringing automation to financial forecasting.</p>
+        <p>At <strong>Blackcoffer, as an Associate Data Scientist</strong>, I work on solving real-world AI challenges. Previously, at <strong>Green Rider Technology</strong>, I trained AI models to understand and generate human-like responses, pushing the boundaries of generative AI. At <strong>IIT Jodhpur</strong>, I worked on Reinforcement Learning and Image Processing, teaching algorithms to recognize patterns in soft cloth textures—an area few have explored.</p>
+        <p>📈 Want to uncover more hidden insights? Dive into my <a href="#" onclick="askQuestion('portfolio.html')">projects</a>, <a href="#" onclick="askQuestion('skills.html')">skills</a>, and <a href="#" onclick="askQuestion('experience.html')">research</a>—or let’s decode the next big problem together. 🚀</p>
+    </div>
+
+    <footer class="text-center py-4">
+        <p>Contact me at: <a href="mailto:anuj1820dixit@gmail.com" class="text-info">anuj1820dixit@gmail.com</a></p>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal fade" id="questionModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">The Data Whisperer has a question...</h5>
+                </div>
+                <div class="modal-body">
+                    <p id="questionText">Analyzing the challenge...</p>
+                    <input type="text" id="answerInput" class="form-control mt-3" placeholder="Your Answer">
+                    <button class="btn btn-info mt-3" onclick="checkAnswer()">Submit</button>
+                    <p id="feedback" class="mt-2"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            { q: "What is the output of a confusion matrix used for?", a: "evaluation" },
+            { q: "Which algorithm is best for classification?", a: "random forest" },
+            { q: "What does PCA stand for?", a: "principal component analysis" },
+            { q: "Which method reduces multicollinearity?", a: "regularization" }
+        ];
+        let currentPage = '';
+        let currentQuestion = {};
+        let attempts = 0;
+
+        function askQuestion(page) {
+            currentPage = page;
+            attempts = 0;
+            currentQuestion = questions[Math.floor(Math.random() * questions.length)];
+            document.getElementById('questionText').textContent = 'Analyzing the challenge...';
+            document.getElementById('answerInput').value = '';
+            document.getElementById('feedback').textContent = '';
+            setTimeout(() => {
+                document.getElementById('questionText').textContent = currentQuestion.q;
+            }, 1500);
+            const modal = new bootstrap.Modal(document.getElementById('questionModal'));
+            modal.show();
+        }
+
+        function checkAnswer() {
+            const input = document.getElementById('answerInput').value.trim().toLowerCase();
+            const feedback = document.getElementById('feedback');
+            attempts++;
+            if (input === currentQuestion.a) {
+                feedback.textContent = "Correct! Unlocking the next realm... 🚀";
+                setTimeout(() => {
+                    window.location.href = currentPage;
+                }, 1200);
+            } else if (attempts < 3) {
+                feedback.textContent = `Hmm... the data is still speaking. Try again. (${attempts}/3)`;
+            } else {
+                feedback.textContent = "Insight unlocked automatically! 🧠";
+                setTimeout(() => {
+                    window.location.href = currentPage;
+                }, 1200);
+            }
+        }
+
+        // Matrix background
+        const canvas = document.getElementById('matrixCanvas');
+        const ctx = canvas.getContext('2d');
+        canvas.height = window.innerHeight;
+        canvas.width = window.innerWidth;
+        const letters = "1010101011".split("");
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        const drops = Array.from({ length: columns }, () => 1);
+
+        function drawMatrix() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#0f0";
+            ctx.font = fontSize + "px monospace";
+            drops.forEach((y, i) => {
+                const text = letters[Math.floor(Math.random() * letters.length)];
+                ctx.fillText(text, i * fontSize, y * fontSize);
+                if (y * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
+            });
+        }
+        setInterval(drawMatrix, 50);
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
