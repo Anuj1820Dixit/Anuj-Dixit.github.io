@@ -3,146 +3,189 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Data Whisperer - Portfolio</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>Data Whisperer Portfolio</title>
   <style>
     html, body {
       margin: 0;
       padding: 0;
+      font-family: 'Segoe UI', sans-serif;
       overflow-x: hidden;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #000;
-      color: white;
-    }
-
-    header {
-      position: relative;
-      z-index: 2;
-      padding: 2rem;
-      text-align: center;
-      background-color: rgba(0, 0, 0, 0.8);
-    }
-
-    #bio-section {
-      max-width: 800px;
-      margin: 0 auto;
-      background-color: rgba(255, 255, 255, 0.05);
-      padding: 2rem;
-      border-radius: 10px;
-      backdrop-filter: blur(8px);
-    }
-
-    nav {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-    }
-    nav ul {
-      display: flex;
-      list-style: none;
-      gap: 15px;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    #globe-canvas, #scene-container {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 0;
-      width: 100%;
-      height: 100vh;
       background: black;
+      color: white;
     }
-
-    .section-unlock {
-      margin-top: 3rem;
-      text-align: center;
-    }
-    .unlock-btn {
-      background: #00ffcc;
-      border: none;
-      color: #000;
-      padding: 1rem 2rem;
-      font-weight: bold;
-      font-size: 1rem;
-      cursor: pointer;
-      border-radius: 8px;
-    }
-
-    #question-modal {
+    canvas#bg {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: rgba(0, 0, 0, 0.9);
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
+      z-index: -1;
+    }
+    header {
       text-align: center;
+      padding: 4rem 2rem 2rem;
     }
-
-    .question-container {
-      background-color: #111;
-      padding: 2rem;
+    header h1 {
+      font-size: 3rem;
+      background: linear-gradient(to right, #00ffcc, #00ff88);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    header p {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      color: #ccc;
+    }
+    .sections {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 3rem auto;
+    }
+    .section {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid #0f0;
+      padding: 1rem 2rem;
       border-radius: 10px;
-      border: 2px solid #00ffcc;
+      cursor: pointer;
+      transition: 0.3s;
     }
-
-    .futuristic-response {
-      color: #00ffcc;
-      margin-top: 1rem;
+    .section:hover {
+      background: #0f0;
+      color: black;
+    }
+    #question-box {
+      margin: 2rem auto;
+      text-align: center;
+      max-width: 600px;
+      display: none;
+    }
+    .contact {
+      margin-top: 5rem;
+      text-align: center;
+      font-size: 1.5rem;
+      letter-spacing: 0.2rem;
+    }
+    .contact span {
+      display: inline-block;
+      animation: spinIn 1.2s ease forwards;
+    }
+    @keyframes spinIn {
+      from {
+        transform: rotateY(360deg);
+        opacity: 0;
+      }
+      to {
+        transform: rotateY(0deg);
+        opacity: 1;
+      }
     }
   </style>
 </head>
 <body>
-  <canvas id="globe-canvas"></canvas>
-  <div id="scene-container"></div>
-
+  <canvas id="bg"></canvas>
   <header>
-    <h1>Welcome to My Portfolio</h1>
-    <p>Hi, I'm Son Goku, a Data Scientist.</p>
-    <nav>
-      <ul>
-        <li><a href="#" onclick="askQuestion('portfolio')">Portfolio</a></li>
-        <li><a href="#" onclick="askQuestion('education')">Education</a></li>
-        <li><a href="#" onclick="askQuestion('skills')">Skills</a></li>
-        <li><a href="#" onclick="askQuestion('experience')">Experience</a></li>
-      </ul>
-    </nav>
+    <h1>The Data Whisperer</h1>
+    <p>
+      Most people see data as numbers. I see it as a language—a cryptic dialect spoken by the universe itself.<br><br>
+      Imagine standing in a vast library where every book holds answers to problems we haven’t even thought of yet. But the books are locked. Data Science is the key that unlocks them.<br><br>
+      I have spent years decoding this language—teaching machines to see patterns, make predictions, and even dream in algorithms. From automating entire web ecosystems to building AI-powered financial models, my work revolves around one thing: turning data into decisions.
+    </p>
   </header>
 
-  <section id="bio-section">
-    <h2>The Data Whisperer</h2>
-    <p>Most people see data as numbers. I see it as a language—a cryptic dialect spoken by the universe itself.</p>
-    <p>Imagine standing in a vast library where every book holds answers to problems we haven’t even thought of yet. But the books are locked. Data Science is the key that unlocks them.</p>
-    <p>I have spent years decoding this language—teaching machines to see patterns, make predictions, and even dream in algorithms. From automating entire web ecosystems to building AI-powered financial models, my work revolves around one thing: turning data into decisions.</p>
-    <p>💡 Did you know? In one of my projects, I created an autonomous web scraper that could crawl, extract, and organize real estate data while directly uploading images to cloud storage—no human needed. Another time, I built an AI model that could predict stock movements with deep learning techniques, bringing automation to financial forecasting.</p>
-    <p>At <strong>Blackcoffer, as an Associate Data Scientist</strong>, I work on solving real-world AI challenges. Previously, at <strong>Green Rider Technology</strong>, I trained AI models to understand and generate human-like responses, pushing the boundaries of generative AI. At <strong>IIT Jodhpur</strong>, I worked on Reinforcement Learning and Image Processing, teaching algorithms to recognize patterns in soft cloth textures—an area few have explored.</p>
-    <p>📈 Want to uncover more hidden insights? Dive into my <a href="#">projects</a>, <a href="#">skills</a>, and <a href="#">research</a>—or let’s decode the next big problem together. 🚀</p>
-  </section>
-
-  <div class="section-unlock">
-    <button class="unlock-btn" onclick="askQuestion('experience')">Unlock Experience</button>
+  <div class="sections">
+    <div class="section" onclick="askQuestion('Experience')">Experience</div>
+    <div class="section" onclick="askQuestion('Education')">Education</div>
+    <div class="section" onclick="askQuestion('Skills')">Skills</div>
+    <div class="section" onclick="askQuestion('Projects')">Projects</div>
   </div>
 
-  <div id="question-modal">
-    <div class="question-container">
-      <h3>Data Whisperer brings a question for you...</h3>
-      <div class="futuristic-response" id="dynamic-question">Analyzing...</div>
-      <input type="text" id="user-answer" placeholder="Your answer..." />
-      <button onclick="submitAnswer()">Submit</button>
-      <div id="answer-feedback"></div>
-    </div>
+  <div id="question-box">
+    <h2 id="dataWhisperer">Data Whisperer brings a challenge for you...</h2>
+    <p id="mlQuestion">Analyzing...</p>
+    <input type="text" id="userAnswer" placeholder="Your one-word answer" />
+    <button onclick="checkAnswer()">Submit</button>
+    <p id="feedback"></p>
   </div>
 
-  <script src="scripts/questions.js"></script>
-  <script src="scripts/3d-scene.js"></script>
+  <div class="contact">
+    <p>
+      <span style="animation-delay: 0s">C</span>
+      <span style="animation-delay: 0.1s">O</span>
+      <span style="animation-delay: 0.2s">N</span>
+      <span style="animation-delay: 0.3s">T</span>
+      <span style="animation-delay: 0.4s">A</span>
+      <span style="animation-delay: 0.5s">C</span>
+      <span style="animation-delay: 0.6s">T</span>
+      <br>
+      anuj1820dixit@gmail.com
+    </p>
+  </div>
+
+  <script>
+    const questionBank = {
+      Experience: ["tensorflow", "deployment", "docker"],
+      Education: ["statistics", "probability", "regression"],
+      Skills: ["pandas", "numpy", "visualization"],
+      Projects: ["clustering", "forecasting", "scraping"]
+    };
+
+    let currentSection = '';
+    let attempts = 0;
+
+    function askQuestion(section) {
+      currentSection = section;
+      attempts = 0;
+      const qList = questionBank[section];
+      const random = qList[Math.floor(Math.random() * qList.length)];
+      document.getElementById('mlQuestion').textContent = `What keyword fits this area? Hint: ${random[0].toUpperCase()}...`;
+      document.getElementById('question-box').style.display = 'block';
+    }
+
+    function checkAnswer() {
+      const ans = document.getElementById('userAnswer').value.trim().toLowerCase();
+      const validAnswers = questionBank[currentSection];
+
+      if (validAnswers.includes(ans)) {
+        document.getElementById('feedback').innerHTML = "✅ Correct! You may proceed.";
+        window.location.href = currentSection.toLowerCase() + ".html";
+      } else {
+        attempts++;
+        if (attempts >= 3) {
+          document.getElementById('feedback').innerHTML = `🔓 Access unlocked automatically. Even AI models need retries.`;
+          setTimeout(() => {
+            window.location.href = currentSection.toLowerCase() + ".html";
+          }, 1500);
+        } else {
+          document.getElementById('feedback').innerHTML = `❌ Hmm... not quite right. Try again, Analyst.`;
+        }
+      }
+    }
+
+    // Background animated matrix
+    const canvas = document.getElementById("bg");
+    const ctx = canvas.getContext("2d");
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+    const chars = "0123456789ABCDEF";
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+    const drops = Array.from({length: columns}).fill(1);
+
+    function draw() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#0f0";
+      ctx.font = fontSize + "px monospace";
+      for(let i = 0; i < drops.length; i++) {
+        const text = chars[Math.floor(Math.random()*chars.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+        if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+    setInterval(draw, 33);
+  </script>
 </body>
 </html>
