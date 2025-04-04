@@ -1,103 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Whisperer</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <style>
-        body {
-            background: black;
-            color: #0ff;
-            font-family: 'Courier New', Courier, monospace;
-            text-align: center;
-            overflow: hidden;
-        }
-        .container {
-            position: relative;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .question-box {
-            display: none;
-            position: absolute;
-            background: rgba(0, 0, 0, 0.8);
-            border: 2px solid #0ff;
-            padding: 20px;
-            font-size: 1.5rem;
-            width: 400px;
-            box-shadow: 0 0 10px #0ff;
-            animation: fadeIn 1s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        .question-box input {
-            margin-top: 10px;
-            padding: 5px;
-            font-size: 1rem;
-        }
-        canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Whisperer - Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #000;
+      color: white;
+    }
+
+    header {
+      position: relative;
+      z-index: 2;
+      padding: 2rem;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    #bio-section {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 2rem;
+      border-radius: 10px;
+      backdrop-filter: blur(8px);
+    }
+
+    nav {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+    }
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 15px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    #globe-canvas, #scene-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100vh;
+      background: black;
+    }
+
+    .section-unlock {
+      margin-top: 3rem;
+      text-align: center;
+    }
+    .unlock-btn {
+      background: #00ffcc;
+      border: none;
+      color: #000;
+      padding: 1rem 2rem;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    #question-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.9);
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      text-align: center;
+    }
+
+    .question-container {
+      background-color: #111;
+      padding: 2rem;
+      border-radius: 10px;
+      border: 2px solid #00ffcc;
+    }
+
+    .futuristic-response {
+      color: #00ffcc;
+      margin-top: 1rem;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to the Data Whisperer's Realm</h1>
-        <p>Click on a section to unlock knowledge...</p>
-        <div id="scene-container"></div>
-        <div class="question-box" id="question-box">
-            <p id="question-text"></p>
-            <input type="text" id="answer" placeholder="Your Answer...">
-            <button onclick="checkAnswer()">Submit</button>
-        </div>
+  <canvas id="globe-canvas"></canvas>
+  <div id="scene-container"></div>
+
+  <header>
+    <h1>Welcome to My Portfolio</h1>
+    <p>Hi, I'm Son Goku, a Data Scientist.</p>
+    <nav>
+      <ul>
+        <li><a href="#" onclick="askQuestion('portfolio')">Portfolio</a></li>
+        <li><a href="#" onclick="askQuestion('education')">Education</a></li>
+        <li><a href="#" onclick="askQuestion('skills')">Skills</a></li>
+        <li><a href="#" onclick="askQuestion('experience')">Experience</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="bio-section">
+    <h2>The Data Whisperer</h2>
+    <p>Most people see data as numbers. I see it as a language—a cryptic dialect spoken by the universe itself.</p>
+    <p>Imagine standing in a vast library where every book holds answers to problems we haven’t even thought of yet. But the books are locked. Data Science is the key that unlocks them.</p>
+    <p>I have spent years decoding this language—teaching machines to see patterns, make predictions, and even dream in algorithms. From automating entire web ecosystems to building AI-powered financial models, my work revolves around one thing: turning data into decisions.</p>
+    <p>💡 Did you know? In one of my projects, I created an autonomous web scraper that could crawl, extract, and organize real estate data while directly uploading images to cloud storage—no human needed. Another time, I built an AI model that could predict stock movements with deep learning techniques, bringing automation to financial forecasting.</p>
+    <p>At <strong>Blackcoffer, as an Associate Data Scientist</strong>, I work on solving real-world AI challenges. Previously, at <strong>Green Rider Technology</strong>, I trained AI models to understand and generate human-like responses, pushing the boundaries of generative AI. At <strong>IIT Jodhpur</strong>, I worked on Reinforcement Learning and Image Processing, teaching algorithms to recognize patterns in soft cloth textures—an area few have explored.</p>
+    <p>📈 Want to uncover more hidden insights? Dive into my <a href="#">projects</a>, <a href="#">skills</a>, and <a href="#">research</a>—or let’s decode the next big problem together. 🚀</p>
+  </section>
+
+  <div class="section-unlock">
+    <button class="unlock-btn" onclick="askQuestion('experience')">Unlock Experience</button>
+  </div>
+
+  <div id="question-modal">
+    <div class="question-container">
+      <h3>Data Whisperer brings a question for you...</h3>
+      <div class="futuristic-response" id="dynamic-question">Analyzing...</div>
+      <input type="text" id="user-answer" placeholder="Your answer..." />
+      <button onclick="submitAnswer()">Submit</button>
+      <div id="answer-feedback"></div>
     </div>
+  </div>
 
-    <script>
-        let scene, camera, renderer, globe;
-        
-        function init() {
-            scene = new THREE.Scene();
-            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            renderer = new THREE.WebGLRenderer({ alpha: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            document.getElementById('scene-container').appendChild(renderer.domElement);
-            
-            let geometry = new THREE.SphereGeometry(2, 32, 32);
-            let material = new THREE.MeshBasicMaterial({ color: 0x00ffff, wireframe: true });
-            globe = new THREE.Mesh(geometry, material);
-            scene.add(globe);
-            
-            camera.position.z = 5;
-            animate();
-        }
-        
-        function animate() {
-            requestAnimationFrame(animate);
-            globe.rotation.y += 0.01;
-            renderer.render(scene, camera);
-        }
-
-        function showQuestion() {
-            const questions = ["AI", "Data", "Model", "Predict", "Stats"];
-            document.getElementById("question-text").innerText = `Answer this: ${questions[Math.floor(Math.random() * questions.length)]}`;
-            document.getElementById("question-box").style.display = "block";
-        }
-
-        function checkAnswer() {
-            document.getElementById("question-box").style.display = "none";
-        }
-
-        document.body.addEventListener("click", showQuestion);
-        
-        init();
-    </script>
+  <script src="scripts/questions.js"></script>
+  <script src="scripts/3d-scene.js"></script>
 </body>
 </html>
