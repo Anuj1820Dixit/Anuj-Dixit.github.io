@@ -4,8 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Data Whisperer</title>
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background: #007acc;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .glow-box {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            padding: 20px;
+            transition: transform 0.3s;
+        }
+
+        .glow-box:hover {
+            transform: scale(1.02);
+        }
+
+        #threejs-container {
+            width: 100%;
+            height: 400px;
+            margin: 20px 0;
+            border: 1px solid #ccc;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #007acc;
+            color: white;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
     <header>
@@ -27,10 +83,15 @@
             <p>I have spent years decoding this language—teaching machines to see patterns, make predictions, and even dream in algorithms. From automating entire web ecosystems to building AI-powered financial models, my work revolves around one thing: turning data into decisions.</p>
             <p>💡 Did you know? I created an autonomous web scraper that uploads real estate data with images to cloud storage, and an AI model that predicts stock movements using deep learning. I’ve worked at <strong>Blackcoffer</strong>, <strong>Green Rider</strong>, and <strong>IIT Jodhpur</strong>—tackling real-world AI challenges.</p>
         </section>
-        
+
+        <section id="3d-visualization" class="glow-box">
+            <h2>Data Visualization</h2>
+            <div id="threejs-container"></div>
+        </section>
+
         <section id="question-box" class="glow-box">
             <h2>Unlock the Next Section</h2>
-            <p id="question">What is the use of a confusion matrix?</p>
+            <p id="question">What is the capital of France?</p>
             <input type="text" id="answer" placeholder="Your Answer">
             <button onclick="checkAnswer()">Submit</button>
             <p id="attempts">Attempts left: <span id="tries">2</span></p>
@@ -40,5 +101,54 @@
     <footer>
         <p id="contact">📧 Contact: <a href="mailto:anuj1820dixit@gmail.com">anuj1820dixit@gmail.com</a></p>
     </footer>
+
+    <script>
+        // Three.js 3D Visualization
+        const container = document.getElementById('threejs-container');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        container.appendChild(renderer.domElement);
+
+        const geometry = new THREE.BoxGeometry();
+        const material = new THREE.MeshBasicMaterial({ color: 0x007acc });
+        const cube = new THREE.Mesh(geometry, material);
+        scene.add(cube);
+
+        camera.position.z = 5;
+
+        function animate() {
+            requestAnimationFrame(animate);
+            cube.rotation.x += 0.01;
+            cube.rotation.y += 0.01;
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // Function to check the answer
+        function checkAnswer() {
+            const answer = document.getElementById('answer').value.toLowerCase();
+            const correctAnswer = "paris"; // Example answer
+            const triesElement = document.getElementById('tries');
+            let tries = parseInt(triesElement.innerText);
+
+            if (answer === correctAnswer) {
+                alert("Correct! You can now access the next section.");
+                // Logic to unlock the next section goes here
+            } else {
+                tries--;
+                triesElement.innerText = tries;
+                if (tries <= 0) {
+                    alert("Incorrect! You have used all attempts. The correct answer is " + correctAnswer + ".");
+                    // Logic to show the next section anyway goes here
+                } else {
+                    alert("Incorrect! Try again.");
+                }
+            }
+        }
+    </script>
 </body>
 </html>
