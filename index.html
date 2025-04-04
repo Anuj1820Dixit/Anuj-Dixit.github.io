@@ -3,182 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Whisperer - Portfolio</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            background-color: #000;
-            color: #fff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            overflow-x: hidden;
-        }
-
-        #lottie-bg {
-            position: fixed;
-            z-index: -1;
-            width: 100vw;
-            height: 100vh;
-            opacity: 0.2;
-        }
-
-        .centered-bio {
-            padding: 5vw;
-            background: rgba(0, 0, 0, 0.85);
-            border-radius: 20px;
-            box-shadow: 0 0 20px #00f3ff;
-            max-width: 960px;
-            margin: 100px auto;
-        }
-
-        .nav-btns {
-            text-align: center;
-            margin-top: 30px;
-        }
-
-        .nav-btns button {
-            margin: 10px;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 30px;
-            background: #00f3ff;
-            color: #000;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.2s ease;
-        }
-
-        .nav-btns button:hover {
-            transform: scale(1.05);
-        }
-
-        .question-popup {
-            position: fixed;
-            top: 20%;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgba(0,0,0,0.9);
-            border: 2px solid #00f3ff;
-            padding: 30px;
-            border-radius: 20px;
-            display: none;
-            z-index: 999;
-            max-width: 400px;
-            text-align: center;
-        }
-
-        .footer {
-            text-align: center;
-            padding: 20px;
-            font-size: 14px;
-            color: #aaa;
-        }
-    </style>
+    <title>The Data Whisperer</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
 </head>
 <body>
-
-<div id="lottie-bg"></div>
-
-<div class="centered-bio text-white">
-    <h1 class="text-center">The Data Whisperer</h1>
-    <p>Most people see data as numbers. I see it as a language—a cryptic dialect spoken by the universe itself. Imagine standing in a vast library where every book holds answers to problems we haven’t even thought of yet. But the books are locked. Data Science is the key that unlocks them.</p>
-    <p>I have spent years decoding this language—teaching machines to see patterns, make predictions, and even dream in algorithms. From automating entire web ecosystems to building AI-powered financial models, my work revolves around one thing: turning data into decisions.</p>
-    <p>💡 Did you know? I created an autonomous web scraper that uploads real estate data with images to cloud storage, and an AI model that predicts stock movements using deep learning. I’ve worked at <strong>Blackcoffer</strong>, <strong>Green Rider</strong>, and <strong>IIT Jodhpur</strong>—tackling real-world AI challenges.</p>
-</div>
-
-<div class="nav-btns">
-    <button onclick="askQuestion('skills')">Skills</button>
-    <button onclick="askQuestion('education')">Education</button>
-    <button onclick="askQuestion('projects')">Projects</button>
-    <button onclick="askQuestion('experience')">Experience</button>
-</div>
-
-<div id="question-box" class="question-popup">
-    <h4>🧠 Data Whisperer brings a question for you...</h4>
-    <p id="question-text"></p>
-    <input type="text" id="answer" class="form-control mt-2 mb-2" placeholder="Type your one-word answer">
-    <button class="btn btn-sm btn-info" onclick="checkAnswer()">Submit</button>
-    <p id="response" class="mt-2"></p>
-</div>
-
-<div class="footer">
-    Contact: <a href="mailto:anuj1820dixit@gmail.com" style="color:#00f3ff">anuj1820dixit@gmail.com</a>
-</div>
-
-<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-<script>
-    const bg = document.getElementById('lottie-bg');
-    const lottie = document.createElement('lottie-player');
-    lottie.setAttribute('src', 'https://assets7.lottiefiles.com/private_files/lf30_cgfdhxgx.json'); // cool data chart animation
-    lottie.setAttribute('background', 'transparent');
-    lottie.setAttribute('speed', '1');
-    lottie.setAttribute('loop', '');
-    lottie.setAttribute('autoplay', '');
-    lottie.style.width = '100%';
-    lottie.style.height = '100%';
-    bg.appendChild(lottie);
-
-    const questions = {
-        skills: [
-            { q: "What is the full form of PCA?", a: "principal" },
-            { q: "Which algorithm uses entropy?", a: "id3" },
-            { q: "Which ML library is built by Google?", a: "tensorflow" }
-        ],
-        education: [
-            { q: "What is the derivative of cost function called?", a: "gradient" },
-            { q: "What is one-hot encoding used for?", a: "categorical" },
-            { q: "Which algorithm is lazy?", a: "knn" }
-        ],
-        projects: [
-            { q: "Which model is good for text generation?", a: "gpt" },
-            { q: "What technique is used for dimensionality reduction?", a: "pca" },
-            { q: "Which type of learning uses rewards?", a: "reinforcement" }
-        ],
-        experience: [
-            { q: "Which algorithm uses support vectors?", a: "svm" },
-            { q: "Which framework helps in model deployment?", a: "flask" },
-            { q: "Which AI field deals with vision?", a: "cv" }
-        ]
-    };
-
-    let currentSet = [];
-    let currentQuestion = {};
-    let attempts = 0;
-
-    function askQuestion(section) {
-        document.getElementById('response').textContent = "Analyzing your mind...";
-        currentSet = questions[section];
-        currentQuestion = currentSet[Math.floor(Math.random() * currentSet.length)];
-        document.getElementById('question-text').textContent = currentQuestion.q;
-        document.getElementById('answer').value = "";
-        document.getElementById('question-box').style.display = 'block';
-        attempts = 0;
-    }
-
-    function checkAnswer() {
-        const userAnswer = document.getElementById('answer').value.trim().toLowerCase();
-        if (userAnswer === currentQuestion.a) {
-            document.getElementById('response').textContent = "✅ Excellent! You've unlocked this section.";
-            setTimeout(() => {
-                document.getElementById('question-box').style.display = 'none';
-                alert('Unlocked! Now redirect to section or show content...');
-            }, 1500);
-        } else {
-            attempts++;
-            if (attempts < 3) {
-                document.getElementById('response').textContent = `🚫 That's not it. The data still hides its secrets... (${3 - attempts} tries left)`;
-            } else {
-                document.getElementById('response').textContent = "🔓 The Data Whisperer sees potential... unlocking anyway!";
-                setTimeout(() => {
-                    document.getElementById('question-box').style.display = 'none';
-                    alert('Unlocked! Now redirect to section or show content...');
-                }, 2000);
-            }
-        }
-    }
-</script>
-
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="bio" class="glow-box">
+            <h1>The Data Whisperer</h1>
+            <p>Most people see data as numbers. I see it as a language—a cryptic dialect spoken by the universe itself.</p>
+            <p>Imagine standing in a vast library where every book holds answers to problems we haven’t even thought of yet. But the books are locked. Data Science is the key that unlocks them.</p>
+            <p>I have spent years decoding this language—teaching machines to see patterns, make predictions, and even dream in algorithms. From automating entire web ecosystems to building AI-powered financial models, my work revolves around one thing: turning data into decisions.</p>
+            <p>💡 Did you know? I created an autonomous web scraper that uploads real estate data with images to cloud storage, and an AI model that predicts stock movements using deep learning. I’ve worked at <strong>Blackcoffer</strong>, <strong>Green Rider</strong>, and <strong>IIT Jodhpur</strong>—tackling real-world AI challenges.</p>
+        </section>
+        
+        <section id="question-box" class="glow-box">
+            <h2>Unlock the Next Section</h2>
+            <p id="question">What is the use of a confusion matrix?</p>
+            <input type="text" id="answer" placeholder="Your Answer">
+            <button onclick="checkAnswer()">Submit</button>
+            <p id="attempts">Attempts left: <span id="tries">2</span></p>
+        </section>
+    </main>
+    
+    <footer>
+        <p id="contact">📧 Contact: <a href="mailto:anuj1820dixit@gmail.com">anuj1820dixit@gmail.com</a></p>
+    </footer>
 </body>
 </html>
