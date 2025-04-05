@@ -1,3 +1,4 @@
+<!-- Save this as index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,6 +32,7 @@
       font-size: 1.1em;
       font-weight: bold;
       cursor: pointer;
+      transition: 0.3s;
     }
 
     nav a:hover {
@@ -38,14 +40,30 @@
     }
 
     .container {
-      max-width: 800px;
+      max-width: 900px;
       margin: 80px auto;
       padding: 20px;
       text-align: center;
     }
 
+    .profile-pic {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      border: 3px solid #00ffff;
+      box-shadow: 0 0 20px rgba(0,255,255,0.3);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
     h1 {
-      font-size: 2.5em;
+      font-size: 2.8em;
       color: #00ffff;
       margin-bottom: 10px;
     }
@@ -54,6 +72,7 @@
       font-size: 1.2em;
       line-height: 1.6;
       color: #ccc;
+      margin-bottom: 15px;
     }
 
     /* Quiz Modal Section */
@@ -78,6 +97,7 @@
       text-align: center;
       max-width: 400px;
       width: 90%;
+      animation: fadeIn 0.5s ease;
     }
 
     .quiz-box h2 {
@@ -91,6 +111,7 @@
       margin-top: 10px;
       border-radius: 6px;
       border: none;
+      font-size: 1em;
     }
 
     .quiz-box button {
@@ -110,12 +131,22 @@
       color: #fff;
     }
 
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
     footer {
       text-align: center;
       padding: 20px;
       color: #aaa;
       margin-top: 50px;
       background: #111;
+    }
+
+    footer a {
+      color: #00ffff;
+      text-decoration: none;
     }
   </style>
 </head>
@@ -131,10 +162,13 @@
 </header>
 
 <div class="container">
+  <img src="https://via.placeholder.com/120" alt="Profile Picture" class="profile-pic" />
   <h1>The Data Whisperer</h1>
-  <p>I don't just analyze data — I translate its whispers into actions. From building autonomous systems to decoding human behavior through algorithms, my mission is to let data speak where humans pause.</p>
-  <p>🧠 Past: Blackcoffer, IIT Jodhpur, Green Rider<br>🚀 Built: AI market predictors, real estate data miners, automated bots.</p>
-  <p>Ready to uncover what lies beyond the zeros and ones? Let's begin.</p>
+  <p><strong>Hi, I'm Anuj — a data scientist decoding human behavior and building intelligent systems from raw data.</strong></p>
+  <p>🔍 Translating patterns into strategy. 🤖 Automating insights. 💡 Predicting what’s next.</p>
+  <p>🧠 Past: Blackcoffer, IIT Jodhpur, Green Rider</p>
+  <p>🚀 Built: AI market predictors, real estate data miners, intelligent bots.</p>
+  <p>Let's uncover what lies beyond the zeros and ones.</p>
 </div>
 
 <!-- Quiz Modal -->
@@ -150,7 +184,7 @@
 </div>
 
 <footer>
-  📧 Contact: <a href="mailto:anuj1820dixit@gmail.com" style="color: #00ffff;">anuj1820dixit@gmail.com</a>
+  📧 Contact: <a href="mailto:anuj1820dixit@gmail.com">anuj1820dixit@gmail.com</a>
 </footer>
 
 <script>
