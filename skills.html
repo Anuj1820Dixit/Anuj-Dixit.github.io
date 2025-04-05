@@ -1,49 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skills - Son Goku</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skills - Son Goku</title>
+
+  <!-- Bootstrap -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+  />
+  <!-- Font Awesome for icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+  <!-- AOS Animations -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/aos@2.3.1/dist/aos.css"
+  />
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    nav ul li a.active {
+      border-bottom: 2px solid #00ffff;
+      font-weight: bold;
+    }
+
+    .badge {
+      font-size: 0.95rem;
+    }
+
+    .section-title {
+      font-weight: 700;
+      color: #2c3e50;
+    }
+
+    section {
+      transition: all 0.3s ease-in-out;
+    }
+  </style>
 </head>
 <body>
-    <header class="bg-dark text-white text-center py-4 position-relative">
-        <h1>My Skills</h1>
-        <nav>
-            <ul class="d-flex justify-content-end position-absolute top-0 end-0 m-3">
-                <li class="mx-3"><a href="index.html" class="text-white">Home</a></li>
-                <li class="mx-3"><a href="portfolio.html" class="text-white">Portfolio</a></li>
-                <li class="mx-3"><a href="education.html" class="text-white">Education</a></li>
-                <li class="mx-3"><a href="experience.html" class="text-white">Experience</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header class="bg-dark text-white text-center py-4 position-relative">
+    <h1>My Skills</h1>
+    <nav>
+      <ul class="d-flex justify-content-end position-absolute top-0 end-0 m-3">
+        <li class="mx-3"><a href="index.html" class="text-white">Home</a></li>
+        <li class="mx-3"><a href="portfolio.html" class="text-white">Portfolio</a></li>
+        <li class="mx-3"><a href="education.html" class="text-white">Education</a></li>
+        <li class="mx-3"><a href="experience.html" class="text-white">Experience</a></li>
+        <li class="mx-3">
+          <a href="skills.html" class="text-white active">Skills</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
 
-    <div class="container mt-4">
-        <section class="p-4 bg-light rounded shadow">
-            <h2>Technical Skills</h2>
-            <ul>
-                <li><strong>Programming:</strong> Python, R, C, C++, SQL, etc.</li>
-                <li><strong>Data Science Packages:</strong> Pandas, Numpy, sklearn, TensorFlow, PyTorch, Keras, Excel, Power BI.</li>
-                <li><strong>Data Science Algorithms:</strong> Classification (Naïve Bayes, KNN, SVM, Decision Tree, Random Forest, etc.), Regression (Linear, Multiple Linear, Random Forest, SVR, etc.), Clustering (K-Means, Hierarchical), Deep Learning (RNN, CNN), Reinforcement Learning.</li>
-                <li><strong>Other Tools:</strong> Tableau, KNIME, Kibana, n8n, Selenium, Flask, Django, FastAPI (basic), Google Looker Studio.</li>
-            </ul>
-        </section>
+  <div class="container mt-4">
+    <!-- Technical Skills Section -->
+    <section class="p-4 bg-light rounded shadow" data-aos="fade-up">
+      <h2 class="section-title mb-3">
+        <i class="fas fa-code me-2 text-primary"></i>Technical Skills
+      </h2>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <h5>Programming</h5>
+          <span class="badge bg-primary m-1">Python</span>
+          <span class="badge bg-secondary m-1">R</span>
+          <span class="badge bg-success m-1">C</span>
+          <span class="badge bg-warning text-dark m-1">C++</span>
+          <span class="badge bg-danger m-1">SQL</span>
+        </div>
+        <div class="col-md-6 mb-3">
+          <h5>Tools</h5>
+          <span class="badge bg-info text-dark m-1">Tableau</span>
+          <span class="badge bg-dark m-1">KNIME</span>
+          <span class="badge bg-secondary m-1">Kibana</span>
+          <span class="badge bg-success m-1">n8n</span>
+          <span class="badge bg-primary m-1">Selenium</span>
+          <span class="badge bg-warning text-dark m-1">Flask</span>
+          <span class="badge bg-danger m-1">Django</span>
+          <span class="badge bg-dark m-1">FastAPI</span>
+          <span class="badge bg-info text-dark m-1">Looker Studio</span>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-md-12">
+          <h5>Packages & Algorithms</h5>
+          <p>
+            <strong>Packages:</strong> Pandas, Numpy, sklearn, TensorFlow, PyTorch, Keras, Excel, Power BI
+            <br />
+            <strong>Algorithms:</strong> Classification (Naïve Bayes, KNN, SVM, Decision Tree, Random Forest), Regression (Linear, Multiple, RF, SVR), Clustering (K-Means, Hierarchical), Deep Learning (CNN, RNN), Reinforcement Learning
+          </p>
+        </div>
+      </div>
+    </section>
 
-        <section class="p-4 bg-light rounded shadow mt-4">
-            <h2>Languages</h2>
-            <p>Hindi, English</p>
-        </section>
+    <!-- Languages Section -->
+    <section class="p-4 bg-light rounded shadow mt-4" data-aos="fade-up">
+      <h2 class="section-title mb-3">
+        <i class="fas fa-language me-2 text-success"></i>Languages
+      </h2>
+      <span class="badge bg-dark m-1">Hindi</span>
+      <span class="badge bg-primary m-1">English</span>
+    </section>
 
-        <section class="p-4 bg-light rounded shadow mt-4">
-            <h2>Interests</h2>
-            <p>Meditation, Chess, Cricket, Football, Reading, Social Work</p>
-        </section>
-    </div>
+    <!-- Interests Section -->
+    <section class="p-4 bg-light rounded shadow mt-4" data-aos="fade-up">
+      <h2 class="section-title mb-3">
+        <i class="fas fa-star me-2 text-warning"></i>Interests
+      </h2>
+      <span class="badge bg-info text-dark m-1">Meditation</span>
+      <span class="badge bg-danger m-1">Chess</span>
+      <span class="badge bg-success m-1">Cricket</span>
+      <span class="badge bg-primary m-1">Football</span>
+      <span class="badge bg-warning text-dark m-1">Reading</span>
+      <span class="badge bg-secondary m-1">Social Work</span>
+    </section>
+  </div>
 
-    <footer class="text-center bg-dark text-white py-3 mt-4">
-        <p>&copy; 2025 Son Goku. All rights reserved.</p>
-    </footer>
+  <footer class="text-center bg-dark text-white py-3 mt-4">
+    <p>&copy; 2025 Son Goku. All rights reserved.</p>
+  </footer>
+
+  <!-- JS Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
 </body>
 </html>
