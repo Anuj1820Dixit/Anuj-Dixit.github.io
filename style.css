@@ -1,36 +1,129 @@
-body {
-  font-family: 'Arial', sans-serif;
+/* === Root Variables === */
+:root {
+  --bg-dark: #0d0d0d;
+  --accent-cyan: #00ffcc;
+  --text-light: #f0f0f0;
+  --text-muted: #aaaaaa;
+  --font-main: 'Arial', sans-serif;
+  --font-heading: 'Poppins', sans-serif;
+  --shadow-glow: 0 0 8px var(--accent-cyan);
+}
+
+/* === Base Reset === */
+* {
   margin: 0;
   padding: 0;
-  background-color: black;
-  color: white;
+  box-sizing: border-box;
+}
+body {
+  font-family: var(--font-main);
+  background: var(--bg-dark);
+  color: var(--text-light);
   overflow-x: hidden;
+  line-height: 1.6;
 }
+a {
+  color: var(--accent-cyan);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* === Headings === */
 h1, h2, h3 {
-  font-family: 'Poppins', sans-serif;
-  color: #00ffcc;
+  font-family: var(--font-heading);
+  color: var(--accent-cyan);
   text-align: center;
+  margin-bottom: 20px;
 }
+h1 {
+  font-size: 2.5rem;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.5rem;
+}
+
+/* === Layout Container === */
 .container {
   max-width: 1200px;
   margin: auto;
+  padding: 40px 20px;
+}
+
+/* === Navbar === */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  background: #111;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--accent-cyan);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+nav a {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* === Section Box === */
+.section {
+  padding: 60px 20px;
+  background: radial-gradient(ellipse at center, #111 0%, #0d0d0d 100%);
+}
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+.section-subtitle {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-bottom: 30px;
+}
+
+/* === Text Blocks & Emojis === */
+.text-highlight {
+  color: var(--accent-cyan);
+  font-weight: bold;
+}
+.emoji-bullet {
+  display: inline-block;
+  margin-right: 8px;
+}
+
+/* === Contact Section === */
+.contact {
+  background: #111;
   padding: 20px;
   text-align: center;
+  font-size: 1.1rem;
 }
-#globe-container {
-  width: 100%;
-  height: 400px;
+.contact a {
+  font-weight: bold;
+  color: var(--accent-cyan);
 }
-.contact p {
-  font-size: 1.5em;
-  letter-spacing: 2px;
-}
-.question-section {
-  margin-top: 30px;
-}
-.question-box {
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px solid #00ffcc;
-  padding: 20px;
-  border-radius: 8px;
+
+/* === Utility Classes === */
+.mt-20 { margin-top: 20px; }
+.mb-20 { margin-bottom: 20px; }
+.mt-40 { margin-top: 40px; }
+.text-center { text-align: center; }
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  .container {
+    padding: 20px 10px;
+  }
 }
