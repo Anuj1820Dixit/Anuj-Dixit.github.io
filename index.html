@@ -1,203 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>The Data Whisperer</title>
-  <!-- Font Awesome for social icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <!-- Font & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
   <style>
-    /* General Reset */
-    body, h1, p, a {
+    body {
       margin: 0;
       padding: 0;
-      text-decoration: none;
-      color: inherit;
-    }
-
-    body {
       font-family: 'Segoe UI', sans-serif;
       background-color: #f4f4f9;
-      color: #333;
+      color: #222;
       overflow-x: hidden;
-      position: relative;
-      height: 100vh;
-      margin: 0;
     }
 
-    /* Particle.js Canvas */
     #particles-js {
       position: absolute;
       width: 100%;
       height: 100%;
-      background-color: #f4f4f9;
       z-index: 0;
+      top: 0;
+      left: 0;
+      background-color: #f4f4f9;
     }
 
-    /* Content Container */
     .container {
       position: relative;
       z-index: 1;
-      max-width: 900px;
-      margin: 0 auto;
+      max-width: 800px;
+      margin: 100px auto;
       padding: 20px;
       text-align: center;
     }
 
-    /* Header */
     header {
-      background: rgba(255, 255, 255, 0.9);
-      padding: 15px 0;
-      position: fixed;
-      width: 100%;
+      background: #fff;
+      padding: 20px;
+      text-align: center;
+      position: sticky;
       top: 0;
-      left: 0;
-      z-index: 2;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 10;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
 
     nav a {
-      margin: 0 15px;
+      margin: 0 20px;
       color: #0077cc;
-      font-size: 1.1em;
-      font-weight: bold;
+      text-decoration: none;
+      font-size: 1.05em;
+      font-weight: 600;
       cursor: pointer;
-      transition: color 0.3s;
     }
 
     nav a:hover {
-      color: #005fa3;
+      color: #004080;
     }
 
-    /* Main Content */
     h1 {
-      font-size: 3em;
+      font-size: 2.7em;
       color: #0077cc;
-      margin-top: 100px;
+      margin-bottom: 10px;
     }
 
     p {
-      font-size: 1.2em;
+      font-size: 1.15em;
       line-height: 1.6;
-      margin: 20px 0;
     }
 
-    /* Social Media Icons */
     .social-icons {
       margin-top: 20px;
     }
 
     .social-icons a {
-      display: inline-block;
       margin: 0 10px;
-      font-size: 1.5em;
       color: #0077cc;
-      transition: transform 0.3s, color 0.3s;
+      font-size: 1.5em;
+      transition: color 0.3s;
     }
 
     .social-icons a:hover {
-      color: #005fa3;
-      transform: scale(1.1);
+      color: #004080;
     }
 
-    /* Quiz Modal */
-    #quizModal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.85);
-      z-index: 9999;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .quiz-box {
-      background: #ffffff;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
-      text-align: center;
-      max-width: 400px;
-      width: 90%;
-    }
-
-    .quiz-box h2 {
-      color: #0077cc;
-      margin-bottom: 15px;
-    }
-
-    .quiz-box input {
-      padding: 10px;
-      width: 80%;
-      margin-top: 10px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-    }
-
-    .quiz-box button {
-      margin-top: 15px;
-      padding: 10px 20px;
-      background: #0077cc;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .quiz-box button:hover {
-      background: #005fa3;
-    }
-
-    /* Footer */
     footer {
       text-align: center;
       padding: 20px;
-      color: #666;
+      color: #555;
       margin-top: 50px;
-      background: rgba(255, 255, 255, 0.9);
-    }
-
-    footer a {
-      color: #0077cc;
+      background: #fff;
+      z-index: 1;
+      position: relative;
     }
   </style>
 </head>
 <body>
 
-<!-- Particle.js Background -->
+<!-- Particle Background -->
 <div id="particles-js"></div>
 
+<!-- Header Nav -->
 <header>
   <nav>
-    <a onclick="promptUnlock('skills.html')">Skills</a>
-    <a onclick="promptUnlock('education.html')">Education</a>
-    <a onclick="promptUnlock('projects.html')">Projects</a>
-    <a onclick="promptUnlock('experience.html')">Experience</a>
+    <a href="#">Skills</a>
+    <a href="#">Education</a>
+    <a href="#">Projects</a>
+    <a href="#">Experience</a>
   </nav>
 </header>
 
+<!-- Main Content -->
 <div class="container">
   <h1>The Data Whisperer</h1>
   <p>I don't just analyze data — I translate its whispers into actions. From building autonomous systems to decoding human behavior through algorithms, my mission is to let data speak where humans pause.</p>
   <p>🧠 Past: Blackcoffer, IIT Jodhpur, Green Rider<br>🚀 Built: AI market predictors, real estate data miners, automated bots.</p>
   <p>Ready to uncover what lies beyond the zeros and ones? Let's begin.</p>
 
-  <!-- Social Media Icons -->
+  <!-- Social Icons -->
   <div class="social-icons">
-    <a href="https://linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-    <a href="https://github.com/yourprofile" target="_blank"><i class="fab fa-github"></i></a>
-    <a href="https://twitter.com/yourprofile" target="_blank"><i class="fab fa-twitter"></i></a>
+    <a href="https://www.linkedin.com/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    <a href="https://github.com/" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+    <a href="https://twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
   </div>
 </div>
 
-<!-- Quiz Modal -->
-<div id="quizModal">
-  <div class="quiz-box">
-    <h2>🧠 The Whisperer is analyzing your intent...</h2>
-    <p id="quiz
-::contentReference[oaicite:8]{index=8}
+<!-- Footer -->
+<footer>
+  📧 Contact: <a href="mailto:anuj1820dixit@gmail.com" style="color: #0077cc;">anuj1820dixit@gmail.com</a>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+  particlesJS("particles-js", {
+    particles: {
+      number: { value: 80, density: { enable: true, value_area: 800 } },
+      color: { value: "#0077cc" },
+      shape: {
+        type: "circle",
+        polygon: { nb_sides: 5 }
+      },
+      opacity: {
+        value: 0.5,
+        random: false
+      },
+      size: {
+        value: 3,
+        random: true
+      },
+      line_linked: {
+        enable: true,
+        distance: 150,
+        color: "#0077cc",
+        opacity: 0.4,
+        width: 1
+      },
+      move: {
+        enable: true,
+        speed: 4,
+        direction: "none",
+        random: false,
+        straight: false,
+        bounce: false
+      }
+    },
+    interactivity: {
+      events: {
+        onhover: { enable: true, mode: "grab" },
+        onclick: { enable: true, mode: "push" }
+      },
+      modes: {
+        grab: { distance: 200, line_linked: { opacity: 1 } },
+        push: { particles_nb: 4 }
+      }
+    },
+    retina_detect: true
+  });
+</script>
+
+</body>
+</html>
