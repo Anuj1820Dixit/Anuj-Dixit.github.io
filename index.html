@@ -95,6 +95,75 @@
       z-index: 1;
       position: relative;
     }
+
+    /* Quiz Modal */
+    #quizModal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background: rgba(0, 0, 0, 0.8);
+      animation: fadeIn 0.5s ease;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .quiz-content {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+      animation: slideUp 0.5s ease;
+    }
+
+    .quiz-content h2 {
+      margin-bottom: 15px;
+      color: #0077cc;
+    }
+
+    .quiz-content input {
+      padding: 10px;
+      width: 80%;
+      margin-top: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .quiz-content button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: #0077cc;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .quiz-content button:hover {
+      background: #004080;
+    }
+
+    #feedback {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
   </style>
 </head>
 <body>
@@ -105,10 +174,10 @@
 <!-- Header Nav -->
 <header>
   <nav>
-    <a href="skills.html">Skills</a>
-    <a href="education.html">Education</a>
-    <a href="projects.html">Projects</a>
-    <a href="experience.html">Experience</a>
+    <a onclick="promptQuiz('skills.html')">Skills</a>
+    <a onclick="promptQuiz('education.html')">Education</a>
+    <a onclick="promptQuiz('projects.html')">Projects</a>
+    <a onclick="promptQuiz('experience.html')">Experience</a>
   </nav>
 </header>
 
@@ -127,6 +196,18 @@
   </div>
 </div>
 
+<!-- Quiz Modal -->
+<div id="quizModal">
+  <div class="quiz-content">
+    <h2>🔍 Quick Data Challenge</h2>
+    <p id="questionText"></p>
+    <input type="text" id="answerInput" placeholder="Your answer..." />
+    <br />
+    <button onclick="checkAnswer()">Submit</button>
+    <div id="feedback"></div>
+  </div>
+</div>
+
 <!-- Footer -->
 <footer>
   📧 Contact: <a href="mailto:anuj1820dixit@gmail.com" style="color: #0077cc;">anuj1820dixit@gmail.com</a>
@@ -139,33 +220,11 @@
     particles: {
       number: { value: 80, density: { enable: true, value_area: 800 } },
       color: { value: "#0077cc" },
-      shape: {
-        type: "circle",
-        polygon: { nb_sides: 5 }
-      },
-      opacity: {
-        value: 0.5,
-        random: false
-      },
-      size: {
-        value: 3,
-        random: true
-      },
-      line_linked: {
-        enable: true,
-        distance: 150,
-        color: "#0077cc",
-        opacity: 0.4,
-        width: 1
-      },
-      move: {
-        enable: true,
-        speed: 4,
-        direction: "none",
-        random: false,
-        straight: false,
-        bounce: false
-      }
+      shape: { type: "circle", polygon: { nb_sides: 5 } },
+      opacity: { value: 0.5 },
+      size: { value: 3, random: true },
+      line_linked: { enable: true, distance: 150, color: "#0077cc", opacity: 0.4, width: 1 },
+      move: { enable: true, speed: 4 }
     },
     interactivity: {
       events: {
@@ -179,7 +238,53 @@
     },
     retina_detect: true
   });
-</script>
 
+  const questions = [
+    { q: "Which algorithm is used to reduce dimensionality in datasets?", a: "pca" },
+    { q: "Which ML model is ideal for classification tasks with non-linear boundaries?", a: "svm" },
+    { q: "Name the process of training an ensemble of decision trees?", a: "random forest" },
+    { q: "What evaluation metric is best for imbalanced classification?", a: "f1 score" },
+    { q: "Which algorithm clusters data without supervision?", a: "kmeans" }
+  ];
+
+  let targetPage = "";
+  let attempts = 0;
+  let currentQuestion = {};
+
+  function promptQuiz(page) {
+    targetPage = page;
+    attempts = 0;
+    currentQuestion = questions[Math.floor(Math.random() * questions.length)];
+    document.getElementById("questionText").innerText = currentQuestion.q;
+    document.getElementById("answerInput").value = "";
+    document.getElementById("feedback").innerText = "";
+    document.getElementById("quizModal").style.display = "flex";
+  }
+
+  function checkAnswer() {
+    const input = document.getElementById("answerInput").value.trim().toLowerCase();
+    const feedback = document.getElementById("feedback");
+
+    if (input === currentQuestion.a) {
+      feedback.style.color = "green";
+      feedback.innerText = "✅ Correct! Let's explore.";
+      setTimeout(() => {
+        window.location.href = targetPage;
+      }, 1000);
+    } else {
+      attempts++;
+      if (attempts >= 2) {
+        feedback.style.color = "orange";
+        feedback.innerHTML = "🧠 Keep learning! You can still proceed.";
+        setTimeout(() => {
+          window.location.href = targetPage;
+        }, 1500);
+      } else {
+        feedback.style.color = "red";
+        feedback.innerText = "❌ Try again!";
+      }
+    }
+  }
+</script>
 </body>
 </html>
