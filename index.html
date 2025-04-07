@@ -121,7 +121,7 @@
       width: 90%;
       animation: slideUp 0.5s ease;
       position: relative;
-      overflow: hidden;
+      z-index: 2;
     }
 
     .quiz-content h2 {
@@ -179,7 +179,8 @@
       transform: translate(-50%, -50%);
       animation: spinDNA 10s linear infinite;
       opacity: 0.1;
-      z-index: 0;
+      z-index: 1;
+      pointer-events: none;
     }
 
     @keyframes spinDNA {
@@ -189,11 +190,6 @@
       to {
         transform: translate(-50%, -50%) rotate(360deg);
       }
-    }
-
-    .quiz-content > *:not(.dna-animation) {
-      position: relative;
-      z-index: 1;
     }
   </style>
 </head>
@@ -229,8 +225,8 @@
 
 <!-- Quiz Modal -->
 <div id="quizModal">
+  <div class="dna-animation"></div> <!-- 🧬 DNA animation behind modal -->
   <div class="quiz-content">
-    <div class="dna-animation"></div> <!-- 🧬 DNA ANIMATION HERE -->
     <h2>🔍 Quick Data Challenge</h2>
     <p id="questionText"></p>
     <input type="text" id="answerInput" placeholder="Your answer..." />
