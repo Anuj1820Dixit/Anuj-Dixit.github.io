@@ -167,21 +167,20 @@
       to { transform: translateY(0); opacity: 1; }
     }
 
-    /* 🔬 Spinning DNA background inside quiz modal */
- .dna-animation {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 220px;
-  height: 220px;
-  background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/DNA_icon.svg/512px-DNA_icon.svg.png') no-repeat center center;
-  background-size: contain;
-  transform: translate(-50%, -50%);
-  animation: spinDNA 8s linear infinite;
-  opacity: 0.2;
-  z-index: 0;
-}
-
+    /* 🧬 Spinning DNA Background */
+    .dna-animation {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 200px;
+      height: 200px;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/3/3a/DNA_double_helix_horizontal.svg') no-repeat center center;
+      background-size: contain;
+      transform: translate(-50%, -50%);
+      animation: spinDNA 10s linear infinite;
+      opacity: 0.1;
+      z-index: 0;
+    }
 
     @keyframes spinDNA {
       from {
@@ -231,9 +230,7 @@
 <!-- Quiz Modal -->
 <div id="quizModal">
   <div class="quiz-content">
-    <!-- 🔬 DNA animation background -->
-    <div class="dna-animation"></div>
-
+    <div class="dna-animation"></div> <!-- 🧬 DNA ANIMATION HERE -->
     <h2>🔍 Quick Data Challenge</h2>
     <p id="questionText"></p>
     <input type="text" id="answerInput" placeholder="Your answer..." />
