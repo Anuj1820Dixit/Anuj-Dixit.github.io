@@ -21,6 +21,7 @@ body {
   color: var(--text-light);
   overflow-x: hidden;
   line-height: 1.6;
+  position: relative;
 }
 a {
   color: var(--accent-cyan);
@@ -52,6 +53,8 @@ h3 {
   max-width: 1200px;
   margin: auto;
   padding: 40px 20px;
+  position: relative;
+  z-index: 1;
 }
 
 /* === Navbar === */
@@ -106,6 +109,18 @@ nav a {
 .contact a {
   font-weight: bold;
   color: var(--accent-cyan);
+}
+
+/* === Particle.js Canvas Layer === */
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  background: transparent;
 }
 
 /* === Utility Classes === */
