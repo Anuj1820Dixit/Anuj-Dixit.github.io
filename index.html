@@ -177,8 +177,7 @@
       height: 150px;
       transform: translate(-50%, -50%);
       pointer-events: none;
-      opacity: 0.07;
-      filter: blur(1px);
+      opacity: 0.2; /* Adjusted for better visibility */
       z-index: 0;
     }
 
@@ -265,7 +264,7 @@
         onclick: { enable: true, mode: "push" }
       },
       modes: {
-        grab: { distance: 200, line_linked: { opacity: 1 } },
+                grab: { distance: 200, line_linked: { opacity: 1 } },
         push: { particles_nb: 4 }
       }
     },
