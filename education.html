@@ -6,6 +6,53 @@
   <title>Education - Son Goku</title>
   <link rel="stylesheet" href="style.css"/>
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+  <!-- Scoped Card Styles for Education Page -->
+  <style>
+    .education-section {
+      padding: 60px 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .education-container {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .edu-card {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(8px);
+      border-radius: 16px;
+      padding: 25px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .edu-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0, 255, 204, 0.4);
+    }
+
+    .edu-card h2 {
+      color: #00ffcc;
+      margin-bottom: 10px;
+    }
+
+    .edu-card p {
+      color: #f0f0f0;
+      line-height: 1.6;
+    }
+
+    .text-highlight {
+      color: #00ffcc;
+      font-weight: 600;
+    }
+  </style>
 </head>
 <body>
   <!-- Particle Background -->
@@ -21,9 +68,9 @@
     </nav>
   </header>
 
-  <section class="section">
-    <div class="container">
-      <div class="section-box">
+  <section class="education-section">
+    <div class="education-container">
+      <div class="edu-card">
         <h2>Medi-Caps University</h2>
         <p><span class="text-highlight">Location:</span> AB RD Pigdamber Rau, India | <span class="text-highlight">Graduation:</span> May 2024</p>
         <p><span class="text-highlight">Degree:</span> B.Tech in Computer Science & Engineering (Specialization in Data Science)</p>
@@ -31,7 +78,7 @@
         <p><span class="text-highlight">Certifications:</span> Completed certifications in Data Science from Coursera, UpGrad, and 365 Data Science.</p>
       </div>
 
-      <div class="section-box mt-40">
+      <div class="edu-card">
         <h2>St. Paul H.S. School</h2>
         <p><span class="text-highlight">Stream:</span> PCM with Physical Education | <span class="text-highlight">Percentage:</span> 80%</p>
       </div>
