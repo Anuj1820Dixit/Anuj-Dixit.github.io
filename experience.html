@@ -24,11 +24,16 @@
       margin-bottom: 20px;
       opacity: 0;
       animation: fadeIn 1s ease forwards;
+      cursor: pointer;
     }
 
     .experience-section:hover {
       background: rgba(255, 255, 255, 0.15);
       transform: scale(1.02);
+    }
+
+    .full-details {
+      display: none;
     }
 
     h2 {
@@ -62,6 +67,50 @@
         opacity: 1;
       }
     }
+
+    /* Overlay for zoomed card */
+    .zoom-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    .zoomed-card {
+      background: #1c1c1e;
+      color: white;
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 600px;
+      width: 90%;
+      box-shadow: 0 0 20px #00ffd5;
+      position: relative;
+      animation: zoomIn 0.3s ease-out;
+    }
+
+    @keyframes zoomIn {
+      from {
+        transform: scale(0.7);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      color: #00ffd5;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -82,50 +131,66 @@
   <div class="container mt-4">
     <div class="row">
       <div class="col-md-12">
-        <section class="experience-section">
+
+        <!-- Repeatable Card Template -->
+        <section class="experience-section" onclick="zoomCard(this)">
           <h2>Associate Data Scientist</h2>
           <p><strong>Blackcoffer | Full-Time | Present</strong></p>
           <ul>
-            <li>Working on advanced data science solutions to analyze business insights and improve decision-making.</li>
-            <li>Developing machine learning models to optimize predictive analysis.</li>
+            <li>Working on advanced data science solutions.</li>
+            <li>Developing machine learning models.</li>
           </ul>
+          <div class="full-details">
+            <p>More details about AI use in business insights, predictive analytics models, and NLP deployments for real-time dashboards...</p>
+          </div>
         </section>
 
-        <section class="experience-section">
+        <section class="experience-section" onclick="zoomCard(this)">
           <h2>Software Engineer AI/ML</h2>
-          <p><strong>Green Rider Technology LLP | Full-Time | March – October 2024 | Indore</strong></p>
+          <p><strong>Green Rider Technology LLP | March – October 2024 | Indore</strong></p>
           <ul>
-            <li>Designed and optimized AI-generated text prompts for 12+ projects.</li>
-            <li>Conducted data analysis on stock market trends and developed an LSTM model for predictive analysis.</li>
-            <li>Streamlined workflows, improving productivity and efficiency.</li>
+            <li>Optimized AI-generated prompts.</li>
+            <li>Analyzed stock market data with LSTM.</li>
           </ul>
+          <div class="full-details">
+            <p>Additional details include GPT model fine-tuning, integrated prompt engineering workflows, and financial time series evaluations.</p>
+          </div>
         </section>
 
-        <section class="experience-section">
+        <section class="experience-section" onclick="zoomCard(this)">
           <h2>Machine Learning Intern</h2>
-          <p><strong>IIT Jodhpur | Full-Time | Dec 2023 – March 2024 | Jodhpur</strong></p>
+          <p><strong>IIT Jodhpur | Dec 2023 – March 2024 | Jodhpur</strong></p>
           <ul>
-            <li>Developed a dataset of soft cloth images in multiple states using TensorFlow.</li>
-            <li>Built an image processing system using OpenCV for cloth recognition.</li>
+            <li>TensorFlow-based dataset creation.</li>
+            <li>Image processing with OpenCV.</li>
           </ul>
+          <div class="full-details">
+            <p>Detailed image annotation, training CNNs on texture and material segmentation, and performance benchmarks on edge devices.</p>
+          </div>
         </section>
 
-        <section class="experience-section">
+        <section class="experience-section" onclick="zoomCard(this)">
           <h2>Reinforcement Learning Internship</h2>
-          <p><strong>IIT Jodhpur | June – July 2023 | Jodhpur</strong></p>
+          <p><strong>IIT Jodhpur | June – July 2023</strong></p>
           <ul>
-            <li>Studied reinforcement learning concepts like Markov Chains and MDPs.</li>
-            <li>Implemented grid-based value iteration models for decision-making.</li>
+            <li>Studied Markov Chains & MDPs.</li>
+            <li>Implemented value iteration models.</li>
           </ul>
+          <div class="full-details">
+            <p>Worked on custom RL environments with Python Gym and visualized learning progress in real-time.</p>
+          </div>
         </section>
 
-        <section class="experience-section">
+        <section class="experience-section" onclick="zoomCard(this)">
           <h2>Machine Learning Intern</h2>
           <p><strong>CodSoft | Internship</strong></p>
           <ul>
-            <li>Worked on multiple ML projects with supervised and unsupervised learning.</li>
-            <li>Developed classification and regression models for real-world applications.</li>
+            <li>Worked on ML classification projects.</li>
+            <li>Built regression models for apps.</li>
           </ul>
+          <div class="full-details">
+            <p>Expanded to deployment via Flask, model explainability with SHAP, and dashboarding via Streamlit.</p>
+          </div>
         </section>
       </div>
     </div>
@@ -135,6 +200,7 @@
     <p>Contact me at: <a href="mailto:your.email@example.com" class="text-white">your.email@example.com</a></p>
   </footer>
 
+  <!-- Particles.js -->
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script>
     particlesJS('particles-js', {
@@ -164,6 +230,30 @@
         }
       }
     });
+  </script>
+
+  <!-- 🔹 Zoom Interaction Script -->
+  <script>
+    function zoomCard(card) {
+      const overlay = document.createElement('div');
+      overlay.className = 'zoom-overlay';
+
+      const zoomed = document.createElement('div');
+      zoomed.className = 'zoomed-card';
+      zoomed.innerHTML = card.innerHTML;
+
+      const fullDetails = zoomed.querySelector('.full-details');
+      if (fullDetails) fullDetails.style.display = 'block';
+
+      const closeBtn = document.createElement('div');
+      closeBtn.className = 'close-btn';
+      closeBtn.innerHTML = '&times;';
+      closeBtn.onclick = () => overlay.remove();
+      zoomed.appendChild(closeBtn);
+
+      overlay.appendChild(zoomed);
+      document.body.appendChild(overlay);
+    }
   </script>
 </body>
 </html>
