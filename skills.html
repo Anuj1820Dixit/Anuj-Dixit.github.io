@@ -2,59 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Skills - Son Goku</title>
 
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <!-- AOS Animations -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
   <!-- Custom Styles -->
-<!--  <link rel="stylesheet" href="styles.css" /> -->
+  <link rel="stylesheet" href="style.css" />
 
   <style>
-    html, body {
-      scroll-behavior: smooth;
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      background: #0d1117;
-      color: white;
-      overflow-x: hidden;
-    }
-
-    #particles-js {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      z-index: -1; /* Ensure it's behind other content */
-      top: 0;
-      left: 0;
-    }
-
     nav ul li a.active {
-      border-bottom: 2px solid #00ffff;
+      border-bottom: 2px solid var(--accent-cyan);
       font-weight: bold;
     }
 
-    .badge {
+    .skill-badge {
       font-size: 0.95rem;
-      cursor: pointer;
+      padding: 8px 12px;
+      transition: transform 0.2s, box-shadow 0.3s;
+      border-radius: 20px;
+      box-shadow: 0 0 6px rgba(0, 255, 204, 0.2);
     }
 
-    .section-title {
-      font-weight: 700;
-      color: #00ffff;
+    .skill-badge:hover {
+      transform: scale(1.1);
+      box-shadow: var(--shadow-glow);
     }
 
-    section {
-      transition: all 0.3s ease-in-out;
-    }
-
-    .bg-light {
-      background-color: rgba(255, 255, 255, 0.05) !important;
+    .section-box {
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 0 20px rgba(0, 255, 204, 0.1);
+      margin-bottom: 2rem;
     }
 
     footer {
@@ -64,7 +48,7 @@
 </head>
 
 <body>
-  <!-- Particle Background -->
+  <!-- Particles Background -->
   <div id="particles-js"></div>
 
   <header class="bg-dark text-white text-center py-4 position-relative">
@@ -80,59 +64,67 @@
     </nav>
   </header>
 
-  <div class="container mt-4">
-    <!-- Technical Skills Section -->
-    <section class="p-4 bg-light rounded shadow" data-aos="fade-up">
-      <h2 class="section-title mb-3"><i class="fas fa-code me-2 text-primary"></i>Technical Skills</h2>
+  <div class="container mt-5">
+    <!-- Technical Skills -->
+    <section class="section-box" data-aos="fade-up">
+      <h2 class="section-title"><i class="fas fa-code me-2 text-primary"></i>Technical Skills</h2>
       <div class="row">
-        <div class="col-md-6 mb-3">
+        <div class="col-md-6">
           <h5>Programming</h5>
-          <span class="badge bg-primary m-1 skill-badge" data-color="#007bff">Python</span>
-          <span class="badge bg-secondary m-1 skill-badge" data-color="#6c757d">R</span>
-          <span class="badge bg-success m-1 skill-badge" data-color="#198754">C</span>
-          <span class="badge bg-warning text-dark m-1 skill-badge" data-color="#ffc107">C++</span>
-          <span class="badge bg-danger m-1 skill-badge" data-color="#dc3545">SQL</span>
+          <div>
+            <span class="badge bg-primary skill-badge" data-color="#007bff">Python</span>
+            <span class="badge bg-secondary skill-badge" data-color="#6c757d">R</span>
+            <span class="badge bg-success skill-badge" data-color="#198754">C</span>
+            <span class="badge bg-warning text-dark skill-badge" data-color="#ffc107">C++</span>
+            <span class="badge bg-danger skill-badge" data-color="#dc3545">SQL</span>
+          </div>
         </div>
-        <div class="col-md-6 mb-3">
+        <div class="col-md-6">
           <h5>Tools</h5>
-          <span class="badge bg-info text-dark m-1 skill-badge" data-color="#0dcaf0">Tableau</span>
-          <span class="badge bg-dark m-1 skill-badge" data-color="#000000">KNIME</span>
-          <span class="badge bg-secondary m-1 skill-badge" data-color="#6c757d">Kibana</span>
-          <span class="badge bg-success m-1 skill-badge" data-color="#198754">n8n</span>
-          <span class="badge bg-primary m-1 skill-badge" data-color="#0d6efd">Selenium</span>
-          <span class="badge bg-warning text-dark m-1 skill-badge" data-color="#ffc107">Flask</span>
-          <span class="badge bg-danger m-1 skill-badge" data-color="#dc3545">Django</span>
-          <span class="badge bg-dark m-1 skill-badge" data-color="#212529">FastAPI</span>
-          <span class="badge bg-info text-dark m-1 skill-badge" data-color="#17a2b8">Looker Studio</span>
+          <div>
+            <span class="badge bg-info text-dark skill-badge" data-color="#0dcaf0">Tableau</span>
+            <span class="badge bg-dark skill-badge" data-color="#000000">KNIME</span>
+            <span class="badge bg-secondary skill-badge" data-color="#6c757d">Kibana</span>
+            <span class="badge bg-success skill-badge" data-color="#198754">n8n</span>
+            <span class="badge bg-primary skill-badge" data-color="#0d6efd">Selenium</span>
+            <span class="badge bg-warning text-dark skill-badge" data-color="#ffc107">Flask</span>
+            <span class="badge bg-danger skill-badge" data-color="#dc3545">Django</span>
+            <span class="badge bg-dark skill-badge" data-color="#212529">FastAPI</span>
+            <span class="badge bg-info text-dark skill-badge" data-color="#17a2b8">Looker Studio</span>
+          </div>
         </div>
       </div>
-      <div class="row mt-3">
-        <div class="col-md-12">
+
+      <div class="row mt-4">
+        <div class="col">
           <h5>Packages & Algorithms</h5>
           <p>
-            <strong>Packages:</strong> Pandas, Numpy, sklearn, TensorFlow, PyTorch, Keras, Excel, Power BI<br />
-            <strong>Algorithms:</strong> Classification (Naïve Bayes, KNN, SVM, Decision Tree, Random Forest), Regression (Linear, Multiple, RF, SVR), Clustering (K-Means, Hierarchical), Deep Learning (CNN, RNN), Reinforcement Learning
+            <strong>Packages:</strong> Pandas, NumPy, Scikit-learn, TensorFlow, PyTorch, Keras, Excel, Power BI<br />
+            <strong>Algorithms:</strong> Classification (Naïve Bayes, KNN, SVM, Decision Tree, Random Forest),
+            Regression (Linear, Multiple, RF, SVR),
+            Clustering (K-Means, Hierarchical),
+            Deep Learning (CNN, RNN), Reinforcement Learning
           </p>
         </div>
       </div>
     </section>
 
-    <!-- Languages Section -->
-    <section class="p-4 bg-light rounded shadow mt-4" data-aos="fade-up">
-      <h2 class="section-title mb-3"><i class="fas fa-language me-2 text-success"></i>Languages</h2>
-      <span class="badge bg-dark m-1 skill-badge" data-color="#000000">Hindi</span>
-      <span class="badge bg-primary m-1 skill-badge" data-color="#007bff">English</span>
+    <!-- Languages -->
+    <section class="section-box" data-aos="fade-up">
+      <h2 class="section-title"><i class="fas fa-language me-2 text-success"></i>Languages</h2>
+      <span class="badge bg-dark skill-badge" data-color="#000000">Hindi</span>
+      <span class="badge bg-primary skill-badge" data-color="#007bff">English</span>
     </section>
 
-    <!-- Interests Section -->
-    <section class="p-4 bg-light rounded shadow mt-4" data-aos="fade-up">
-      <h2 class="section-title mb-3"><i class="fas fa-star me-2 text-warning"></i>Interests</h2>
-      <span class="badge bg-info text-dark m-1 skill-badge" data-color="#0dcaf0">Meditation</span>
-      <span class="badge bg-danger m-1 skill-badge" data-color="#dc3545">Chess</span>
-      <span class="badge bg-success m-1 skill-badge" data-color="#198754">Cricket</span>
-      <span class="badge bg-primary m-1 skill-badge" data-color="#0d6efd">Football</span>
-      <span class="badge bg-warning text-dark m-1 skill-badge" data-color="#ffc107">Reading</span>
-      <span class="badge bg-secondary m-1 skill-badge" data-color="#6c757d">Social Work</span>
+    <!-- Interests -->
+    <section class="section-box" data-aos="fade-up">
+      <h2 class="section-title"><i class="fas fa-star me-2 text-warning"></i>Interests</h2>
+      <span class="badge bg-info text-dark skill-badge" data-color="#0dcaf0">Meditation</span>
+      <span class="badge bg-danger skill-badge" data-color="#dc3545">Chess</span>
+      <span class="badge bg-success skill-badge" data-color="#198754">Cricket</span>
+      <span class="badge bg-primary skill-badge" data-color="#0d6efd">Football</span>
+      <span class="badge bg-warning text-dark skill-badge" data-color="#ffc107">Reading</span>
+      <span class="badge bg-secondary skill-badge" data-color="#6c757d">Social Work</span>
     </section>
   </div>
 
@@ -147,7 +139,7 @@
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
   <script>
-    // Initialize particles
+    // Particle background
     particlesJS("particles-js", {
       particles: {
         number: { value: 60 },
@@ -175,9 +167,8 @@
       retina_detect: true
     });
 
-    // Particle color update on hover
+    // Particle color change on skill hover
     const defaultColor = "#00ffff";
-
     function updateParticleColor(color) {
       if (window.pJSDom && pJSDom.length > 0) {
         const pJS = pJSDom[0].pJS;
