@@ -283,27 +283,26 @@ nav a {
   background-color: #005f99;
 } */
 /* Experience Section Styling */
-section.experience-entry {
+.experience-section {
     transition: all 0.3s ease;
     cursor: pointer;
-}
-
-section.experience-entry:hover {
-    background-color: #e0f7fa !important; /* Light cyan */
-    transform: scale(1.02);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-}
-
-/* Optional: Make h2 titles more engaging */
-section.experience-entry h2 {
-    font-weight: bold;
-    color: #0d47a1;
-}
-
-/* Subtle fade-in animation */
-section.experience-entry {
-    opacity: 0;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
     animation: fadeIn 1s ease forwards;
+    opacity: 0;
+}
+
+.experience-section:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.experience-section h2 {
+    font-weight: bold;
+    color: #00ffd5;
 }
 
 @keyframes fadeIn {
