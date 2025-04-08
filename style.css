@@ -207,3 +207,61 @@ nav a {
   color: var(--accent-cyan);
   pointer-events: none;
 }
+/* ========== SKILLS PAGE STYLES ========== */
+
+.skills-section {
+  background-color: #f7f7f7;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.skills-section h2 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 40px;
+}
+
+.skill-box {
+  background-color: #fff;
+  padding: 30px;
+  margin: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.skill-box:hover {
+  transform: translateY(-10px);
+}
+
+.skill-title {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #007acc;
+}
+
+.skill-list {
+  list-style: none;
+  padding: 0;
+}
+
+.skill-list li {
+  font-size: 1.1rem;
+  margin: 8px 0;
+  color: #555;
+}
+
+.skill-badge {
+  display: inline-block;
+  background-color: #007acc;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin: 5px;
+  font-size: 0.95rem;
+  transition: background-color 0.3s ease;
+}
+
+.skill-badge:hover {
+  background-color: #005f99;
+}
