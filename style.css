@@ -111,18 +111,6 @@ nav a {
   color: var(--accent-cyan);
 }
 
-/* === Particle.js Canvas Layer === */
-#particles-js {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  pointer-events: none;
-  background: transparent;
-}
-
 /* === Utility Classes === */
 .mt-20 { margin-top: 20px; }
 .mb-20 { margin-bottom: 20px; }
