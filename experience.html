@@ -13,6 +13,7 @@
       color: white;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       position: relative;
+      overflow-x: hidden;
     }
 
     .experience-section {
@@ -21,7 +22,8 @@
       transition: background 0.3s ease, transform 0.3s ease;
       padding: 20px;
       margin-bottom: 20px;
-      cursor: pointer;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
     }
 
     .experience-section:hover {
@@ -48,15 +50,17 @@
 
     #particles-js {
       position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       z-index: -1;
-      top: 0;
-      left: 0;
     }
 
-    .collapse-content {
-      margin-top: 10px;
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
     }
   </style>
 </head>
@@ -78,71 +82,51 @@
   <div class="container mt-4">
     <div class="row">
       <div class="col-md-12">
-
-        <!-- Experience Section Template -->
-        <div class="experience-section" data-bs-toggle="collapse" data-bs-target="#exp1">
+        <section class="experience-section">
           <h2>Associate Data Scientist</h2>
           <p><strong>Blackcoffer | Full-Time | Present</strong></p>
-          <div id="exp1" class="collapse collapse-content">
-            <ul>
-              <li>Working on advanced data science solutions to analyze business insights and improve decision-making.</li>
-              <li>Developing machine learning models to optimize predictive analysis.</li>
-              <li>Collaborating with clients to understand business needs and convert them into data-driven solutions.</li>
-              <li>Built dashboards and automated reports for real-time performance monitoring.</li>
-            </ul>
-          </div>
-        </div>
+          <ul>
+            <li>Working on advanced data science solutions to analyze business insights and improve decision-making.</li>
+            <li>Developing machine learning models to optimize predictive analysis.</li>
+          </ul>
+        </section>
 
-        <div class="experience-section" data-bs-toggle="collapse" data-bs-target="#exp2">
+        <section class="experience-section">
           <h2>Software Engineer AI/ML</h2>
-          <p><strong>Green Rider Technology LLP | March – October 2024 | Indore</strong></p>
-          <div id="exp2" class="collapse collapse-content">
-            <ul>
-              <li>Designed and optimized AI-generated text prompts for 12+ projects.</li>
-              <li>Developed LSTM models for stock market prediction and trend analysis.</li>
-              <li>Improved project workflows and automated ML pipelines for deployment.</li>
-              <li>Conducted research and deployed ML APIs for real-time use cases.</li>
-            </ul>
-          </div>
-        </div>
+          <p><strong>Green Rider Technology LLP | Full-Time | March – October 2024 | Indore</strong></p>
+          <ul>
+            <li>Designed and optimized AI-generated text prompts for 12+ projects.</li>
+            <li>Conducted data analysis on stock market trends and developed an LSTM model for predictive analysis.</li>
+            <li>Streamlined workflows, improving productivity and efficiency.</li>
+          </ul>
+        </section>
 
-        <div class="experience-section" data-bs-toggle="collapse" data-bs-target="#exp3">
+        <section class="experience-section">
           <h2>Machine Learning Intern</h2>
-          <p><strong>IIT Jodhpur | Dec 2023 – March 2024 | Jodhpur</strong></p>
-          <div id="exp3" class="collapse collapse-content">
-            <ul>
-              <li>Created datasets of soft cloths in different deformation states.</li>
-              <li>Built custom object detection models using TensorFlow and OpenCV.</li>
-              <li>Developed a preprocessing pipeline for real-time input cleaning.</li>
-              <li>Integrated the image recognition module with live camera feeds.</li>
-            </ul>
-          </div>
-        </div>
+          <p><strong>IIT Jodhpur | Full-Time | Dec 2023 – March 2024 | Jodhpur</strong></p>
+          <ul>
+            <li>Developed a dataset of soft cloth images in multiple states using TensorFlow.</li>
+            <li>Built an image processing system using OpenCV for cloth recognition.</li>
+          </ul>
+        </section>
 
-        <div class="experience-section" data-bs-toggle="collapse" data-bs-target="#exp4">
-          <h2>Reinforcement Learning Intern</h2>
+        <section class="experience-section">
+          <h2>Reinforcement Learning Internship</h2>
           <p><strong>IIT Jodhpur | June – July 2023 | Jodhpur</strong></p>
-          <div id="exp4" class="collapse collapse-content">
-            <ul>
-              <li>Explored reinforcement learning algorithms: MDPs, policy/value iteration.</li>
-              <li>Implemented grid-based simulations to test convergence of rewards.</li>
-              <li>Used Python and NumPy for numerical modeling.</li>
-            </ul>
-          </div>
-        </div>
+          <ul>
+            <li>Studied reinforcement learning concepts like Markov Chains and MDPs.</li>
+            <li>Implemented grid-based value iteration models for decision-making.</li>
+          </ul>
+        </section>
 
-        <div class="experience-section" data-bs-toggle="collapse" data-bs-target="#exp5">
+        <section class="experience-section">
           <h2>Machine Learning Intern</h2>
           <p><strong>CodSoft | Internship</strong></p>
-          <div id="exp5" class="collapse collapse-content">
-            <ul>
-              <li>Worked on supervised & unsupervised learning problems.</li>
-              <li>Built classification models for sentiment analysis & fraud detection.</li>
-              <li>Analyzed model metrics and optimized with feature engineering.</li>
-            </ul>
-          </div>
-        </div>
-
+          <ul>
+            <li>Worked on multiple ML projects with supervised and unsupervised learning.</li>
+            <li>Developed classification and regression models for real-world applications.</li>
+          </ul>
+        </section>
       </div>
     </div>
   </div>
@@ -151,48 +135,34 @@
     <p>Contact me at: <a href="mailto:your.email@example.com" class="text-white">your.email@example.com</a></p>
   </footer>
 
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script>
-    particlesJS("particles-js", {
-      "particles": {
-        "number": {
-          "value": 80,
-          "density": {
-            "enable": true,
-            "value_area": 800
+    particlesJS('particles-js', {
+      particles: {
+        number: {
+          value: 60,
+          density: {
+            enable: true,
+            value_area: 800
           }
         },
-        "color": { "value": "#ffffff" },
-        "shape": { "type": "circle" },
-        "opacity": { "value": 0.5 },
-        "size": { "value": 3 },
-        "line_linked": {
-          "enable": true,
-          "distance": 150,
-          "color": "#ffffff",
-          "opacity": 0.4,
-          "width": 1
+        color: {
+          value: "#00ffd5"
         },
-        "move": {
-          "enable": true,
-          "speed": 3
-        }
-      },
-      "interactivity": {
-        "events": {
-          "onhover": { "enable": true, "mode": "grab" },
-          "onclick": { "enable": true, "mode": "push" }
+        shape: {
+          type: "circle",
         },
-        "modes": {
-          "grab": {
-            "distance": 140,
-            "line_linked": { "opacity": 1 }
-          }
+        opacity: {
+          value: 0.5,
+        },
+        size: {
+          value: 3
+        },
+        move: {
+          enable: true,
+          speed: 2,
         }
-      },
-      "retina_detect": true
+      }
     });
   </script>
 </body>
