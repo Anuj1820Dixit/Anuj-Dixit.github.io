@@ -6,8 +6,56 @@
     <title>Experience - Son Goku</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: #0f2027;
+            background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .experience-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            transition: background 0.3s ease, transform 0.3s ease;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .experience-section:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.02);
+        }
+
+        h2 {
+            color: #00ffd5;
+        }
+
+        ul li::marker {
+            color: #00ffd5;
+        }
+
+        footer a {
+            text-decoration: none;
+        }
+
+        .nav-link:hover {
+            text-decoration: underline;
+            color: #00ffd5 !important;
+        }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            top: 0;
+            left: 0;
+        }
+    </style>
 </head>
 <body>
+<div id="particles-js"></div>
     <header class="bg-dark text-white text-center py-3">
         <h1>My Experience</h1>
         <nav class="d-flex justify-content-center">
@@ -23,7 +71,7 @@
     <div class="container mt-4">
         <div class="row">
             <div class="col-md-12">
-                <section class="p-4 bg-light rounded shadow">
+                <section class="experience-section">
                     <h2>Associate Data Scientist</h2>
                     <p><strong>Blackcoffer | Full-Time | Present</strong></p>
                     <ul>
@@ -32,7 +80,7 @@
                     </ul>
                 </section>
 
-                <section class="p-4 bg-white rounded shadow mt-3">
+                <section class="experience-section">
                     <h2>Software Engineer AI/ML</h2>
                     <p><strong>Green Rider Technology LLP | Full-Time | March – October 2024 | Indore</strong></p>
                     <ul>
@@ -42,7 +90,7 @@
                     </ul>
                 </section>
 
-                <section class="p-4 bg-light rounded shadow mt-3">
+                <section class="experience-section">
                     <h2>Machine Learning Intern</h2>
                     <p><strong>IIT Jodhpur | Full-Time | Dec 2023 – March 2024 | Jodhpur</strong></p>
                     <ul>
@@ -51,7 +99,7 @@
                     </ul>
                 </section>
 
-                <section class="p-4 bg-white rounded shadow mt-3">
+                <section class="experience-section">
                     <h2>Reinforcement Learning Internship</h2>
                     <p><strong>IIT Jodhpur | June – July 2023 | Jodhpur</strong></p>
                     <ul>
@@ -60,7 +108,7 @@
                     </ul>
                 </section>
 
-                <section class="p-4 bg-light rounded shadow mt-3">
+                <section class="experience-section">
                     <h2>Machine Learning Intern</h2>
                     <p><strong>CodSoft | Internship</strong></p>
                     <ul>
@@ -75,5 +123,12 @@
     <footer class="text-center bg-dark text-white py-3 mt-4">
         <p>Contact me at: <a href="mailto:your.email@example.com" class="text-white">your.email@example.com</a></p>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS.load('particles-js', 'particles.json', function () {
+            console.log('particles.js loaded - callback');
+        });
+    </script>
 </body>
 </html>
