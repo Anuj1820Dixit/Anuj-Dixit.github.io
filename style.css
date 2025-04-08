@@ -282,3 +282,32 @@ nav a {
 .skill-badge:hover {
   background-color: #005f99;
 } */
+/* Experience Section Styling */
+section.experience-entry {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+section.experience-entry:hover {
+    background-color: #e0f7fa !important; /* Light cyan */
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Optional: Make h2 titles more engaging */
+section.experience-entry h2 {
+    font-weight: bold;
+    color: #0d47a1;
+}
+
+/* Subtle fade-in animation */
+section.experience-entry {
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
