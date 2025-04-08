@@ -207,39 +207,37 @@ nav a {
   color: var(--accent-cyan);
   pointer-events: none;
 }
-/* ========== SKILLS PAGE STYLES (DARK THEME) ========== */
+/* ========== SKILLS PAGE STYLES ========== */
 
 .skills-section {
-  background: radial-gradient(ellipse at center, #111 0%, #0d0d0d 100%);
+  background-color: #f7f7f7;
   padding: 60px 20px;
   text-align: center;
 }
 
 .skills-section h2 {
   font-size: 2.5rem;
-  color: var(--accent-cyan);
+  color: #333;
   margin-bottom: 40px;
 }
 
 .skill-box {
-  background-color: #111;
+  background-color: #fff;
   padding: 30px;
-  margin: 20px auto;
-  border-radius: 16px;
-  box-shadow: var(--shadow-glow);
-  max-width: 800px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
 }
 
 .skill-box:hover {
   transform: translateY(-10px);
-  box-shadow: 0 0 20px var(--accent-cyan);
 }
 
 .skill-title {
   font-size: 1.8rem;
   margin-bottom: 15px;
-  color: var(--accent-cyan);
+  color: #007acc;
 }
 
 .skill-list {
@@ -250,22 +248,20 @@ nav a {
 .skill-list li {
   font-size: 1.1rem;
   margin: 8px 0;
-  color: var(--text-light);
+  color: #555;
 }
 
 .skill-badge {
   display: inline-block;
-  background-color: var(--accent-cyan);
-  color: #0d0d0d;
+  background-color: #007acc;
+  color: white;
   padding: 6px 14px;
   border-radius: 20px;
   margin: 5px;
   font-size: 0.95rem;
-  font-weight: bold;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 .skill-badge:hover {
-  background-color: #00ccaa;
-  color: #000;
+  background-color: #005f99;
 }
