@@ -2,85 +2,179 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Projects Portfolio</title>
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Scientist Portfolio - Projects</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-color: #0a0f24;
+      --card-bg: #131b3a;
+      --text-primary: #ffffff;
+      --accent: #00ffc3;
+      --shadow: 0 4px 20px rgba(0, 255, 195, 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-primary);
+      padding: 2rem;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-family: 'Orbitron', sans-serif;
+      color: var(--accent);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background-color: var(--card-bg);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 6px 24px rgba(0, 255, 195, 0.2);
+    }
+
+    .project-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .project-desc {
+      font-size: 1rem;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+
+    .tech-stack {
+      font-size: 0.9rem;
+      color: #a9b1d6;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 4rem;
+      font-size: 0.8rem;
+      color: #666;
+    }
+
+    /* Optional Particle Background */
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+  </style>
 </head>
-<body class="bg-white text-black font-sans">
-  <div class="min-h-screen p-8">
-    <h1 class="text-4xl font-bold text-center mb-10">Projects</h1>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      
-      <!-- Project Card Template -->
-      <template x-for="project in projects" :key="project.title">
-        <div @click="openModal(project)" class="bg-gray-100 rounded-2xl overflow-hidden shadow hover:shadow-lg transition cursor-pointer">
-          <img :src="project.image" :alt="project.title" class="w-full h-48 object-cover" />
-          <div class="p-4">
-            <h2 class="text-xl font-semibold text-gray-800" x-text="project.title"></h2>
-            <p class="text-sm text-gray-600 mt-2" x-text="project.description"></p>
-          </div>
-        </div>
-      </template>
+<body>
+  <!-- Optional Particle Background -->
+  <div id="particles-js"></div>
+
+  <h1>My Data Science Projects</h1>
+
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-title">Streamlit ML & EDA Apps</div>
+      <div class="project-desc">A collection of interactive Streamlit apps for exploratory data analysis, machine learning modeling, and stock price prediction.</div>
+      <div class="tech-stack">Python, Streamlit, scikit-learn, yfinance</div>
     </div>
 
-    <!-- Modal -->
-    <div x-show="modalOpen" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" x-transition>
-      <div class="bg-white rounded-xl p-6 max-w-lg mx-auto relative" @click.away="modalOpen = false">
-        <button class="absolute top-2 right-2 text-gray-500 hover:text-black" @click="modalOpen = false">✕</button>
-        <template x-if="selectedProject">
-          <div>
-            <h2 class="text-2xl font-bold mb-4" x-text="selectedProject.title"></h2>
-            <img :src="selectedProject.image" :alt="selectedProject.title" class="w-full h-60 object-cover rounded-xl mb-4" />
-            <p class="text-gray-700 mb-4" x-text="selectedProject.description"></p>
-            <div class="flex flex-wrap gap-2 mb-4">
-              <template x-for="tech in selectedProject.tech">
-                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium" x-text="tech"></span>
-              </template>
-            </div>
-            <a :href="selectedProject.link" target="_blank" class="text-blue-600 underline text-sm">View Project</a>
-          </div>
-        </template>
-      </div>
+    <div class="project-card">
+      <div class="project-title">Grid World Value Iteration</div>
+      <div class="project-desc">Implemented a value iteration algorithm to find optimal policies in a grid world environment using reinforcement learning principles.</div>
+      <div class="tech-stack">Python, NumPy, RL</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-title">Soft Cloth Detection</div>
+      <div class="project-desc">Built a vision system using OpenCV to identify soft cloths in images for automation use cases, with custom dataset labeling.</div>
+      <div class="tech-stack">Python, OpenCV, Image Processing</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-title">Medical Expenditure Prediction</div>
+      <div class="project-desc">A deployed Flask app that predicts annual medical expenses using BMI and demographic data with interactive multi-step user input.</div>
+      <div class="tech-stack">Python, Flask, scikit-learn, HTML/CSS</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-title">Google Maps Business Scraper</div>
+      <div class="project-desc">Automated data scraper that extracts business names, emails, and phone numbers based on user queries, with smart resume logic.</div>
+      <div class="tech-stack">Python, Selenium, Pandas</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-title">Real Estate Property Scraper</div>
+      <div class="project-desc">Automated bot that scrolls, collects, scrapes property details, downloads images, uploads to Drive, and syncs with chat data.</div>
+      <div class="tech-stack">Python, Selenium, Google Drive API</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-title">Salary Prediction Django App</div>
+      <div class="project-desc">Basic salary prediction system built with Django, showcasing model integration and front-end templating.</div>
+      <div class="tech-stack">Python, Django, scikit-learn</div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-title">Dashboards & EDA</div>
+      <div class="project-desc">Created dashboards and data stories using Tableau, Power BI, and Looker Studio. Performed EDA on movie, Titanic, and custom datasets.</div>
+      <div class="tech-stack">Tableau, Power BI, Google Looker Studio, Python</div>
     </div>
   </div>
 
+  <footer>
+    © 2025 Your Name. All Rights Reserved.
+  </footer>
+
+  <!-- Particle Background Script -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
   <script>
-    document.addEventListener('alpine:init', () => {
-      Alpine.data('portfolio', () => ({
-        modalOpen: false,
-        selectedProject: null,
-        projects: [
-          {
-            title: "Property Scraper Bot",
-            description: "A multi-step bot that scrapes property data, downloads images, uploads to Drive, and syncs everything with CSV.",
-            tech: ["Python", "Selenium", "Google Drive API"],
-            image: "https://via.placeholder.com/300x200?text=Property+Scraper",
-            link: "https://github.com/your-repo/property-scraper"
-          },
-          {
-            title: "Medical Expenditure Predictor",
-            description: "A Flask web app that predicts medical expenses based on user input with BMI calculator and charts.",
-            tech: ["Flask", "Sklearn", "HTML/CSS"],
-            image: "https://via.placeholder.com/300x200?text=Medical+Predictor",
-            link: "https://github.com/your-repo/med-expense-predictor"
-          },
-          {
-            title: "Image Crawler + Drive Uploader",
-            description: "Crawler that collects images from given URLs and auto-uploads to Google Drive in a structured folder format.",
-            tech: ["OpenCV", "Requests", "Google API"],
-            image: "https://via.placeholder.com/300x200?text=Image+Crawler",
-            link: "https://github.com/your-repo/image-crawler"
-          }
-        ],
-        openModal(project) {
-          this.selectedProject = project;
-          this.modalOpen = true;
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 60, density: { enable: true, value_area: 800 } },
+        color: { value: '#00ffc3' },
+        shape: { type: 'circle' },
+        opacity: { value: 0.4 },
+        size: { value: 3 },
+        line_linked: { enable: true, color: '#00ffc3', opacity: 0.2 },
+        move: { enable: true, speed: 1 }
+      },
+      interactivity: {
+        detect_on: 'canvas',
+        events: {
+          onhover: { enable: true, mode: 'repulse' },
+          onclick: { enable: true, mode: 'push' }
+        },
+        modes: {
+          repulse: { distance: 100 },
+          push: { particles_nb: 4 }
         }
-      }));
+      },
+      retina_detect: true
     });
   </script>
-
-  <div x-data="portfolio"></div>
 </body>
 </html>
