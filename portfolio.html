@@ -30,12 +30,15 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
       <!-- Medical Expenditure Prediction Card -->
-      <div class="bg-white text-black rounded-2xl shadow-lg overflow-hidden hover:scale-105 transform transition cursor-pointer" onclick="openModal('modal-medical')">
-       <img src="./medical-expenditure.png" alt="Medical Expenditure Prediction"
-     class="w-full h-48 object-contain rounded-t-lg" />
-<div class="p-4">
+      <div class="bg-white text-black rounded-2xl shadow-lg overflow-hidden hover:scale-105 transform transition cursor-pointer">
+        <img src="./medical-expenditure.png" alt="Medical Expenditure Prediction"
+          class="w-full h-48 object-cover rounded-t-lg" />
+        <div class="p-4">
           <h2 class="text-xl font-semibold mb-2">Medical Expenditure Prediction</h2>
-          <p class="text-gray-700 text-sm">A deployed tool using Flask to estimate annual medical expenses based on BMI, age, smoking habits, and more.</p>
+          <p class="text-gray-700 text-sm mb-4">A deployed tool using Flask to estimate annual medical expenses based on BMI, age, smoking habits, and more.</p>
+          <button onclick="openModal('modal-medical')" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+            Preview
+          </button>
         </div>
       </div>
 
@@ -57,14 +60,17 @@
     <div class="bg-white text-black rounded-2xl p-8 max-w-3xl w-full relative">
       <button onclick="closeModal('modal-medical')" class="absolute top-2 right-2 text-xl">&times;</button>
       <h2 class="text-2xl font-bold mb-4">Medical Expenditure Prediction</h2>
-      <img src="/mnt/data/ChatGPT Image Apr 9, 2025, 11_51_25 AM.png" class="w-full rounded mb-4">
-      <p class="mb-2">This application calculates Body Mass Index (BMI) and predicts medical expenses based on user inputs such as age, gender, smoking habits, and location. It features:</p>
-      <ul class="list-disc list-inside text-sm">
+      <img src="./medical-expenditure.png" alt="Medical Expenditure Prediction" class="w-full h-64 object-cover rounded mb-4">
+      <p class="mb-4">This application calculates Body Mass Index (BMI) and predicts medical expenses based on user inputs such as age, gender, smoking habits, and location. It features:</p>
+      <ul class="list-disc list-inside text-sm mb-4">
         <li>BMI calculator with instant chart visualization</li>
         <li>Flask backend with pre-trained ML model</li>
         <li>Interactive dashboard</li>
         <li>Scatter plot of BMI vs Charges and category-wise insights</li>
       </ul>
+      <a href="https://example.com/full-project" target="_blank" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+        🔗 View Full Case Study
+      </a>
     </div>
   </div>
 
