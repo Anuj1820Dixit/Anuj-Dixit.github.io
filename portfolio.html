@@ -23,67 +23,100 @@
   </style>
 </head>
 <body class="relative">
+  <!-- Particle Background -->
   <div id="particles-js"></div>
+
+  <!-- Header Nav (Unified with index.html) -->
+  <header>
+    <nav>
+      <a href="skills.html">Skills</a>
+      <a href="education.html">Education</a>
+      <a href="portfolio.html">Projects</a>
+      <a href="experience.html">Experience</a>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
   <section class="container mx-auto px-4 py-16">
     <h1 class="text-4xl font-bold text-center mb-12">Projects</h1>
-
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
-      <!-- Medical Expenditure Prediction Card -->
-      <div class="bg-white text-black rounded-2xl shadow-lg overflow-hidden hover:scale-105 transform transition cursor-pointer">
-        <img src="./portfolio-images/medical-expenditure.png" alt="Medical Expenditure Prediction"
-          class="w-full h-48 object-cover rounded-t-lg" />
+      <!-- Project Card Example -->
+      <a href="project-hr-dashboard.html" class="bg-white text-black rounded-2xl shadow-lg overflow-hidden hover:scale-105 transform transition cursor-pointer block">
+        <img src="https://via.placeholder.com/400x200?text=HR+Dashboard" alt="HR Dashboard" class="w-full h-48 object-cover rounded-t-lg" />
         <div class="p-4">
-          <h2 class="text-xl font-semibold mb-2">Medical Expenditure Prediction</h2>
-          <p class="text-gray-700 text-sm mb-4">A deployed tool using Flask to estimate annual medical expenses based on BMI, age, smoking habits, and more.</p>
-          <button onclick="openModal('modal-medical')" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-            Preview
-          </button>
+          <h2 class="text-xl font-semibold mb-2">HR--Dynamic-Dashboard</h2>
+          <p class="text-gray-700 text-sm mb-4">An interactive Tableau dashboard analyzing HR data—built using synthetic employee records generated via Python and ChatGPT, featuring hiring, salary, and demographic insights.</p>
+          <span class="text-blue-500 font-bold">View Details →</span>
         </div>
-      </div>
-
-      <!-- Placeholder for other projects -->
-      <div class="bg-white text-black rounded-2xl shadow-lg p-4 flex items-center justify-center h-64">
-        <p class="text-xl">Project Placeholder 2</p>
-      </div>
-      <div class="bg-white text-black rounded-2xl shadow-lg p-4 flex items-center justify-center h-64">
-        <p class="text-xl">Project Placeholder 3</p>
-      </div>
-      <div class="bg-white text-black rounded-2xl shadow-lg p-4 flex items-center justify-center h-64">
-        <p class="text-xl">Project Placeholder 4</p>
-      </div>
+      </a>
+      <a href="project-soft-cloth.html" class="bg-white text-black rounded-2xl shadow-lg overflow-hidden hover:scale-105 transform transition cursor-pointer block">
+        <img src="https://via.placeholder.com/400x200?text=Soft+Cloth+Computing" alt="Soft Cloth Computing" class="w-full h-48 object-cover rounded-t-lg" />
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">Soft-Cloth-Computing</h2>
+          <p class="text-gray-700 text-sm mb-4">Soft cloth image dataset (plain, folded, crumbled) using real and synthetic data. Cloth dataset with plain state images; folded & crumbled data coming soon. Custom soft cloth dataset for image classi...</p>
+          <span class="text-blue-500 font-bold">View Details →</span>
+        </div>
+      </a>
+      <a href="project-tableau-sales.html" class="bg-white text-black rounded-2xl shadow-lg overflow-hidden hover:scale-105 transform transition cursor-pointer block">
+        <img src="https://via.placeholder.com/400x200?text=Sales+Customer+Insights" alt="Sales Customer Insights" class="w-full h-48 object-cover rounded-t-lg" />
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">sales-customer-insights-tableau</h2>
+          <p class="text-gray-700 text-sm mb-4">A complete business analysis process using Tableau—from data connection and modeling to designing dynamic dashboards tailored for sales and customer performance insights.</p>
+          <span class="text-blue-500 font-bold">View Details →</span>
+        </div>
+      </a>
+      <a href="project-sql-dwh.html" class="bg-white text-black rounded-2xl shadow-lg overflow-hidden hover:scale-105 transform transition cursor-pointer block">
+        <img src="https://via.placeholder.com/400x200?text=SQL+Data+Warehouse" alt="SQL Data Warehouse" class="w-full h-48 object-cover rounded-t-lg" />
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">SQL-Data-Warehouse-Project</h2>
+          <p class="text-gray-700 text-sm mb-4">Designing and implementing a modern data warehouse using SQL Server, encompassing ETL processes, data modeling, and advanced data analytics.</p>
+          <span class="text-blue-500 font-bold">View Details →</span>
+        </div>
+      </a>
+      <a href="project-certifications.html" class="bg-white text-black rounded-2xl shadow-lg overflow-hidden hover:scale-105 transform transition cursor-pointer block">
+        <img src="https://via.placeholder.com/400x200?text=Certifications" alt="Certifications" class="w-full h-48 object-cover rounded-t-lg" />
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">Certifications</h2>
+          <p class="text-gray-700 text-sm mb-4">A curated collection of certifications completed in data science, applied mathematics, probability, and statistics—demonstrating a strong foundation in analytical thinking.</p>
+          <span class="text-blue-500 font-bold">View Details →</span>
+        </div>
+      </a>
+      <a href="project-medical-expenditure.html" class="bg-white text-black rounded-2xl shadow-lg overflow-hidden hover:scale-105 transform transition cursor-pointer block">
+        <img src="./portfolio-images/medical-expenditure.png" alt="Medical Expenditure Prediction" class="w-full h-48 object-cover rounded-t-lg" />
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">Automated-system-for-medical-expenditure</h2>
+          <p class="text-gray-700 text-sm mb-4">Linear regression to model and predict individual medical insurance charges based on demographic and lifestyle variables. Exploratory data analysis and statistics.</p>
+          <span class="text-blue-500 font-bold">View Details →</span>
+        </div>
+      </a>
+      <a href="project-google-maps.html" class="bg-white text-black rounded-2xl shadow-lg overflow-hidden hover:scale-105 transform transition cursor-pointer block">
+        <img src="https://via.placeholder.com/400x200?text=Google+Maps+Scrapper" alt="Google Maps Scrapper" class="w-full h-48 object-cover rounded-t-lg" />
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">Google-maps-Scrapper</h2>
+          <p class="text-gray-700 text-sm mb-4">Google Maps Business Scraper using Selenium & Python. Extracts local business details like name, contact, address, website, and email from Google Maps search results.</p>
+          <span class="text-blue-500 font-bold">View Details →</span>
+        </div>
+      </a>
+      <a href="project-image-crawler.html" class="bg-white text-black rounded-2xl shadow-lg overflow-hidden hover:scale-105 transform transition cursor-pointer block">
+        <img src="https://via.placeholder.com/400x200?text=Image+Crawler" alt="Image Crawler" class="w-full h-48 object-cover rounded-t-lg" />
+        <div class="p-4">
+          <h2 class="text-xl font-semibold mb-2">Image-Crawler</h2>
+          <p class="text-gray-700 text-sm mb-4">Automated image scraping tool that reads keywords from an Excel file and downloads high-quality images from Google Images.</p>
+          <span class="text-blue-500 font-bold">View Details →</span>
+        </div>
+      </a>
     </div>
   </section>
 
-  <!-- Modal for Medical Project -->
-  <div id="modal-medical" class="modal fixed inset-0 bg-black bg-opacity-70 hidden justify-center items-center z-50">
-    <div class="bg-white text-black rounded-2xl p-8 max-w-3xl w-full relative">
-      <button onclick="closeModal('modal-medical')" class="absolute top-2 right-2 text-xl">&times;</button>
-      <h2 class="text-2xl font-bold mb-4">Medical Expenditure Prediction</h2>
-      <img src="./portfolio-images/medical-expenditure.png" alt="Medical Expenditure Prediction" class="w-full h-64 object-cover rounded mb-4">
-      <p class="mb-4">This application calculates Body Mass Index (BMI) and predicts medical expenses based on user inputs such as age, gender, smoking habits, and location. It features:</p>
-      <ul class="list-disc list-inside text-sm mb-4">
-        <li>BMI calculator with instant chart visualization</li>
-        <li>Flask backend with pre-trained ML model</li>
-        <li>Interactive dashboard</li>
-        <li>Scatter plot of BMI vs Charges and category-wise insights</li>
-      </ul>
-      <a href="medical-expenditure.html" target="_blank" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-        🔗 View Full Case Study
-      </a>
-    </div>
-  </div>
+  <!-- Footer -->
+  <footer>
+    📧 Contact: <a href="mailto:anuj1820dixit@gmail.com" style="color: #0077cc;">anuj1820dixit@gmail.com</a>
+  </footer>
 
+  <!-- Scripts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script>
-    function openModal(id) {
-      document.getElementById(id).classList.remove("hidden");
-      document.getElementById(id).classList.add("flex");
-    }
-    function closeModal(id) {
-      document.getElementById(id).classList.add("hidden");
-      document.getElementById(id).classList.remove("flex");
-    }
-
-    // Particles.js init
     particlesJS("particles-js", {
       particles: {
         number: { value: 60 },
