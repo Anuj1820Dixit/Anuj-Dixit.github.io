@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Medical Charges Prediction System | Project Details</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(120deg, #232946 0%, #1a1a2e 100%);
+      color: #eaeaea;
+    }
+    .project-container {
+      max-width: 950px;
+      margin: 60px auto;
+      background: rgba(30, 41, 59, 0.98);
+      border-radius: 22px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+      padding: 48px 36px 36px 36px;
+      border-left: 8px solid #00cfff;
+      position: relative;
+    }
+    .project-container::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 8px;
+      border-radius: 22px 0 0 22px;
+      background: linear-gradient(180deg, #00cfff 0%, #a259ff 100%);
+      z-index: 1;
+    }
+    .project-container > * { position: relative; z-index: 2; }
+    .project-image {
+      width: 100%;
+      max-height: 400px;
+      object-fit: contain;
+      border-radius: 16px;
+      margin-bottom: 28px;
+      background: #181c2f;
+      box-shadow: 0 4px 24px rgba(0,207,255,0.10), 0 1.5px 8px rgba(162,89,255,0.10);
+      border: 2px solid #232946;
+      padding: 8px;
+      transition: box-shadow 0.3s;
+    }
+    .project-image:hover {
+      box-shadow: 0 8px 32px #00cfff44, 0 2px 12px #a259ff33;
+    }
+    .section-title {
+      color: #00cfff;
+      font-size: 1.35em;
+      margin-top: 36px;
+      margin-bottom: 12px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      border-left: 4px solid #a259ff;
+      padding-left: 12px;
+      background: linear-gradient(90deg, #232946 80%, #a259ff22 100%);
+      border-radius: 6px;
+      display: inline-block;
+    }
+    .feature-list, .data-list {
+      margin-left: 1.2em;
+      margin-bottom: 18px;
+      line-height: 1.7;
+    }
+    .back-link {
+      color: #00cfff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.05em;
+      letter-spacing: 0.2px;
+      margin-bottom: 18px;
+      display: inline-block;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: #a259ff; text-decoration: underline; }
+    .github-link {
+      color: #00cfff;
+      font-size: 1.2em;
+      margin-left: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .github-link:hover { color: #a259ff; }
+    .highlight {
+      background: #232946;
+      border-radius: 6px;
+      padding: 2px 8px;
+      color: #00cfff;
+      font-weight: 600;
+    }
+    h1 {
+      font-size: 2.3em;
+      color: #00cfff;
+      margin-bottom: 18px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+    h3 {
+      color: #a259ff;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      font-size: 1.15em;
+      font-weight: 700;
+    }
+    nav {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+    nav a {
+      margin: 0 18px;
+      color: #00cfff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.08em;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: #a259ff; }
+    @media (max-width: 700px) {
+      .project-container { padding: 18px 4vw; }
+      h1 { font-size: 1.4em; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="portfolio.html">Projects</a>
+      <a href="skills.html">Skills</a>
+      <a href="education.html">Education</a>
+      <a href="experience.html">Experience</a>
+    </nav>
+  </header>
+  <div class="project-container">
+    <a href="portfolio.html" class="back-link">← Back to Projects</a>
+    <h1>Medical Charges Prediction System – ACME Insurance Inc.</h1>
+    <img src="./portfolio-images/medical-expenditure.png" alt="Medical Expenditure Prediction" class="project-image" onerror="this.style.display='none';" />
+    <div class="section-title">Project Summary</div>
+    <p>This project develops an automated, explainable system to estimate annual medical expenditure for new customers of <b>ACME Insurance Inc.</b>, using demographic and lifestyle data such as: <span class="highlight">Age, Sex, BMI, Number of Children, Smoking Habit, Region of Residence</span>. These predictions are used to determine the customer's insurance premium, and comply with regulatory requirements for transparency and interpretability.</p>
+    <div class="section-title">📊 Dataset</div>
+    <ul class="data-list">
+      <li><b>Source:</b> Medical Charges Dataset</li>
+      <li><b>CSV:</b> medical-charges.csv</li>
+      <li>Fields: age, sex, bmi, children, smoker, region, charges</li>
+    </ul>
+    <div class="section-title">🧪 Exploratory Data Analysis (EDA)</div>
+    <ul class="feature-list">
+      <li>Distribution plots of age, bmi, charges using Plotly and Seaborn</li>
+      <li>Analysis of smoking habits, regional differences, and gender-based comparisons</li>
+      <li>Correlation matrix to identify key features affecting medical charges</li>
+    </ul>
+    <div class="section-title">🧠 Modeling</div>
+    <ul class="feature-list">
+      <li>Preprocessing: encoding categorical variables, creating interaction terms (e.g., age * BMI)</li>
+      <li>Models: Linear Regression (interpretability), Random Forest Regressor (accuracy), Gradient Boosting Regressor (performance)</li>
+      <li>Standardized feature scaling for model convergence</li>
+    </ul>
+    <div class="section-title">🚀 Deployment</div>
+    <ul class="feature-list">
+      <li>Django web application with a two-step user interface</li>
+      <li>Step 1: Calculate BMI by entering height and weight</li>
+      <li>Step 2: Enter region, age, children, smoking status</li>
+      <li>Prediction: System predicts annual medical charges and displays the result</li>
+      <li>Interactive, user-friendly onboarding for ACME Insurance customers</li>
+    </ul>
+    <div class="section-title">✅ Interpretability</div>
+    <ul class="feature-list">
+      <li>Model coefficients reflect how each feature affects the predicted charge</li>
+      <li>Suitable for regulatory audits and fairness analysis</li>
+    </ul>
+    <h3>Tech Stack</h3>
+    <ul class="feature-list">
+      <li>Python (Pandas, Scikit-learn, Seaborn, Plotly)</li>
+      <li>Django</li>
+      <li>HTML/CSS/JS</li>
+    </ul>
+    <p><a href="#" class="github-link"><i class="fab fa-github"></i> View on GitHub</a></p>
+  </div>
+</body>
+</html> 
