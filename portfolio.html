@@ -20,6 +20,81 @@
     .modal {
       transition: all 0.3s ease-in-out;
     }
+    .project-card {
+      background: linear-gradient(120deg, #232946 80%, #1a1a2e 100%);
+      color: #eaeaea;
+      border-radius: 20px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 340px;
+      border: 1.5px solid #232946;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .project-card:hover {
+      box-shadow: 0 8px 32px #00cfff44, 0 2px 12px #a259ff33;
+      transform: translateY(-4px) scale(1.02);
+    }
+    .project-img-wrap {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #181c2f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-bottom: 1.5px solid #232946;
+    }
+    .project-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 0 0 0 0;
+      transition: filter 0.2s;
+    }
+    .project-card-content {
+      padding: 22px 24px 18px 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    .project-title {
+      font-size: 1.25em;
+      font-weight: 700;
+      color: #00cfff;
+      margin-bottom: 6px;
+      letter-spacing: 0.2px;
+    }
+    .project-desc {
+      color: #bfc9e0;
+      font-size: 1em;
+      margin-bottom: 18px;
+      min-height: 48px;
+    }
+    .view-details {
+      color: #00cfff;
+      font-weight: 700;
+      text-decoration: none;
+      margin-top: auto;
+      font-size: 1.05em;
+      transition: color 0.2s;
+    }
+    .view-details:hover { color: #a259ff; }
+    .img-fallback {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #a259ff;
+      font-size: 1.5em;
+      background: #232946;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
   </style>
 </head>
 <body class="relative">
@@ -40,37 +115,48 @@
   <section class="container mx-auto px-4 py-16">
     <h1 class="text-4xl font-bold text-center mb-12">Projects</h1>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
-      <!-- Top 4 Project Cards -->
-      <a href="project-hr-dashboard.html" class="bg-white text-black rounded-2xl shadow-lg overflow-hidden hover:scale-105 transform transition cursor-pointer block">
-        <img src="./portfolio-images/HR S.png" alt="HR Dashboard" class="w-full h-48 object-cover rounded-t-lg" />
-        <div class="p-4">
-          <h2 class="text-xl font-semibold mb-2">HR--Dynamic-Dashboard</h2>
-          <p class="text-gray-700 text-sm mb-4">An interactive Tableau dashboard analyzing HR data—built using synthetic employee records generated via Python and ChatGPT, featuring hiring, salary, and demographic insights.</p>
-          <span class="text-blue-500 font-bold">View Details →</span>
+      <!-- HR Dashboard Card -->
+      <a href="project-hr-dashboard.html" class="project-card">
+        <div class="project-img-wrap">
+          <img src="./portfolio-images/HR S.png" alt="HR Dashboard" class="project-img" onerror="this.style.display='none';this.parentNode.innerHTML='<div class=\'img-fallback\'>HR Dashboard</div>';" />
+        </div>
+        <div class="project-card-content">
+          <div class="project-title">HR--Dynamic-Dashboard</div>
+          <div class="project-desc">An interactive Tableau dashboard analyzing HR data—built using synthetic employee records generated via Python and ChatGPT, featuring hiring, salary, and demographic insights.</div>
+          <span class="view-details">View Details →</span>
         </div>
       </a>
-      <a href="project-tableau-sales.html" class="bg-white text-black rounded-2xl shadow-lg overflow-hidden hover:scale-105 transform transition cursor-pointer block">
-        <img src="https://via.placeholder.com/400x200?text=Sales+Customer+Insights" alt="Sales Customer Insights" class="w-full h-48 object-cover rounded-t-lg" />
-        <div class="p-4">
-          <h2 class="text-xl font-semibold mb-2">sales-customer-insights-tableau</h2>
-          <p class="text-gray-700 text-sm mb-4">A complete business analysis process using Tableau—from data connection and modeling to designing dynamic dashboards tailored for sales and customer performance insights.</p>
-          <span class="text-blue-500 font-bold">View Details →</span>
+      <!-- Sales Customer Insights Card -->
+      <a href="project-tableau-sales.html" class="project-card">
+        <div class="project-img-wrap">
+          <img src="./portfolio-images/sales-customer-insights.png" alt="Sales Customer Insights" class="project-img" onerror="this.style.display='none';this.parentNode.innerHTML='<div class=\'img-fallback\'>Sales Insights</div>';" />
+        </div>
+        <div class="project-card-content">
+          <div class="project-title">sales-customer-insights-tableau</div>
+          <div class="project-desc">A complete business analysis process using Tableau—from data connection and modeling to designing dynamic dashboards tailored for sales and customer performance insights.</div>
+          <span class="view-details">View Details →</span>
         </div>
       </a>
-      <a href="project-sql-dwh.html" class="bg-white text-black rounded-2xl shadow-lg overflow-hidden hover:scale-105 transform transition cursor-pointer block">
-        <img src="https://via.placeholder.com/400x200?text=SQL+Data+Warehouse" alt="SQL Data Warehouse" class="w-full h-48 object-cover rounded-t-lg" />
-        <div class="p-4">
-          <h2 class="text-xl font-semibold mb-2">SQL-Data-Warehouse-Project</h2>
-          <p class="text-gray-700 text-sm mb-4">Designing and implementing a modern data warehouse using SQL Server, encompassing ETL processes, data modeling, and advanced data analytics.</p>
-          <span class="text-blue-500 font-bold">View Details →</span>
+      <!-- SQL Data Warehouse Card -->
+      <a href="project-sql-dwh.html" class="project-card">
+        <div class="project-img-wrap">
+          <img src="./portfolio-images/sql-dwh.png" alt="SQL Data Warehouse" class="project-img" onerror="this.style.display='none';this.parentNode.innerHTML='<div class=\'img-fallback\'>SQL DWH</div>';" />
+        </div>
+        <div class="project-card-content">
+          <div class="project-title">SQL-Data-Warehouse-Project</div>
+          <div class="project-desc">Designing and implementing a modern data warehouse using SQL Server, encompassing ETL processes, data modeling, and advanced data analytics.</div>
+          <span class="view-details">View Details →</span>
         </div>
       </a>
-      <a href="project-medical-expenditure.html" class="bg-white text-black rounded-2xl shadow-lg overflow-hidden hover:scale-105 transform transition cursor-pointer block">
-        <img src="./portfolio-images/medical-expenditure.png" alt="Medical Expenditure Prediction" class="w-full h-48 object-cover rounded-t-lg" />
-        <div class="p-4">
-          <h2 class="text-xl font-semibold mb-2">Automated-system-for-medical-expenditure</h2>
-          <p class="text-gray-700 text-sm mb-4">Linear regression to model and predict individual medical insurance charges based on demographic and lifestyle variables. Exploratory data analysis and statistics.</p>
-          <span class="text-blue-500 font-bold">View Details →</span>
+      <!-- Medical Expenditure Card -->
+      <a href="project-medical-expenditure.html" class="project-card">
+        <div class="project-img-wrap">
+          <img src="./portfolio-images/medical-expenditure.png" alt="Medical Expenditure Prediction" class="project-img" onerror="this.style.display='none';this.parentNode.innerHTML='<div class=\'img-fallback\'>Medical Expenditure</div>';" />
+        </div>
+        <div class="project-card-content">
+          <div class="project-title">Automated-system-for-medical-expenditure</div>
+          <div class="project-desc">Linear regression to model and predict individual medical insurance charges based on demographic and lifestyle variables. Exploratory data analysis and statistics.</div>
+          <span class="view-details">View Details →</span>
         </div>
       </a>
     </div>
