@@ -7,16 +7,133 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="style.css" />
   <style>
-    body { background: #f4f4f9; color: #222; font-family: 'Segoe UI', sans-serif; }
-    .project-container { max-width: 900px; margin: 60px auto; background: #fff; border-radius: 18px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); padding: 40px; }
-    .project-image { width: 100%; max-height: 400px; object-fit: contain; border-radius: 12px; margin-bottom: 24px; background: #222; }
-    .section-title { color: #0077cc; font-size: 1.3em; margin-top: 32px; margin-bottom: 10px; font-weight: bold; }
-    .feature-list, .data-list { margin-left: 1.2em; }
-    .back-link { color: #0077cc; text-decoration: none; font-weight: 600; }
-    .back-link:hover { text-decoration: underline; }
-    .github-link { color: #24292f; font-size: 1.2em; margin-left: 8px; }
-    .highlight { background: #e3e8f0; border-radius: 6px; padding: 2px 8px; }
-    .gpt-prompt { background: #f4f4f9; border-left: 4px solid #0077cc; padding: 10px 18px; margin: 16px 0; font-style: italic; color: #333; }
+    body {
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(120deg, #232946 0%, #1a1a2e 100%);
+      color: #eaeaea;
+    }
+    .project-container {
+      max-width: 950px;
+      margin: 60px auto;
+      background: rgba(30, 41, 59, 0.98);
+      border-radius: 22px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+      padding: 48px 36px 36px 36px;
+      border-left: 8px solid #00cfff;
+      position: relative;
+    }
+    .project-container::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 8px;
+      border-radius: 22px 0 0 22px;
+      background: linear-gradient(180deg, #00cfff 0%, #a259ff 100%);
+      z-index: 1;
+    }
+    .project-container > * { position: relative; z-index: 2; }
+    .project-image {
+      width: 100%;
+      max-height: 400px;
+      object-fit: contain;
+      border-radius: 16px;
+      margin-bottom: 28px;
+      background: #181c2f;
+      box-shadow: 0 4px 24px rgba(0,207,255,0.10), 0 1.5px 8px rgba(162,89,255,0.10);
+      border: 2px solid #232946;
+      padding: 8px;
+      transition: box-shadow 0.3s;
+    }
+    .project-image:hover {
+      box-shadow: 0 8px 32px #00cfff44, 0 2px 12px #a259ff33;
+    }
+    .section-title {
+      color: #00cfff;
+      font-size: 1.35em;
+      margin-top: 36px;
+      margin-bottom: 12px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      border-left: 4px solid #a259ff;
+      padding-left: 12px;
+      background: linear-gradient(90deg, #232946 80%, #a259ff22 100%);
+      border-radius: 6px;
+      display: inline-block;
+    }
+    .feature-list, .data-list {
+      margin-left: 1.2em;
+      margin-bottom: 18px;
+      line-height: 1.7;
+    }
+    .back-link {
+      color: #00cfff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.05em;
+      letter-spacing: 0.2px;
+      margin-bottom: 18px;
+      display: inline-block;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: #a259ff; text-decoration: underline; }
+    .github-link {
+      color: #00cfff;
+      font-size: 1.2em;
+      margin-left: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .github-link:hover { color: #a259ff; }
+    .highlight {
+      background: #232946;
+      border-radius: 6px;
+      padding: 2px 8px;
+      color: #00cfff;
+      font-weight: 600;
+    }
+    .gpt-prompt {
+      background: #181c2f;
+      border-left: 4px solid #00cfff;
+      padding: 12px 20px;
+      margin: 18px 0;
+      font-style: italic;
+      color: #a3bffa;
+      border-radius: 0 8px 8px 0;
+    }
+    h1 {
+      font-size: 2.3em;
+      color: #00cfff;
+      margin-bottom: 18px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+    h3 {
+      color: #a259ff;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      font-size: 1.15em;
+      font-weight: 700;
+    }
+    nav {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+    nav a {
+      margin: 0 18px;
+      color: #00cfff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.08em;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: #a259ff; }
+    @media (max-width: 700px) {
+      .project-container { padding: 18px 4vw; }
+      h1 { font-size: 1.4em; }
+    }
   </style>
 </head>
 <body>
@@ -42,14 +159,14 @@
       <li><b>Demographics:</b> Gender ratio, age group and education level distribution, correlation between education and performance.</li>
       <li><b>Income Analysis:</b> Salary comparisons by education/gender, age-salary correlation, salary trends by demographic groups.</li>
     </ul>
-    <img src="hr-dashboard-summary.png" alt="HR Dashboard Summary View" class="project-image" />
+    <img src="portfolio-images/hr-dashboard-summary.png" alt="HR Dashboard Summary View" class="project-image" />
     <div class="section-title" style="font-size:1.1em;">2. Employee Records View</div>
     <ul class="feature-list">
       <li>Filterable list of all employees</li>
       <li>Displays name, department, position, gender, age, education, and salary</li>
       <li>Interactive filtering for deep exploration</li>
     </ul>
-    <img src="hr-dashboard-details.png" alt="HR Dashboard Employee Records View" class="project-image" />
+    <img src="portfolio-images/hr-dashboard-details.png" alt="HR Dashboard Employee Records View" class="project-image" />
     <div class="section-title">🛠️ Data Generation</div>
     <ul class="data-list">
       <li>Dataset synthetically created using Python (Faker + ChatGPT prompts)</li>
