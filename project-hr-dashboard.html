@@ -9,12 +9,14 @@
   <style>
     body { background: #f4f4f9; color: #222; font-family: 'Segoe UI', sans-serif; }
     .project-container { max-width: 900px; margin: 60px auto; background: #fff; border-radius: 18px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); padding: 40px; }
-    .project-image { width: 100%; max-height: 340px; object-fit: cover; border-radius: 12px; margin-bottom: 24px; }
-    .tech-list { margin: 0; padding: 0; list-style: none; display: flex; gap: 16px; }
-    .tech-list li { background: #e3e8f0; color: #0077cc; padding: 6px 16px; border-radius: 8px; font-weight: 600; font-size: 0.98em; }
+    .project-image { width: 100%; max-height: 400px; object-fit: contain; border-radius: 12px; margin-bottom: 24px; background: #222; }
+    .section-title { color: #0077cc; font-size: 1.3em; margin-top: 32px; margin-bottom: 10px; font-weight: bold; }
+    .feature-list, .data-list { margin-left: 1.2em; }
     .back-link { color: #0077cc; text-decoration: none; font-weight: 600; }
     .back-link:hover { text-decoration: underline; }
     .github-link { color: #24292f; font-size: 1.2em; margin-left: 8px; }
+    .highlight { background: #e3e8f0; border-radius: 6px; padding: 2px 8px; }
+    .gpt-prompt { background: #f4f4f9; border-left: 4px solid #0077cc; padding: 10px 18px; margin: 16px 0; font-style: italic; color: #333; }
   </style>
 </head>
 <body>
@@ -30,22 +32,56 @@
   <div class="project-container">
     <a href="portfolio.html" class="back-link">← Back to Projects</a>
     <h1>HR--Dynamic-Dashboard</h1>
-    <img src="https://via.placeholder.com/800x340?text=HR+Dashboard" alt="HR Dashboard" class="project-image" />
-    <p><strong>Description:</strong> An interactive Tableau dashboard analyzing HR data—built using synthetic employee records generated via Python and ChatGPT, featuring hiring, salary, and demographic insights.</p>
+    <p><strong>User Story:</strong><br>
+      <span class="highlight">As an HR manager, I want a comprehensive dashboard to analyze human resources data, offering both a summary view for overall insights and a detailed employee records view for deep-dive analysis.</span>
+    </p>
+    <div class="section-title">📊 Dashboard Structure</div>
+    <div class="section-title" style="font-size:1.1em;">1. Summary View</div>
+    <ul class="feature-list">
+      <li><b>Overview:</b> Total hired, active, and terminated employees; hiring/termination trends; department/job title breakdown; HQ vs Branch distribution; employee distribution by city/state.</li>
+      <li><b>Demographics:</b> Gender ratio, age group and education level distribution, correlation between education and performance.</li>
+      <li><b>Income Analysis:</b> Salary comparisons by education/gender, age-salary correlation, salary trends by demographic groups.</li>
+    </ul>
+    <img src="hr-dashboard-summary.png" alt="HR Dashboard Summary View" class="project-image" />
+    <div class="section-title" style="font-size:1.1em;">2. Employee Records View</div>
+    <ul class="feature-list">
+      <li>Filterable list of all employees</li>
+      <li>Displays name, department, position, gender, age, education, and salary</li>
+      <li>Interactive filtering for deep exploration</li>
+    </ul>
+    <img src="hr-dashboard-details.png" alt="HR Dashboard Employee Records View" class="project-image" />
+    <div class="section-title">🛠️ Data Generation</div>
+    <ul class="data-list">
+      <li>Dataset synthetically created using Python (Faker + ChatGPT prompts)</li>
+      <li>8,950 realistic HR records</li>
+    </ul>
+    <div class="section-title">🔢 Features Included</div>
+    <ul class="feature-list">
+      <li>Employee ID, First/Last Name, Gender (46% Female, 54% Male)</li>
+      <li>State & City, Hire Date (2015–2024), Department, Job Title</li>
+      <li>Education Level, Performance Rating, Overtime (30% Yes, 70% No)</li>
+      <li>Salary (by job/department), Birth Date, Termination Date (11.2%)</li>
+      <li>Adjusted Salary (modifiers for gender, education, age)</li>
+    </ul>
+    <div class="section-title">🧠 GPT-Generated Prompt</div>
+    <div class="gpt-prompt">
+      “Generate a Python script to simulate a realistic HR dataset with 8,950 employee records including attributes such as Employee ID, name, gender, location, job title, salary, performance, and termination logic…”
+    </div>
+    <p><b>Code:</b> Modular, well-documented Python with customizable parameters for future use.</p>
     <h3>Tech Stack</h3>
-    <ul class="tech-list">
-      <li>Python</li>
+    <ul class="feature-list">
+      <li>Python (Faker, Pandas)</li>
       <li>Tableau</li>
-      <li>ChatGPT</li>
+      <li>ChatGPT (prompt engineering for data logic)</li>
     </ul>
     <h3>Key Features</h3>
-    <ul>
+    <ul class="feature-list">
       <li>Interactive dashboard for HR analytics</li>
       <li>Hiring, salary, and demographic insights</li>
       <li>Data generated and processed with Python</li>
       <li>Visualization and analysis in Tableau</li>
     </ul>
-    <p><a href="#" class="github-link"><i class="fab fa-github"></i> View on GitHub</a></p>
+    <p><a href="https://github.com/Anuj1820Dixit/HR--Dynamic-Dashboard" target="_blank" class="github-link"><i class="fab fa-github"></i> View on GitHub</a></p>
   </div>
 </body>
 </html> 
