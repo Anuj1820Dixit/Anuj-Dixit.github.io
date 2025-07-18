@@ -3,186 +3,110 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Skills - Son Goku</title>
-
-  <!-- Bootstrap -->
+  <title>Skills</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <!-- AOS Animations -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
-  <!-- Custom Styles -->
-  <link rel="stylesheet" href="style.css" />
-
+  <link rel="stylesheet" href="style.css"/>
   <style>
-    nav ul li a.active {
-      border-bottom: 2px solid var(--accent-cyan);
-      font-weight: bold;
+    body {
+      background: #0f2027;
+      background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+      color: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      position: relative;
+      overflow-x: hidden;
     }
-
-    .skill-badge {
-      font-size: 0.95rem;
-      padding: 8px 12px;
-      transition: transform 0.2s, box-shadow 0.3s;
+    .skill-section {
+      background: rgba(255, 255, 255, 0.05);
       border-radius: 20px;
-      box-shadow: 0 0 6px rgba(0, 255, 204, 0.2);
+      transition: background 0.3s ease, transform 0.3s ease;
+      padding: 20px;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+      cursor: pointer;
     }
-
-    .skill-badge:hover {
-      transform: scale(1.1);
-      box-shadow: var(--shadow-glow);
+    .skill-section:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: scale(1.02);
     }
-
-    .section-box {
-      background-color: rgba(255, 255, 255, 0.05);
-      border-radius: 12px;
-      padding: 30px;
-      box-shadow: 0 0 20px rgba(0, 255, 204, 0.1);
-      margin-bottom: 2rem;
+    h2 {
+      color: #00ffd5;
     }
-
-    footer {
-      background-color: #121212;
+    ul li::marker {
+      color: #00ffd5;
     }
-  </style> 
+    .nav-link:hover {
+      text-decoration: underline;
+      color: #00ffd5 !important;
+    }
+    #particles-js {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+  </style>
 </head>
-
 <body>
-  <!-- Particles Background -->
   <div id="particles-js"></div>
-
-  <header class="bg-dark text-white text-center py-4 position-relative">
-    <h1>My Skills</h1>
-    <nav>
-      <ul class="d-flex justify-content-end position-absolute top-0 end-0 m-3 list-unstyled">
-        <li class="mx-3"><a href="index.html" class="text-white">Home</a></li>
-        <li class="mx-3"><a href="portfolio.html" class="text-white">Portfolio</a></li>
-        <li class="mx-3"><a href="education.html" class="text-white">Education</a></li>
-        <li class="mx-3"><a href="experience.html" class="text-white">Experience</a></li>
+  <header class="bg-dark text-white text-center py-3">
+    <nav class="d-flex justify-content-center">
+      <ul class="nav">
+        <li class="nav-item"><a class="nav-link text-white" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="portfolio.html">Portfolio</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="education.html">Education</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="skills.html">Skills</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="experience.html">Experience</a></li>
       </ul>
     </nav>
-    <div class="nav-separator"></div>
-
   </header>
-
-  <div class="container mt-5">
-    <!-- Technical Skills -->
-    <section class="section-box" data-aos="fade-up">
-      <h2 class="section-title"><i class="fas fa-code me-2 text-primary"></i>Technical Skills</h2>
-      <div class="row">
-        <div class="col-md-6">
-          <h5>Programming</h5>
-          <div>
-            <span class="badge bg-primary skill-badge" data-color="#007bff">Python</span>
-            <span class="badge bg-secondary skill-badge" data-color="#6c757d">R</span>
-            <span class="badge bg-success skill-badge" data-color="#198754">C</span>
-            <span class="badge bg-warning text-dark skill-badge" data-color="#ffc107">C++</span>
-            <span class="badge bg-danger skill-badge" data-color="#dc3545">SQL</span>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <h5>Tools</h5>
-          <div>
-            <span class="badge bg-info text-dark skill-badge" data-color="#0dcaf0">Tableau</span>
-            <span class="badge bg-dark skill-badge" data-color="#000000">KNIME</span>
-            <span class="badge bg-secondary skill-badge" data-color="#6c757d">Kibana</span>
-            <span class="badge bg-success skill-badge" data-color="#198754">n8n</span>
-            <span class="badge bg-primary skill-badge" data-color="#0d6efd">Selenium</span>
-            <span class="badge bg-warning text-dark skill-badge" data-color="#ffc107">Flask</span>
-            <span class="badge bg-danger skill-badge" data-color="#dc3545">Django</span>
-            <span class="badge bg-dark skill-badge" data-color="#212529">FastAPI</span>
-            <span class="badge bg-info text-dark skill-badge" data-color="#17a2b8">Looker Studio</span>
-          </div>
-        </div>
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-md-12">
+        <section class="skill-section">
+          <h2>Technical Skills</h2>
+          <ul>
+            <li>Python, R, C, C++, SQL</li>
+            <li>Tableau, KNIME, Kibana, n8n, Selenium, Flask, Django, FastAPI, Looker Studio</li>
+            <li>Pandas, NumPy, Scikit-learn, TensorFlow, PyTorch, Keras, Excel, Power BI</li>
+            <li>Classification, Regression, Clustering, Deep Learning, Reinforcement Learning</li>
+          </ul>
+        </section>
+        <section class="skill-section">
+          <h2>Languages</h2>
+          <ul>
+            <li>Hindi</li>
+            <li>English</li>
+          </ul>
+        </section>
+        <section class="skill-section">
+          <h2>Interests</h2>
+          <ul>
+            <li>Meditation, Chess, Cricket, Football, Reading, Social Work</li>
+          </ul>
+        </section>
       </div>
-
-      <div class="row mt-4">
-        <div class="col">
-          <h5>Packages & Algorithms</h5>
-          <p>
-            <strong>Packages:</strong> Pandas, NumPy, Scikit-learn, TensorFlow, PyTorch, Keras, Excel, Power BI<br />
-            <strong>Algorithms:</strong> Classification (Naïve Bayes, KNN, SVM, Decision Tree, Random Forest),
-            Regression (Linear, Multiple, RF, SVR),
-            Clustering (K-Means, Hierarchical),
-            Deep Learning (CNN, RNN), Reinforcement Learning
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Languages -->
-    <section class="section-box" data-aos="fade-up">
-      <h2 class="section-title"><i class="fas fa-language me-2 text-success"></i>Languages</h2>
-      <span class="badge bg-dark skill-badge" data-color="#000000">Hindi</span>
-      <span class="badge bg-primary skill-badge" data-color="#007bff">English</span>
-    </section>
-
-    <!-- Interests -->
-    <section class="section-box" data-aos="fade-up">
-      <h2 class="section-title"><i class="fas fa-star me-2 text-warning"></i>Interests</h2>
-      <span class="badge bg-info text-dark skill-badge" data-color="#0dcaf0">Meditation</span>
-      <span class="badge bg-danger skill-badge" data-color="#dc3545">Chess</span>
-      <span class="badge bg-success skill-badge" data-color="#198754">Cricket</span>
-      <span class="badge bg-primary skill-badge" data-color="#0d6efd">Football</span>
-      <span class="badge bg-warning text-dark skill-badge" data-color="#ffc107">Reading</span>
-      <span class="badge bg-secondary skill-badge" data-color="#6c757d">Social Work</span>
-    </section>
+    </div>
   </div>
-
   <footer class="text-center bg-dark text-white py-3 mt-4">
     <p>&copy; 2025 Son Goku. All rights reserved.</p>
   </footer>
-
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>AOS.init();</script>
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-
   <script>
-    // Particle background
-    particlesJS("particles-js", {
+    particlesJS('particles-js', {
       particles: {
         number: { value: 60 },
+        color: { value: "#00ffd5" },
+        shape: { type: "circle" },
+        opacity: { value: 0.5 },
         size: { value: 3 },
-        color: { value: "#00ffff" },
-        line_linked: {
-          enable: true,
-          distance: 150,
-          color: "#00ffff",
-          opacity: 0.4,
-          width: 1
-        },
         move: { enable: true, speed: 2 },
-      },
-      interactivity: {
-        events: {
-          onhover: { enable: true, mode: "grab" },
-          onclick: { enable: true, mode: "push" }
-        },
-        modes: {
-          grab: { distance: 140, line_linked: { opacity: 0.5 } },
-          push: { particles_nb: 4 }
-        }
-      },
-      retina_detect: true
-    });
-
-    // Particle color change on skill hover
-    const defaultColor = "#00ffff";
-    function updateParticleColor(color) {
-      if (window.pJSDom && pJSDom.length > 0) {
-        const pJS = pJSDom[0].pJS;
-        pJS.particles.line_linked.color = color;
-        pJS.particles.color.value = color;
-        pJS.fn.particlesRefresh();
       }
-    }
-
-    document.querySelectorAll('.skill-badge').forEach(badge => {
-      const color = badge.getAttribute("data-color");
-      badge.addEventListener("mouseenter", () => updateParticleColor(color));
-      badge.addEventListener("mouseleave", () => updateParticleColor(defaultColor));
     });
   </script>
 </body>

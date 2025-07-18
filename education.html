@@ -3,114 +3,105 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Education - Son Goku</title>
+  <title>Education</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
   <link rel="stylesheet" href="style.css"/>
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-
-  <!-- Scoped Card Styles for Education Page -->
   <style>
-    .education-section {
-      padding: 60px 20px;
+    body {
+      background: #0f2027;
+      background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+      color: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       position: relative;
-      z-index: 1;
+      overflow-x: hidden;
     }
-    .education-container {
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-      max-width: 900px;
-      margin: auto;
+    .edu-section {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      transition: background 0.3s ease, transform 0.3s ease;
+      padding: 20px;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+      cursor: pointer;
     }
-    .edu-card {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(8px);
-      border-radius: 16px;
-      padding: 25px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    .edu-section:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: scale(1.02);
     }
-
-    .edu-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 30px rgba(0, 255, 204, 0.4);
+    h2 {
+      color: #00ffd5;
     }
-
-    .edu-card h2 {
-      color: #00ffcc;
-      margin-bottom: 10px;
+    ul li::marker {
+      color: #00ffd5;
     }
-
-    .edu-card p {
-      color: #f0f0f0;
-      line-height: 1.6;
+    .nav-link:hover {
+      text-decoration: underline;
+      color: #00ffd5 !important;
     }
-
-    .text-highlight {
-      color: #00ffcc;
-      font-weight: 600;
+    #particles-js {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
     }
   </style>
 </head>
 <body>
-  <!-- Particle Background -->
   <div id="particles-js"></div>
-
-  <header>
-    <h1>Education</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="skills.html">Skills</a>
-      <a href="experience.html">Experience</a>
+  <header class="bg-dark text-white text-center py-3">
+    <nav class="d-flex justify-content-center">
+      <ul class="nav">
+        <li class="nav-item"><a class="nav-link text-white" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="portfolio.html">Portfolio</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="education.html">Education</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="skills.html">Skills</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="experience.html">Experience</a></li>
+      </ul>
     </nav>
   </header>
-
-  <section class="education-section">
-    <div class="education-container">
-      <div class="edu-card">
-        <h2>Medi-Caps University</h2>
-        <p><span class="text-highlight">Location:</span> AB RD Pigdamber Rau, India | <span class="text-highlight">Graduation:</span> May 2024</p>
-        <p><span class="text-highlight">Degree:</span> B.Tech in Computer Science & Engineering (Specialization in Data Science)</p>
-        <p><span class="text-highlight">GPA:</span> 9.0</p>
-        <p><span class="text-highlight">Certifications:</span> Completed certifications in Data Science from Coursera, UpGrad, and 365 Data Science.</p>
-      </div>
-
-      <div class="edu-card">
-        <h2>St. Paul H.S. School</h2>
-        <p><span class="text-highlight">Stream:</span> PCM with Physical Education | <span class="text-highlight">Percentage:</span> 80%</p>
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-md-12">
+        <section class="edu-section">
+          <h2>Medi-Caps University</h2>
+          <ul>
+            <li><b>Location:</b> AB RD Pigdamber Rau, India</li>
+            <li><b>Graduation:</b> May 2024</li>
+            <li><b>Degree:</b> B.Tech in Computer Science & Engineering (Specialization in Data Science)</li>
+            <li><b>GPA:</b> 9.0</li>
+            <li><b>Certifications:</b> Data Science (Coursera, UpGrad, 365 Data Science)</li>
+          </ul>
+        </section>
+        <section class="edu-section">
+          <h2>St. Paul H.S. School</h2>
+          <ul>
+            <li><b>Stream:</b> PCM with Physical Education</li>
+            <li><b>Percentage:</b> 80%</li>
+          </ul>
+        </section>
       </div>
     </div>
-  </section>
-
-  <footer class="contact">
-    <p>Contact me at: <a href="mailto:anuj1820dixit@gmail.com">anuj1820dixit@gmail.com</a></p>
+  </div>
+  <footer class="text-center bg-dark text-white py-3 mt-4">
+    <p>Contact me at: <a href="mailto:anuj1820dixit@gmail.com" class="text-white">anuj1820dixit@gmail.com</a></p>
   </footer>
-
-  <!-- Particle.js Config -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script>
-    particlesJS("particles-js", {
+    particlesJS('particles-js', {
       particles: {
-        number: { value: 60, density: { enable: true, value_area: 800 } },
-        color: { value: "#00ffcc" },
+        number: { value: 60 },
+        color: { value: "#00ffd5" },
         shape: { type: "circle" },
         opacity: { value: 0.5 },
         size: { value: 3 },
-        line_linked: { enable: true, distance: 150, color: "#00ffcc", opacity: 0.4, width: 1 },
-        move: { enable: true, speed: 3 }
-      },
-      interactivity: {
-        detect_on: "canvas",
-        events: {
-          onhover: { enable: true, mode: "repulse" },
-          onclick: { enable: true, mode: "push" }
-        },
-        modes: {
-          repulse: { distance: 100 },
-          push: { particles_nb: 4 }
-        }
-      },
-      retina_detect: true
+        move: { enable: true, speed: 2 },
+      }
     });
   </script>
 </body>
