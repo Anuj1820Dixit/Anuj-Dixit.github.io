@@ -16,23 +16,39 @@
       overflow-x: hidden;
     }
     .edu-section {
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.08);
       border-radius: 20px;
-      transition: background 0.3s ease, transform 0.3s ease;
-      padding: 20px;
-      margin-bottom: 20px;
+      box-shadow: 0 4px 24px #00ffd522, 0 1.5px 8px #a259ff22;
+      border: 1.5px solid #00ffd533;
+      backdrop-filter: blur(6px);
+      transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
+      padding: 28px 32px 22px 32px;
+      margin-bottom: 28px;
       opacity: 0;
       animation: fadeIn 1s ease forwards;
       cursor: pointer;
     }
     .edu-section:hover {
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(0,255,213,0.10);
+      box-shadow: 0 8px 32px #00ffd544, 0 2px 12px #a259ff33;
       transform: scale(1.02);
     }
-    h2 {
+    .edu-section h2 {
       color: #00ffd5;
+      font-size: 1.3em;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: 0.2px;
+      text-shadow: 0 2px 8px #00ffd544;
     }
-    ul li::marker {
+    .edu-section ul {
+      color: #eaeaea;
+      font-size: 1.08em;
+      margin-bottom: 0;
+      margin-left: 0.5em;
+      padding-left: 0.5em;
+    }
+    .edu-section ul li::marker {
       color: #00ffd5;
     }
     .nav-link:hover {
