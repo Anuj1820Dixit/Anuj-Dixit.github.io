@@ -103,75 +103,96 @@
       z-index: 999;
       left: 0;
       top: 0;
-      width: 100%;
-      height: 100%;
+      width: 100vw;
+      height: 100vh;
       overflow: auto;
       background: rgba(10, 20, 40, 0.92);
       align-items: center;
       justify-content: center;
       animation: fadeIn 0.5s ease;
+      backdrop-filter: blur(4px);
     }
     .quiz-content {
       background: linear-gradient(120deg, #232946 80%, #1a1a2e 100%);
-      border-radius: 22px;
-      box-shadow: 0 8px 32px #00cfff44, 0 2px 12px #a259ff33;
-      border: 3px solid #00cfff;
-      padding: 38px 32px 32px 32px;
+      border-radius: 28px;
+      box-shadow: 0 8px 48px #00cfff66, 0 2px 24px #a259ff33;
+      border: 4px solid;
+      border-image: linear-gradient(120deg, #00cfff, #a259ff, #00ffd5, #00cfff) 1;
+      padding: 48px 36px 36px 36px;
       text-align: center;
-      max-width: 420px;
-      width: 92%;
-      animation: slideUp 0.5s ease;
+      max-width: 440px;
+      width: 96%;
+      animation: floatModal 2.5s ease-in-out infinite alternate;
       position: relative;
       z-index: 2;
       overflow: hidden;
+      transition: box-shadow 0.3s;
+    }
+    @keyframes floatModal {
+      0% { transform: translateY(0) scale(1); box-shadow: 0 8px 48px #00cfff66, 0 2px 24px #a259ff33; }
+      50% { transform: translateY(-8px) scale(1.01); box-shadow: 0 16px 64px #00ffd566, 0 4px 32px #a259ff44; }
+      100% { transform: translateY(0) scale(1); }
     }
     .quiz-content h2 {
       margin-bottom: 18px;
-      color: #00cfff;
-      font-size: 1.4em;
-      font-weight: 700;
+      color: #00ffd5;
+      font-size: 1.5em;
+      font-weight: 800;
       letter-spacing: 0.5px;
+      text-shadow: 0 2px 8px #00cfff88;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
     }
     .quiz-content input {
-      padding: 12px;
-      width: 85%;
-      margin-top: 12px;
-      border-radius: 8px;
-      border: 1.5px solid #00cfff;
+      padding: 14px;
+      width: 90%;
+      margin-top: 16px;
+      border-radius: 10px;
+      border: 2px solid #00cfff;
       background: #181c2f;
-      color: #eaeaea;
-      font-size: 1.08em;
-      margin-bottom: 8px;
+      color: #fff;
+      font-size: 1.12em;
+      margin-bottom: 10px;
       outline: none;
-      transition: border 0.2s;
+      transition: border 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 8px #00cfff22;
     }
     .quiz-content input:focus {
-      border: 2px solid #a259ff;
+      border: 2.5px solid #a259ff;
+      box-shadow: 0 4px 16px #a259ff33;
     }
     .quiz-content button {
-      margin-top: 18px;
-      padding: 12px 28px;
+      margin-top: 22px;
+      padding: 14px 36px;
       background: linear-gradient(90deg, #00cfff 60%, #a259ff 100%);
       color: #fff;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       font-weight: bold;
-      font-size: 1.08em;
+      font-size: 1.12em;
       cursor: pointer;
-      box-shadow: 0 2px 8px #00cfff44;
+      box-shadow: 0 2px 12px #00cfff44;
       transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+      animation: pulseBtn 2s infinite alternate;
+    }
+    @keyframes pulseBtn {
+      0% { box-shadow: 0 2px 12px #00cfff44; }
+      100% { box-shadow: 0 4px 24px #a259ff66; }
     }
     .quiz-content button:hover {
       background: linear-gradient(90deg, #a259ff 0%, #00cfff 100%);
-      box-shadow: 0 4px 16px #a259ff44;
-      transform: scale(1.04);
+      box-shadow: 0 8px 32px #a259ff44;
+      transform: scale(1.06);
     }
     #feedback {
-      margin-top: 16px;
+      margin-top: 18px;
       font-weight: bold;
-      font-size: 1.1em;
-      min-height: 32px;
+      font-size: 1.18em;
+      min-height: 36px;
       transition: color 0.2s;
+      text-shadow: 0 2px 8px #00cfff88;
     }
     .feedback-correct {
       color: #00ffd5;
@@ -197,17 +218,25 @@
     }
     .close-btn {
       position: absolute;
-      top: 12px;
-      right: 18px;
-      font-size: 1.5em;
-      color: #00cfff;
-      background: none;
+      top: 18px;
+      right: 24px;
+      font-size: 1.7em;
+      color: #fff;
+      background: linear-gradient(120deg, #00cfff 60%, #a259ff 100%);
       border: none;
+      border-radius: 8px;
       cursor: pointer;
       z-index: 10;
-      transition: color 0.2s;
+      transition: color 0.2s, box-shadow 0.2s, background 0.2s;
+      box-shadow: 0 2px 8px #00cfff44;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: pulseBtn 2s infinite alternate;
     }
-    .close-btn:hover { color: #a259ff; }
+    .close-btn:hover { color: #fff; background: linear-gradient(120deg, #a259ff 60%, #00cfff 100%); box-shadow: 0 4px 16px #a259ff44; }
     .dna-wrapper {
       display: flex;
       justify-content: center;
@@ -217,34 +246,66 @@
     }
     .dna-helix {
       position: relative;
-      width: 80px;
+      width: 100px;
       height: 60px;
       display: flex;
       align-items: center;
       justify-content: center;
-      filter: drop-shadow(0 0 8px #00cfff88);
+      filter: drop-shadow(0 0 12px #00cfffcc);
     }
     .dna-dot {
       position: absolute;
-      width: 14px;
-      height: 14px;
+      width: 16px;
+      height: 16px;
       border-radius: 50%;
       background: linear-gradient(135deg, #00cfff 60%, #a259ff 100%);
-      animation: dna-move 1.2s linear infinite;
-      opacity: 0.92;
-      box-shadow: 0 0 8px #00cfff88;
+      animation: dna-wave 1.6s cubic-bezier(0.4,0.6,0.6,1) infinite;
+      opacity: 0.95;
+      box-shadow: 0 0 12px #00cfffcc;
     }
     .dna-dot:nth-child(1) { left: 0; animation-delay: 0s; }
-    .dna-dot:nth-child(2) { left: 16px; animation-delay: 0.15s; }
-    .dna-dot:nth-child(3) { left: 32px; animation-delay: 0.3s; }
-    .dna-dot:nth-child(4) { left: 48px; animation-delay: 0.45s; }
-    .dna-dot:nth-child(5) { left: 64px; animation-delay: 0.6s; }
-    @keyframes dna-move {
-      0% { top: 0; }
-      25% { top: 20px; }
-      50% { top: 40px; }
-      75% { top: 20px; }
-      100% { top: 0; }
+    .dna-dot:nth-child(2) { left: 20px; animation-delay: 0.18s; }
+    .dna-dot:nth-child(3) { left: 40px; animation-delay: 0.36s; }
+    .dna-dot:nth-child(4) { left: 60px; animation-delay: 0.54s; }
+    .dna-dot:nth-child(5) { left: 80px; animation-delay: 0.72s; }
+    @keyframes dna-wave {
+      0% { top: 30px; filter: brightness(1.2); }
+      20% { top: 10px; filter: brightness(1.5) drop-shadow(0 0 8px #00ffd5); }
+      50% { top: 0px; filter: brightness(2) drop-shadow(0 0 16px #a259ff); }
+      80% { top: 10px; filter: brightness(1.5) drop-shadow(0 0 8px #00ffd5); }
+      100% { top: 30px; filter: brightness(1.2); }
+    }
+    .gamepad-anim {
+      font-size: 2.1em;
+      color: #00ffd5;
+      filter: drop-shadow(0 0 8px #00cfffcc);
+      animation: floatGamepad 2s infinite alternate;
+      margin-bottom: 2px;
+    }
+    @keyframes floatGamepad {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-8px); }
+    }
+    .confetti {
+      position: absolute;
+      left: 50%;
+      top: 50px;
+      width: 0;
+      height: 0;
+      pointer-events: none;
+      z-index: 1000;
+    }
+    .confetti-piece {
+      position: absolute;
+      width: 10px;
+      height: 18px;
+      border-radius: 3px;
+      opacity: 0.85;
+      animation: confetti-fall 1.2s linear forwards;
+    }
+    @keyframes confetti-fall {
+      0% { opacity: 1; transform: translateY(0) rotate(0deg); }
+      100% { opacity: 0; transform: translateY(120px) rotate(360deg); }
     }
   </style>
 </head>
@@ -288,12 +349,14 @@
         <div class="dna-dot"></div>
       </div>
     </div>
-    <h2>🎮 Quick Data Challenge</h2>
-    <p id="questionText"></p>
+    <span class="gamepad-anim">🎮</span>
+    <h2>Quick Data Challenge</h2>
+    <p id="questionText" style="color:#fff; font-size:1.13em; font-weight:500; margin-bottom:18px; text-shadow:0 2px 8px #232946;"> </p>
     <input type="text" id="answerInput" placeholder="Your answer..." />
     <br />
     <button onclick="checkAnswer()">Submit</button>
     <div id="feedback"></div>
+    <div class="confetti" id="confetti"></div>
   </div>
 </div>
 
@@ -354,15 +417,31 @@
     document.getElementById("quizModal").style.display = "none";
   }
 
+  function showConfetti() {
+    const confetti = document.getElementById("confetti");
+    confetti.innerHTML = "";
+    const colors = ["#00cfff", "#a259ff", "#00ffd5", "#fff", "#ff4b6e", "#ffc107"];
+    for (let i = 0; i < 24; i++) {
+      const piece = document.createElement("div");
+      piece.className = "confetti-piece";
+      piece.style.background = colors[Math.floor(Math.random()*colors.length)];
+      piece.style.left = (Math.random()*120-60) + "px";
+      piece.style.animationDelay = (Math.random()*0.5) + "s";
+      confetti.appendChild(piece);
+    }
+    setTimeout(()=>{ confetti.innerHTML = ""; }, 1800);
+  }
+
   function checkAnswer() {
     const input = document.getElementById("answerInput").value.trim().toLowerCase();
     const feedback = document.getElementById("feedback");
     if (input === currentQuestion.a) {
       feedback.className = "feedback-correct";
       feedback.innerHTML = "<span style='font-size:1.3em;'>✅</span> Correct! Let's explore.";
+      showConfetti();
       setTimeout(() => {
         window.location.href = targetPage;
-      }, 1000);
+      }, 1200);
     } else {
       attempts++;
       if (attempts >= 2) {
