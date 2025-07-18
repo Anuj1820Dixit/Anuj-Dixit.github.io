@@ -106,68 +106,108 @@
       width: 100%;
       height: 100%;
       overflow: auto;
-      background: rgba(0, 0, 0, 0.8);
-      animation: fadeIn 0.5s ease;
+      background: rgba(10, 20, 40, 0.92);
       align-items: center;
       justify-content: center;
+      animation: fadeIn 0.5s ease;
     }
-
     .quiz-content {
-      background: #ffffff;
-      padding: 30px;
-      border-radius: 12px;
+      background: linear-gradient(120deg, #232946 80%, #1a1a2e 100%);
+      border-radius: 22px;
+      box-shadow: 0 8px 32px #00cfff44, 0 2px 12px #a259ff33;
+      border: 3px solid #00cfff;
+      padding: 38px 32px 32px 32px;
       text-align: center;
-      max-width: 400px;
-      width: 90%;
+      max-width: 420px;
+      width: 92%;
       animation: slideUp 0.5s ease;
       position: relative;
       z-index: 2;
       overflow: hidden;
     }
-
     .quiz-content h2 {
-      margin-bottom: 15px;
-      color: #0077cc;
+      margin-bottom: 18px;
+      color: #00cfff;
+      font-size: 1.4em;
+      font-weight: 700;
+      letter-spacing: 0.5px;
     }
-
     .quiz-content input {
-      padding: 10px;
-      width: 80%;
-      margin-top: 10px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
+      padding: 12px;
+      width: 85%;
+      margin-top: 12px;
+      border-radius: 8px;
+      border: 1.5px solid #00cfff;
+      background: #181c2f;
+      color: #eaeaea;
+      font-size: 1.08em;
+      margin-bottom: 8px;
+      outline: none;
+      transition: border 0.2s;
     }
-
+    .quiz-content input:focus {
+      border: 2px solid #a259ff;
+    }
     .quiz-content button {
-      margin-top: 15px;
-      padding: 10px 20px;
-      background: #0077cc;
+      margin-top: 18px;
+      padding: 12px 28px;
+      background: linear-gradient(90deg, #00cfff 60%, #a259ff 100%);
       color: #fff;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       font-weight: bold;
+      font-size: 1.08em;
       cursor: pointer;
+      box-shadow: 0 2px 8px #00cfff44;
+      transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
     }
-
     .quiz-content button:hover {
-      background: #004080;
+      background: linear-gradient(90deg, #a259ff 0%, #00cfff 100%);
+      box-shadow: 0 4px 16px #a259ff44;
+      transform: scale(1.04);
     }
-
     #feedback {
-      margin-top: 10px;
+      margin-top: 16px;
       font-weight: bold;
+      font-size: 1.1em;
+      min-height: 32px;
+      transition: color 0.2s;
     }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    .feedback-correct {
+      color: #00ffd5;
+      animation: pop 0.5s;
     }
-
-    @keyframes slideUp {
-      from { transform: translateY(50px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
+    .feedback-wrong {
+      color: #ff4b6e;
+      animation: shake 0.4s;
     }
-
+    .feedback-try {
+      color: #ffc107;
+      animation: pop 0.5s;
+    }
+    @keyframes pop {
+      0% { transform: scale(0.8); }
+      60% { transform: scale(1.15); }
+      100% { transform: scale(1); }
+    }
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-8px); }
+      40%, 80% { transform: translateX(8px); }
+    }
+    .close-btn {
+      position: absolute;
+      top: 12px;
+      right: 18px;
+      font-size: 1.5em;
+      color: #00cfff;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 10;
+      transition: color 0.2s;
+    }
+    .close-btn:hover { color: #a259ff; }
     .dna-wrapper {
       display: flex;
       justify-content: center;
@@ -182,15 +222,17 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      filter: drop-shadow(0 0 8px #00cfff88);
     }
     .dna-dot {
       position: absolute;
-      width: 12px;
-      height: 12px;
+      width: 14px;
+      height: 14px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #0077cc 60%, #00ffcc 100%);
+      background: linear-gradient(135deg, #00cfff 60%, #a259ff 100%);
       animation: dna-move 1.2s linear infinite;
-      opacity: 0.85;
+      opacity: 0.92;
+      box-shadow: 0 0 8px #00cfff88;
     }
     .dna-dot:nth-child(1) { left: 0; animation-delay: 0s; }
     .dna-dot:nth-child(2) { left: 16px; animation-delay: 0.15s; }
@@ -236,6 +278,7 @@
 <!-- Quiz Modal -->
 <div id="quizModal">
   <div class="quiz-content">
+    <button class="close-btn" onclick="closeQuizModal()">&times;</button>
     <div class="dna-wrapper">
       <div class="dna-helix">
         <div class="dna-dot"></div>
@@ -245,7 +288,7 @@
         <div class="dna-dot"></div>
       </div>
     </div>
-    <h2>🔍 Quick Data Challenge</h2>
+    <h2>🎮 Quick Data Challenge</h2>
     <p id="questionText"></p>
     <input type="text" id="answerInput" placeholder="Your answer..." />
     <br />
@@ -307,27 +350,30 @@
     document.getElementById("quizModal").style.display = "flex";
   }
 
+  function closeQuizModal() {
+    document.getElementById("quizModal").style.display = "none";
+  }
+
   function checkAnswer() {
     const input = document.getElementById("answerInput").value.trim().toLowerCase();
     const feedback = document.getElementById("feedback");
-
     if (input === currentQuestion.a) {
-      feedback.style.color = "green";
-      feedback.innerText = "✅ Correct! Let's explore.";
+      feedback.className = "feedback-correct";
+      feedback.innerHTML = "<span style='font-size:1.3em;'>✅</span> Correct! Let's explore.";
       setTimeout(() => {
         window.location.href = targetPage;
       }, 1000);
     } else {
       attempts++;
       if (attempts >= 2) {
-        feedback.style.color = "orange";
-        feedback.innerHTML = "🧠 Keep learning! You can still proceed.";
+        feedback.className = "feedback-try";
+        feedback.innerHTML = "<span style='font-size:1.3em;'>🤔</span> Keep learning! You can still proceed.";
         setTimeout(() => {
           window.location.href = targetPage;
         }, 1500);
       } else {
-        feedback.style.color = "red";
-        feedback.innerText = "❌ Try again!";
+        feedback.className = "feedback-wrong";
+        feedback.innerHTML = "<span style='font-size:1.3em;'>❌</span> Try again!";
       }
     }
   }
