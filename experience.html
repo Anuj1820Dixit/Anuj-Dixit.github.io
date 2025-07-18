@@ -111,24 +111,69 @@
       color: #00ffd5;
       cursor: pointer;
     }
+
+    .glass-navbar {
+      position: fixed;
+      top: 0; left: 0; width: 100vw;
+      z-index: 100;
+      background: rgba(20, 30, 50, 0.55);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 16px #00ffd522;
+      border-bottom: 1.5px solid #00ffd533;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0.7rem 0;
+    }
+    .glass-navbar .nav {
+      gap: 2.2rem;
+    }
+    .glass-navbar .nav-link {
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.08em;
+      letter-spacing: 0.2px;
+      transition: color 0.2s, text-shadow 0.2s;
+      text-shadow: 0 2px 8px #00ffd522;
+      border-bottom: 2px solid transparent;
+      border-radius: 0;
+      padding: 0.2rem 0.5rem;
+    }
+    .glass-navbar .nav-link:hover, .glass-navbar .nav-link.active {
+      color: #00ffd5;
+      text-shadow: 0 2px 12px #00ffd5cc;
+      border-bottom: 2px solid #00ffd5;
+      background: none;
+    }
+    .page-title {
+      margin-top: 90px;
+      margin-bottom: 32px;
+      color: #00ffd5;
+      font-size: 2.1em;
+      font-weight: 800;
+      text-align: center;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 12px #00ffd544;
+    }
+    @media (max-width: 700px) {
+      .page-title { font-size: 1.3em; margin-top: 70px; }
+      .glass-navbar .nav { gap: 1.1rem; }
+    }
   </style>
 </head>
 <body>
   <div id="particles-js"></div>
-
-  <header class="bg-dark text-white text-center py-3">
-    <h1>My Experience</h1>
-    <nav class="d-flex justify-content-center">
-      <ul class="nav">
-        <li class="nav-item"><a class="nav-link text-white" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link text-white" href="portfolio.html">Portfolio</a></li>
-        <li class="nav-item"><a class="nav-link text-white" href="education.html">Education</a></li>
-        <li class="nav-item"><a class="nav-link text-white" href="skills.html">Skills</a></li>
-      </ul>
-    </nav>
-  </header>
-
+  <nav class="glass-navbar">
+    <ul class="nav">
+      <li class="nav-item"><a class="nav-link text-white" href="index.html">Home</a></li>
+      <li class="nav-item"><a class="nav-link text-white" href="portfolio.html">Portfolio</a></li>
+      <li class="nav-item"><a class="nav-link text-white" href="education.html">Education</a></li>
+      <li class="nav-item"><a class="nav-link text-white" href="skills.html">Skills</a></li>
+      <li class="nav-item"><a class="nav-link text-white" href="experience.html">Experience</a></li>
+    </ul>
+  </nav>
   <div class="container mt-4">
+    <div class="page-title">Experience</div>
     <div class="row">
       <div class="col-md-12">
 
