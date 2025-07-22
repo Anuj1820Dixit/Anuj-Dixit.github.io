@@ -307,6 +307,51 @@
       0% { opacity: 1; transform: translateY(0) rotate(0deg); }
       100% { opacity: 0; transform: translateY(120px) rotate(360deg); }
     }
+    .main-summary {
+      max-width: 700px;
+      margin: 110px auto 0 auto;
+      background: rgba(30, 41, 59, 0.92);
+      border-radius: 24px;
+      box-shadow: 0 8px 32px #00ffd544, 0 2px 12px #a259ff33;
+      border-left: 6px solid #00ffd5;
+      padding: 44px 36px 36px 36px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+    .profile-photo-wrap {
+      margin-bottom: 18px;
+    }
+    .profile-photo {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 2px 16px #00ffd544;
+      border: 3px solid #00ffd5;
+      background: #232946;
+    }
+    .summary-text h1 {
+      color: #00ffd5;
+      font-size: 2.1em;
+      font-weight: 800;
+      margin-bottom: 18px;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 12px #00ffd544;
+    }
+    .summary-text p {
+      color: #eaeaea;
+      font-size: 1.13em;
+      margin-bottom: 16px;
+      line-height: 1.7;
+    }
+    @media (max-width: 700px) {
+      .main-summary { padding: 18px 4vw; margin-top: 80px; }
+      .summary-text h1 { font-size: 1.2em; }
+      .profile-photo { width: 70px; height: 70px; }
+    }
   </style>
 </head>
 <body>
@@ -325,44 +370,29 @@
 </header>
 
 <!-- Main Content -->
-<div class="container">
-  <h1>Welcome!</h1>
-  <p>Explore my portfolio: data science, analytics, and engineering projects, plus my background and skills. Use the navigation above to get started.</p>
-  <p>Open to opportunities in data science, analytics, and business intelligence roles.</p>
-  <div class="social-icons">
-    <a href="https://www.linkedin.com/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-    <a href="https://github.com/" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-    <a href="https://twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+<div class="main-summary">
+  <div class="profile-photo-wrap">
+    <!-- Place your photo here, e.g.: <img src="profile.jpg" alt="Profile Photo" class="profile-photo" /> -->
+  </div>
+  <div class="summary-text">
+    <h1>Hi, I'm Anuj Dixit</h1>
+    <p>
+      I am a data analyst and machine learning enthusiast who believes in constant learning and daily improvement. My journey has taken me from building end-to-end solutions for clients at BlackCoffer Consulting, to leading AI/ML projects at Green Rider Technology, to hands-on research and dataset creation at IIT Jodhpur. I thrive on solving real-world problems—whether it’s automating workflows, analyzing complex data, or building robust models.
+    </p>
+    <p>
+      I’ve managed full project lifecycles, designed and implemented business workflows, and delivered actionable insights that drive results. My experience spans client consulting, AI-driven product development, and research, always with a focus on clarity, efficiency, and impact.
+    </p>
+    <p>
+      Every day, I strive to improve myself and my work. No matter what difficulties arise, I never give up. I believe that resilience, curiosity, and a commitment to growth are the keys to success in data science and analytics.
+    </p>
+    <p>
+      Let’s connect and explore how data can drive better decisions and create real value.
+    </p>
   </div>
 </div>
-
-<!-- Quiz Modal -->
-<div id="quizModal">
-  <div class="quiz-content">
-    <button class="close-btn" onclick="closeQuizModal()">&times;</button>
-    <div class="dna-wrapper">
-      <div class="dna-helix">
-        <div class="dna-dot"></div>
-        <div class="dna-dot"></div>
-        <div class="dna-dot"></div>
-        <div class="dna-dot"></div>
-        <div class="dna-dot"></div>
-      </div>
-    </div>
-    <span class="gamepad-anim">🎮</span>
-    <h2>Quick Data Challenge</h2>
-    <p id="questionText" style="color:#fff; font-size:1.13em; font-weight:500; margin-bottom:18px; text-shadow:0 2px 8px #232946;"> </p>
-    <input type="text" id="answerInput" placeholder="Your answer..." />
-    <br />
-    <button onclick="checkAnswer()">Submit</button>
-    <div id="feedback"></div>
-    <div class="confetti" id="confetti"></div>
-  </div>
-</div>
-
 <!-- Footer -->
 <footer>
-  📧 Contact: <a href="mailto:anuj1820dixit@gmail.com" style="color: #0077cc;">anuj1820dixit@gmail.com</a>
+  📧 Contact: <a href="mailto:anuj1820dixit@gmail.com" style="color: #00ffd5;">anuj1820dixit@gmail.com</a>
 </footer>
 
 <!-- Scripts -->
