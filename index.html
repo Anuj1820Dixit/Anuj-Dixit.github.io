@@ -307,51 +307,6 @@
       0% { opacity: 1; transform: translateY(0) rotate(0deg); }
       100% { opacity: 0; transform: translateY(120px) rotate(360deg); }
     }
-    .main-summary {
-      max-width: 700px;
-      margin: 110px auto 0 auto;
-      background: rgba(30, 41, 59, 0.92);
-      border-radius: 24px;
-      box-shadow: 0 8px 32px #00ffd544, 0 2px 12px #a259ff33;
-      border-left: 6px solid #00ffd5;
-      padding: 44px 36px 36px 36px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      position: relative;
-    }
-    .profile-photo-wrap {
-      margin-bottom: 18px;
-    }
-    .profile-photo {
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: 0 2px 16px #00ffd544;
-      border: 3px solid #00ffd5;
-      background: #232946;
-    }
-    .summary-text h1 {
-      color: #00ffd5;
-      font-size: 2.1em;
-      font-weight: 800;
-      margin-bottom: 18px;
-      letter-spacing: 1px;
-      text-shadow: 0 2px 12px #00ffd544;
-    }
-    .summary-text p {
-      color: #eaeaea;
-      font-size: 1.13em;
-      margin-bottom: 16px;
-      line-height: 1.7;
-    }
-    @media (max-width: 700px) {
-      .main-summary { padding: 18px 4vw; margin-top: 80px; }
-      .summary-text h1 { font-size: 1.2em; }
-      .profile-photo { width: 70px; height: 70px; }
-    }
   </style>
 </head>
 <body>
@@ -370,12 +325,23 @@
 </header>
 
 <!-- Main Content -->
-<div class="container" style="margin-top: 110px; text-align: center;">
-  <!-- Optional: <img src="profile.jpg" alt="Profile Photo" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin-bottom:16px;box-shadow:0 2px 12px #00ffd544;border:2px solid #00ffd5;" /> -->
-  <h1 style="color:#00ffd5;font-size:2em;font-weight:800;letter-spacing:1px;margin-bottom:12px;">Anuj Dixit</h1>
-  <p style="color:#eaeaea;font-size:1.18em;max-width:600px;margin:0 auto 18px auto;line-height:1.6;">
-    Data analyst with hands-on experience in client consulting, AI/ML projects, and research. I believe in constant learning, daily improvement, and never giving up—no matter the challenge. My work spans end-to-end project delivery, workflow automation, and actionable insights for real business impact.
+<div class="container">
+  <h1>Welcome!</h1>
+  <p style="font-size:1.15em; color:#eaeaea; font-weight:500; margin-bottom:18px;">
+    Data analyst with hands-on experience in consulting, AI/ML, and research. I thrive on constant learning and daily improvement—no matter the challenge, I never give up. My journey includes:
+    <ul style="margin: 12px 0 0 1.2em; color:#bfc9e0; font-size:1em;">
+      <li>Delivering end-to-end client solutions at BlackCoffer, from requirements to automation and documentation, always focused on efficiency and transparency.</li>
+      <li>Driving business impact at Green Rider by leading AI/ML projects, building forecasting models, and streamlining workflows as a junior team lead.</li>
+      <li>Building real-world ML and computer vision solutions at IIT Jodhpur, including custom datasets and image analysis systems.</li>
+      <li>Currently applying analytical skills to real-world data problems, always seeking new ways to grow and add value.</li>
+    </ul>
+    I believe in continuous growth, resilience, and making a measurable impact through data.
   </p>
+  <div class="social-icons">
+    <a href="https://www.linkedin.com/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    <a href="https://github.com/" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+    <a href="https://twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+  </div>
 </div>
 <!-- Footer -->
 <footer>
