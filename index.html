@@ -350,6 +350,30 @@
   </div>
 </section>
 
+<!-- Intro Section -->
+<section id="intro" class="intro-section">
+  <div class="intro-flex">
+    <div class="intro-photo">
+      <img src="https://via.placeholder.com/220x220.png?text=Your+Photo" alt="Profile Photo" />
+    </div>
+    <div class="intro-summary">
+      <h2>Hi, I'm Anuj.</h2>
+      <p>
+        I specialize in helping organizations unlock the power of their data. With a strong background in <b>data analysis</b>, <b>AI/ML</b>, and <b>business strategy</b>, I turn complex datasets into actionable insights and compelling stories. My experience spans consulting, research, and real-world deployments at <b>BlackCoffer</b>, <b>Green Rider</b>, and <b>IIT Jodhpur</b>.<br><br>
+        Whether you need to visualize trends, automate processes, or make data-driven decisions, I bring a blend of technical expertise and business acumen to every project. Let's connect and create impact together.
+      </p>
+      <div class="intro-links">
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+      </div>
+    </div>
+  </div>
+  <div class="intro-arrow" onclick="scrollIntroToTop()" title="Scroll to Intro">
+    <svg width="48" height="48" viewBox="0 0 48 48"><polyline points="12,20 24,32 36,20" style="fill:none;stroke:#00ffd5;stroke-width:4;stroke-linecap:round;stroke-linejoin:round"/></svg>
+  </div>
+</section>
+
 <!-- Skills Section -->
 <section id="skills" class="section-skills">
   <h2>Skills</h2>
@@ -744,6 +768,78 @@ footer {
   z-index: 1;
   position: relative;
 }
+.intro-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  padding: 60px 0 40px 0;
+  background: rgba(255,255,255,0.95);
+}
+.intro-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  max-width: 900px;
+  width: 100%;
+}
+.intro-photo img {
+  width: 220px;
+  height: 220px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 4px 24px #00ffd522;
+}
+.intro-summary {
+  max-width: 500px;
+  color: #232946;
+}
+.intro-summary h2 {
+  font-size: 2em;
+  margin-bottom: 12px;
+  color: #0077cc;
+}
+.intro-summary p {
+  font-size: 1.15em;
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+.intro-links a {
+  display: inline-block;
+  margin-right: 18px;
+  color: #00ffd5;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1.5px solid #00ffd5;
+  border-radius: 6px;
+  padding: 6px 18px;
+  transition: background 0.2s, color 0.2s;
+}
+.intro-links a:hover {
+  background: #00ffd5;
+  color: #232946;
+}
+.intro-arrow {
+  margin-top: 36px;
+  cursor: pointer;
+  animation: bounceArrow 1.5s infinite alternate;
+}
+@keyframes bounceArrow {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(16px); }
+}
+@media (max-width: 900px) {
+  .intro-flex { flex-direction: column; gap: 24px; }
+  .intro-photo img { width: 160px; height: 160px; }
+}
 </style>
+<script>
+function scrollIntroToTop() {
+  document.getElementById('intro').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+</script>
 </body>
 </html>
