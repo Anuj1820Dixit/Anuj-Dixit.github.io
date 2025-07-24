@@ -404,7 +404,7 @@
   <h2>Projects</h2>
   <div class="projects-grid">
     <!-- HR Dashboard Card -->
-    <div class="project-card">
+    <a class="project-card" href="project-hr-dashboard.html">
       <div class="project-img-wrap">
         <img src="./portfolio-images/HR S.png" alt="HR Dashboard" class="project-img" />
       </div>
@@ -412,9 +412,9 @@
         <div class="project-title">HR--Dynamic-Dashboard</div>
         <div class="project-desc">An interactive Tableau dashboard analyzing HR data—built using synthetic employee records generated via Python and ChatGPT, featuring hiring, salary, and demographic insights.</div>
       </div>
-    </div>
+    </a>
     <!-- Sales Customer Insights Card -->
-    <div class="project-card">
+    <a class="project-card" href="project-tableau-sales.html">
       <div class="project-img-wrap">
         <img src="./portfolio-images/sales-customer-insights.png" alt="Sales Customer Insights" class="project-img" />
       </div>
@@ -422,9 +422,9 @@
         <div class="project-title">sales-customer-insights-tableau</div>
         <div class="project-desc">A complete business analysis process using Tableau—from data connection and modeling to designing dynamic dashboards tailored for sales and customer performance insights.</div>
       </div>
-    </div>
+    </a>
     <!-- SQL Data Warehouse Card -->
-    <div class="project-card">
+    <a class="project-card" href="project-sql-dwh.html">
       <div class="project-img-wrap">
         <img src="./portfolio-images/sql-dwh.png" alt="SQL Data Warehouse" class="project-img" />
       </div>
@@ -432,9 +432,9 @@
         <div class="project-title">SQL-Data-Warehouse-Project</div>
         <div class="project-desc">Designing and implementing a modern data warehouse using SQL Server, encompassing ETL processes, data modeling, and advanced data analytics.</div>
       </div>
-    </div>
+    </a>
     <!-- Medical Expenditure Card -->
-    <div class="project-card">
+    <a class="project-card" href="project-medical-expenditure.html">
       <div class="project-img-wrap">
         <img src="./portfolio-images/medical-expenditure.png" alt="Medical Expenditure Prediction" class="project-img" />
       </div>
@@ -442,7 +442,7 @@
         <div class="project-title">Automated-system-for-medical-expenditure</div>
         <div class="project-desc">Linear regression to model and predict individual medical insurance charges based on demographic and lifestyle variables. Exploratory data analysis and statistics.</div>
       </div>
-    </div>
+    </a>
   </div>
   <div class="more-projects">
     <h3>Want to see more?</h3>
@@ -454,47 +454,70 @@
 <!-- Experience Section -->
 <section id="experience" class="section-experience">
   <h2>Experience</h2>
-  <div class="experience-section">
+  <div class="experience-section" onclick="zoomCard(this)" tabindex="0">
     <h3>Associate Data Scientist</h3>
     <p><strong>Blackcoffer | Full-Time | Present</strong></p>
     <ul>
       <li>Working on advanced data science solutions.</li>
       <li>Developing machine learning models.</li>
     </ul>
+    <div class="full-details" style="display:none;">
+      <p>More details about AI use in business insights, predictive analytics models, and NLP deployments for real-time dashboards...</p>
+    </div>
   </div>
-  <div class="experience-section">
+  <div class="experience-section" onclick="zoomCard(this)" tabindex="0">
     <h3>Software Engineer AI/ML</h3>
     <p><strong>Green Rider Technology LLP | March – October 2024 | Indore</strong></p>
     <ul>
       <li>Optimized AI-generated prompts.</li>
       <li>Analyzed stock market data with LSTM.</li>
     </ul>
+    <div class="full-details" style="display:none;">
+      <p>Additional details include GPT model fine-tuning, integrated prompt engineering workflows, and financial time series evaluations.</p>
+    </div>
   </div>
-  <div class="experience-section">
+  <div class="experience-section" onclick="zoomCard(this)" tabindex="0">
     <h3>Machine Learning Intern</h3>
     <p><strong>IIT Jodhpur | Dec 2023 – March 2024 | Jodhpur</strong></p>
     <ul>
       <li>TensorFlow-based dataset creation.</li>
       <li>Image processing with OpenCV.</li>
     </ul>
+    <div class="full-details" style="display:none;">
+      <p>Detailed image annotation, training CNNs on texture and material segmentation, and performance benchmarks on edge devices.</p>
+    </div>
   </div>
-  <div class="experience-section">
+  <div class="experience-section" onclick="zoomCard(this)" tabindex="0">
     <h3>Reinforcement Learning Internship</h3>
     <p><strong>IIT Jodhpur | June – July 2023</strong></p>
     <ul>
       <li>Studied Markov Chains & MDPs.</li>
       <li>Implemented value iteration models.</li>
     </ul>
+    <div class="full-details" style="display:none;">
+      <p>Worked on custom RL environments with Python Gym and visualized learning progress in real-time.</p>
+    </div>
   </div>
-  <div class="experience-section">
+  <div class="experience-section" onclick="zoomCard(this)" tabindex="0">
     <h3>Machine Learning Intern</h3>
     <p><strong>CodSoft | Internship</strong></p>
     <ul>
       <li>Worked on ML classification projects.</li>
       <li>Built regression models for apps.</li>
     </ul>
+    <div class="full-details" style="display:none;">
+      <p>Expanded to deployment via Flask, model explainability with SHAP, and dashboarding via Streamlit.</p>
+    </div>
   </div>
 </section>
+
+<!-- Experience Modal Popup -->
+<div id="exp-modal-overlay" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.7); z-index:9999; align-items:center; justify-content:center;">
+  <div id="exp-modal-content" style="background:#1c1c1e; color:white; border-radius:20px; padding:30px; max-width:600px; width:90%; box-shadow:0 0 20px #00ffd5; position:relative;">
+    <span id="exp-modal-close" style="position:absolute; top:10px; right:15px; font-size:24px; color:#00ffd5; cursor:pointer;">&times;</span>
+    <div id="exp-modal-body"></div>
+  </div>
+</div>
 
 <!-- Footer -->
 <footer>
@@ -559,6 +582,24 @@
   }
   window.addEventListener('scroll', setSectionBackground);
   window.addEventListener('DOMContentLoaded', setSectionBackground);
+
+  // Experience modal popup logic
+  function zoomCard(card) {
+    const overlay = document.getElementById('exp-modal-overlay');
+    const body = document.getElementById('exp-modal-body');
+    body.innerHTML = card.innerHTML;
+    overlay.style.display = 'flex';
+    // Hide the full-details in the modal if not present
+    const details = body.querySelector('.full-details');
+    if (details) details.style.display = 'block';
+    // Add close handler
+    document.getElementById('exp-modal-close').onclick = function() {
+      overlay.style.display = 'none';
+    };
+    overlay.onclick = function(e) {
+      if (e.target === overlay) overlay.style.display = 'none';
+    };
+  }
 </script>
 
 <style>
