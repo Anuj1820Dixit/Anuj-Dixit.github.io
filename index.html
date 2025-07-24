@@ -316,25 +316,30 @@
 
 <!-- Header Nav -->
 <header>
-  <nav>
-    <a onclick="promptQuiz('skills.html')">Skills</a>
-    <a onclick="promptQuiz('education.html')">Education</a>
-    <a onclick="promptQuiz('portfolio.html')">Projects</a>
-    <a onclick="promptQuiz('experience.html')">Experience</a>
+  <nav style="justify-content: center; font-size: 1.15em; font-weight: 600; letter-spacing: 0.5px;">
+    <a href="index.html">Home</a>
+    <a href="skills.html">Skills</a>
+    <a href="education.html">Education</a>
+    <a href="portfolio.html">Projects</a>
+    <a href="experience.html">Experience</a>
   </nav>
 </header>
 
 <!-- Main Content -->
-<div class="container">
-  <h1 style="color:#00ffd5; font-size:2.2em; font-weight:800; margin-bottom:18px;">Hi, I’m Anuj Dixit</h1>
-  <p style="font-size:1.18em; color:#232946; font-weight:500; margin-bottom:28px; line-height:1.6; background:none; border-radius:0; padding:0; box-shadow:none;">
-    I am a data analyst and business analyst with hands-on experience in consulting, AI/ML, and research. I’ve delivered end-to-end solutions at <b>BlackCoffer</b>, driven business impact at <b>Green Rider</b>, and built real-world ML and computer vision systems at <b>IIT Jodhpur</b>. My journey includes impactful internships and roles at BlackCoffer, Green Rider, and IIT Jodhpur.<br><br>
-    I believe in constant learning, daily improvement, and never giving up—no matter the challenge. My passion is turning data into actionable insights and measurable business value.
-  </p>
-  <div class="social-icons">
-    <a href="https://www.linkedin.com/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-    <a href="https://github.com/" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-    <a href="https://twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+<div class="container" style="max-width: 600px; margin: 120px auto 0 auto; padding: 40px 24px; background: rgba(255,255,255,0.97); border-radius: 18px; box-shadow: 0 4px 32px #00ffd522;">
+  <div style="display: flex; flex-direction: column; align-items: center;">
+    <div style="font-family: 'Poppins', 'Segoe UI', sans-serif; font-size: 2.7em; font-weight: 900; letter-spacing: 2px; color: #232946; margin-bottom: 0;">ANUJ DIXIT</div>
+    <div style="width: 60px; height: 3px; background: linear-gradient(90deg, #00ffd5 60%, #0077cc 100%); border-radius: 2px; margin: 18px 0 28px 0;"></div>
+    <p style="font-size:1.18em; color:#232946; font-weight:500; margin-bottom:28px; line-height:1.6; background:none; border-radius:0; padding:0; box-shadow:none; text-align:center;">
+      <span style="font-size:1.2em;">👋</span> <b>Data Analyst</b> & <b>Business Analyst</b> passionate about <span style="color:#00ffd5; font-weight:600;">AI/ML</span> and <span style="color:#0077cc; font-weight:600;">turning data into business value</span>.<br>
+      Delivered impactful solutions at <b>BlackCoffer</b>, <b>Green Rider</b>, and <b>IIT Jodhpur</b>.<br>
+      Driven by curiosity, learning, and a commitment to measurable results.
+    </p>
+    <div class="social-icons" style="margin-top: 10px;">
+      <a href="https://www.linkedin.com/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+    </div>
   </div>
 </div>
 <!-- Footer -->
@@ -367,72 +372,6 @@
     },
     retina_detect: true
   });
-
-  const questions = [
-    { q: "Which algorithm is used to reduce dimensionality in datasets?", a: "pca" },
-    { q: "Which ML model is ideal for classification tasks with non-linear boundaries?", a: "svm" },
-    { q: "Name the process of training an ensemble of decision trees?", a: "random forest" },
-    { q: "What evaluation metric is best for imbalanced classification?", a: "f1 score" },
-    { q: "Which algorithm clusters data without supervision?", a: "kmeans" }
-  ];
-
-  let targetPage = "";
-  let attempts = 0;
-  let currentQuestion = {};
-
-  function promptQuiz(page) {
-    targetPage = page;
-    attempts = 0;
-    currentQuestion = questions[Math.floor(Math.random() * questions.length)];
-    document.getElementById("questionText").innerText = currentQuestion.q;
-    document.getElementById("answerInput").value = "";
-    document.getElementById("feedback").innerText = "";
-    document.getElementById("quizModal").style.display = "flex";
-  }
-
-  function closeQuizModal() {
-    document.getElementById("quizModal").style.display = "none";
-  }
-
-  function showConfetti() {
-    const confetti = document.getElementById("confetti");
-    confetti.innerHTML = "";
-    const colors = ["#00cfff", "#a259ff", "#00ffd5", "#fff", "#ff4b6e", "#ffc107"];
-    for (let i = 0; i < 24; i++) {
-      const piece = document.createElement("div");
-      piece.className = "confetti-piece";
-      piece.style.background = colors[Math.floor(Math.random()*colors.length)];
-      piece.style.left = (Math.random()*120-60) + "px";
-      piece.style.animationDelay = (Math.random()*0.5) + "s";
-      confetti.appendChild(piece);
-    }
-    setTimeout(()=>{ confetti.innerHTML = ""; }, 1800);
-  }
-
-  function checkAnswer() {
-    const input = document.getElementById("answerInput").value.trim().toLowerCase();
-    const feedback = document.getElementById("feedback");
-    if (input === currentQuestion.a) {
-      feedback.className = "feedback-correct";
-      feedback.innerHTML = "<span style='font-size:1.3em;'>✅</span> Correct! Let's explore.";
-      showConfetti();
-      setTimeout(() => {
-        window.location.href = targetPage;
-      }, 1200);
-    } else {
-      attempts++;
-      if (attempts >= 2) {
-        feedback.className = "feedback-try";
-        feedback.innerHTML = "<span style='font-size:1.3em;'>🤔</span> Keep learning! You can still proceed.";
-        setTimeout(() => {
-          window.location.href = targetPage;
-        }, 1500);
-      } else {
-        feedback.className = "feedback-wrong";
-        feedback.innerHTML = "<span style='font-size:1.3em;'>❌</span> Try again!";
-      }
-    }
-  }
 </script>
 </body>
 </html>
