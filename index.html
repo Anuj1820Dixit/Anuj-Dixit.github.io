@@ -601,20 +601,6 @@
       if (e.target === overlay) overlay.style.display = 'none';
     };
   }
-
-  // Make particles non-interactive under Home section only
-  document.addEventListener('DOMContentLoaded', function() {
-    var homeSection = document.getElementById('home');
-    var particles = document.getElementById('particles-js');
-    if (homeSection && particles) {
-      homeSection.addEventListener('mouseenter', function() {
-        particles.style.pointerEvents = 'none';
-      });
-      homeSection.addEventListener('mouseleave', function() {
-        particles.style.pointerEvents = 'auto';
-      });
-    }
-  });
 </script>
 
 <style>
