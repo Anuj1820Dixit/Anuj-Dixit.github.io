@@ -326,16 +326,16 @@
 <!-- Header Nav -->
 <header>
   <nav style="justify-content: center; font-size: 1.15em; font-weight: 600; letter-spacing: 0.5px;">
-    <a href="index.html">Home</a>
-    <a href="skills.html">Skills</a>
-    <a href="education.html">Education</a>
-    <a href="portfolio.html">Projects</a>
-    <a href="experience.html">Experience</a>
+    <a href="#home">Home</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
   </nav>
 </header>
 
-<!-- Main Content -->
-<div class="main-content">
+<!-- Home Section -->
+<section id="home" class="main-content home-section">
   <div style="font-family: 'Poppins', 'Segoe UI', sans-serif; font-size: 2.7em; font-weight: 900; letter-spacing: 2px; color: #232946; margin-bottom: 0; text-align: center;">ANUJ DIXIT</div>
   <div style="width: 60px; height: 3px; background: linear-gradient(90deg, #00ffd5 60%, #0077cc 100%); border-radius: 2px; margin: 18px auto 28px auto;"></div>
   <p style="font-size:1.18em; color:#232946; font-weight:500; margin-bottom:28px; line-height:1.6; background:none; border-radius:0; padding:0; box-shadow:none; text-align:center; max-width: 600px; margin-left:auto; margin-right:auto;">
@@ -348,7 +348,154 @@
     <a href="https://github.com/" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
     <a href="https://twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
   </div>
-</div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="section-skills">
+  <h2>Skills</h2>
+  <div class="skill-section">
+    <h3>Technical Skills</h3>
+    <ul>
+      <li>Python, R, C, C++, SQL</li>
+      <li>Tableau, KNIME, Kibana, n8n, Selenium, Flask, Django, FastAPI, Looker Studio</li>
+      <li>Pandas, NumPy, Scikit-learn, TensorFlow, PyTorch, Keras, Excel, Power BI</li>
+      <li>Classification, Regression, Clustering, Deep Learning, Reinforcement Learning</li>
+    </ul>
+  </div>
+  <div class="skill-section">
+    <h3>Languages</h3>
+    <ul>
+      <li>Hindi</li>
+      <li>English</li>
+    </ul>
+  </div>
+  <div class="skill-section">
+    <h3>Interests</h3>
+    <ul>
+      <li>Meditation, Chess, Cricket, Football, Reading, Social Work</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Education Section -->
+<section id="education" class="section-education">
+  <h2>Education</h2>
+  <div class="edu-section">
+    <h3>Medi-Caps University</h3>
+    <ul>
+      <li><b>Location:</b> AB RD Pigdamber Rau, India</li>
+      <li><b>Graduation:</b> May 2024</li>
+      <li><b>Degree:</b> B.Tech in Computer Science & Engineering (Specialization in Data Science)</li>
+      <li><b>GPA:</b> 9.0</li>
+      <li><b>Certifications:</b> Data Science (Coursera, UpGrad, 365 Data Science)</li>
+    </ul>
+  </div>
+  <div class="edu-section">
+    <h3>St. Paul H.S. School</h3>
+    <ul>
+      <li><b>Stream:</b> PCM with Physical Education</li>
+      <li><b>Percentage:</b> 80%</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="section-projects">
+  <h2>Projects</h2>
+  <div class="projects-grid">
+    <!-- HR Dashboard Card -->
+    <div class="project-card">
+      <div class="project-img-wrap">
+        <img src="./portfolio-images/HR S.png" alt="HR Dashboard" class="project-img" />
+      </div>
+      <div class="project-card-content">
+        <div class="project-title">HR--Dynamic-Dashboard</div>
+        <div class="project-desc">An interactive Tableau dashboard analyzing HR data—built using synthetic employee records generated via Python and ChatGPT, featuring hiring, salary, and demographic insights.</div>
+      </div>
+    </div>
+    <!-- Sales Customer Insights Card -->
+    <div class="project-card">
+      <div class="project-img-wrap">
+        <img src="./portfolio-images/sales-customer-insights.png" alt="Sales Customer Insights" class="project-img" />
+      </div>
+      <div class="project-card-content">
+        <div class="project-title">sales-customer-insights-tableau</div>
+        <div class="project-desc">A complete business analysis process using Tableau—from data connection and modeling to designing dynamic dashboards tailored for sales and customer performance insights.</div>
+      </div>
+    </div>
+    <!-- SQL Data Warehouse Card -->
+    <div class="project-card">
+      <div class="project-img-wrap">
+        <img src="./portfolio-images/sql-dwh.png" alt="SQL Data Warehouse" class="project-img" />
+      </div>
+      <div class="project-card-content">
+        <div class="project-title">SQL-Data-Warehouse-Project</div>
+        <div class="project-desc">Designing and implementing a modern data warehouse using SQL Server, encompassing ETL processes, data modeling, and advanced data analytics.</div>
+      </div>
+    </div>
+    <!-- Medical Expenditure Card -->
+    <div class="project-card">
+      <div class="project-img-wrap">
+        <img src="./portfolio-images/medical-expenditure.png" alt="Medical Expenditure Prediction" class="project-img" />
+      </div>
+      <div class="project-card-content">
+        <div class="project-title">Automated-system-for-medical-expenditure</div>
+        <div class="project-desc">Linear regression to model and predict individual medical insurance charges based on demographic and lifestyle variables. Exploratory data analysis and statistics.</div>
+      </div>
+    </div>
+  </div>
+  <div class="more-projects">
+    <h3>Want to see more?</h3>
+    <p>Explore all my projects, code, and case studies on GitHub!</p>
+    <a href="https://github.com/Anuj1820Dixit?tab=repositories" target="_blank">Visit My GitHub →</a>
+  </div>
+</section>
+
+<!-- Experience Section -->
+<section id="experience" class="section-experience">
+  <h2>Experience</h2>
+  <div class="experience-section">
+    <h3>Associate Data Scientist</h3>
+    <p><strong>Blackcoffer | Full-Time | Present</strong></p>
+    <ul>
+      <li>Working on advanced data science solutions.</li>
+      <li>Developing machine learning models.</li>
+    </ul>
+  </div>
+  <div class="experience-section">
+    <h3>Software Engineer AI/ML</h3>
+    <p><strong>Green Rider Technology LLP | March – October 2024 | Indore</strong></p>
+    <ul>
+      <li>Optimized AI-generated prompts.</li>
+      <li>Analyzed stock market data with LSTM.</li>
+    </ul>
+  </div>
+  <div class="experience-section">
+    <h3>Machine Learning Intern</h3>
+    <p><strong>IIT Jodhpur | Dec 2023 – March 2024 | Jodhpur</strong></p>
+    <ul>
+      <li>TensorFlow-based dataset creation.</li>
+      <li>Image processing with OpenCV.</li>
+    </ul>
+  </div>
+  <div class="experience-section">
+    <h3>Reinforcement Learning Internship</h3>
+    <p><strong>IIT Jodhpur | June – July 2023</strong></p>
+    <ul>
+      <li>Studied Markov Chains & MDPs.</li>
+      <li>Implemented value iteration models.</li>
+    </ul>
+  </div>
+  <div class="experience-section">
+    <h3>Machine Learning Intern</h3>
+    <p><strong>CodSoft | Internship</strong></p>
+    <ul>
+      <li>Worked on ML classification projects.</li>
+      <li>Built regression models for apps.</li>
+    </ul>
+  </div>
+</section>
+
 <!-- Footer -->
 <footer>
   <span style="color:#232946; font-size:1.1em; font-weight:600;">📧 Contact: <a href="mailto:anuj1820dixit@gmail.com" style="color: #00ffd5; text-decoration:underline;">anuj1820dixit@gmail.com</a></span>
@@ -379,6 +526,182 @@
     },
     retina_detect: true
   });
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('nav a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href.startsWith('#')) {
+        e.preventDefault();
+        document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Dynamic section background switching
+  const sectionBackgrounds = {
+    home: '#f4f4f9',
+    skills: 'linear-gradient(90deg, #232946 0%, #00ffd5 100%)',
+    education: 'linear-gradient(90deg, #203a43 0%, #2c5364 100%)',
+    projects: 'linear-gradient(90deg, #0f172a 0%, #00cfff 100%)',
+    experience: 'linear-gradient(90deg, #232946 0%, #a259ff 100%)'
+  };
+  function setSectionBackground() {
+    let found = false;
+    document.querySelectorAll('section').forEach(section => {
+      const rect = section.getBoundingClientRect();
+      if (!found && rect.top <= 80 && rect.bottom > 80) {
+        document.body.style.background = sectionBackgrounds[section.id] || '#f4f4f9';
+        found = true;
+      }
+    });
+    if (!found) document.body.style.background = '#f4f4f9';
+  }
+  window.addEventListener('scroll', setSectionBackground);
+  window.addEventListener('DOMContentLoaded', setSectionBackground);
 </script>
+
+<style>
+html {
+  scroll-behavior: smooth;
+}
+section {
+  padding: 100px 0 60px 0;
+  min-height: 60vh;
+}
+nav a {
+  margin: 0 20px;
+  color: #0077cc;
+  text-decoration: none;
+  font-size: 1.05em;
+  font-weight: 600;
+  cursor: pointer;
+}
+nav a:hover, nav a.active {
+  color: #00ffd5;
+  border-bottom: 2px solid #00ffd5;
+}
+.section-skills {
+  color: #fff;
+}
+.section-skills h2, .section-skills h3 {
+  color: #00ffd5;
+}
+.skill-section {
+  background: rgba(255,255,255,0.08);
+  border-radius: 16px;
+  margin-bottom: 18px;
+  padding: 18px 24px;
+}
+.section-education {
+  color: #fff;
+}
+.section-education h2, .section-education h3 {
+  color: #00ffd5;
+}
+.edu-section {
+  background: rgba(255,255,255,0.08);
+  border-radius: 16px;
+  margin-bottom: 18px;
+  padding: 18px 24px;
+}
+.section-projects {
+  color: #fff;
+}
+.section-projects h2 {
+  color: #00cfff;
+}
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 32px;
+  margin-bottom: 32px;
+}
+.project-card {
+  background: linear-gradient(120deg, #232946 80%, #1a1a2e 100%);
+  color: #eaeaea;
+  border-radius: 20px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 340px;
+  border: 1.5px solid #232946;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.project-card:hover {
+  box-shadow: 0 8px 32px #00cfff44, 0 2px 12px #a259ff33;
+  transform: translateY(-4px) scale(1.02);
+}
+.project-img-wrap {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #181c2f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-bottom: 1.5px solid #232946;
+}
+.project-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0 0 0 0;
+  transition: filter 0.2s;
+}
+.project-card-content {
+  padding: 22px 24px 18px 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.project-title {
+  font-size: 1.25em;
+  font-weight: 700;
+  color: #00cfff;
+  margin-bottom: 6px;
+  letter-spacing: 0.2px;
+}
+.project-desc {
+  color: #bfc9e0;
+  font-size: 1em;
+  margin-bottom: 18px;
+  min-height: 48px;
+}
+.more-projects {
+  text-align: center;
+  margin-top: 40px;
+}
+.more-projects a {
+  color: #00cfff;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 1.1em;
+}
+.section-experience {
+  color: #fff;
+}
+.section-experience h2, .section-experience h3 {
+  color: #00ffd5;
+}
+.experience-section {
+  background: rgba(255,255,255,0.08);
+  border-radius: 16px;
+  margin-bottom: 18px;
+  padding: 18px 24px;
+}
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #555;
+  margin-top: 50px;
+  background: #fff;
+  z-index: 1;
+  position: relative;
+}
+</style>
 </body>
 </html>
