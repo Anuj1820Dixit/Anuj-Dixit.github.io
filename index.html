@@ -876,6 +876,36 @@ footer {
 #home {
   min-height: 100vh;
 }
+#main-navbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 44px;
+  padding: 32px 60px 0 0;
+}
+#main-navbar a {
+  font-size: 1.25em;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #0077cc;
+  text-decoration: none;
+  transition: color 0.2s, border-bottom 0.2s;
+  padding: 0 6px 2px 6px;
+}
+#main-navbar a:hover, #main-navbar a.active {
+  color: #00ffd5;
+  border-bottom: 2px solid #00ffd5;
+}
+@media (max-width: 900px) {
+  #main-navbar {
+    gap: 18px;
+    padding: 18px 10px 0 0;
+  }
+  #main-navbar a {
+    font-size: 1em;
+    padding: 0 2px 2px 2px;
+  }
+}
 </style>
 <script>
 function scrollIntroToTop() {
