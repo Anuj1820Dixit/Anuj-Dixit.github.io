@@ -378,28 +378,22 @@
 <!-- Skills Section -->
 <section id="skills" class="section-skills">
   <h2>Skills</h2>
-  <div id="skills-bubble" style="width:100%;max-width:700px;height:400px;margin:0 auto 32px auto;"></div>
-  <div class="skill-section">
-    <h3>Technical Skills</h3>
-    <ul>
-      <li>Python, R, C, C++, SQL</li>
-      <li>Tableau, KNIME, Kibana, n8n, Selenium, Flask, Django, FastAPI, Looker Studio</li>
-      <li>Pandas, NumPy, Scikit-learn, TensorFlow, PyTorch, Keras, Excel, Power BI</li>
-      <li>Classification, Regression, Clustering, Deep Learning, Reinforcement Learning</li>
-    </ul>
-  </div>
-  <div class="skill-section">
-    <h3>Languages</h3>
-    <ul>
-      <li>Hindi</li>
-      <li>English</li>
-    </ul>
-  </div>
-  <div class="skill-section">
-    <h3>Interests</h3>
-    <ul>
-      <li>Meditation, Chess, Cricket, Football, Reading, Social Work</li>
-    </ul>
+  <div id="skills-bubble" class="skills-bubble-chart"></div>
+  <div class="skills-badges-group">
+    <div class="skills-badges-title">Languages</div>
+    <div class="skills-badges-row">
+      <span class="skills-badge">Hindi</span>
+      <span class="skills-badge">English</span>
+    </div>
+    <div class="skills-badges-title">Interests</div>
+    <div class="skills-badges-row">
+      <span class="skills-badge">Meditation</span>
+      <span class="skills-badge">Chess</span>
+      <span class="skills-badge">Cricket</span>
+      <span class="skills-badge">Football</span>
+      <span class="skills-badge">Reading</span>
+      <span class="skills-badge">Social Work</span>
+    </div>
   </div>
 </section>
 
@@ -666,7 +660,7 @@
   window.addEventListener('scroll', toggleNavbarBg);
   window.addEventListener('DOMContentLoaded', toggleNavbarBg);
 
-// D3.js Skills Bubble Chart
+// D3.js Skills Bubble Chart (improved)
 (function() {
   const skills = [
     { name: 'Python', value: 95 },
@@ -698,7 +692,11 @@
     .attr('width', '100%')
     .attr('height', height)
     .attr('viewBox', `0 0 ${width} ${height}`);
-  const color = d3.scaleOrdinal(d3.schemeSet2);
+  // Blue/cyan palette
+  const palette = [
+    '#00ffd5', '#00cfff', '#0077cc', '#00b4d8', '#48cae4', '#90e0ef', '#caf0f8', '#232946', '#a259ff', '#b2f7ef', '#38b6ff', '#0096c7', '#5e60ce', '#3a86ff', '#4361ee', '#4cc9f0', '#4895ef', '#b5179e', '#f72585', '#7209b7', '#560bad', '#3a0ca3', '#4361ee'
+  ];
+  const color = d3.scaleOrdinal().range(palette);
   const pack = d3.pack()
     .size([width, height])
     .padding(8);
@@ -712,11 +710,23 @@
   node.append('circle')
     .attr('r', d => d.r)
     .attr('fill', (d, i) => color(i))
-    .attr('opacity', 0.85)
+    .attr('opacity', 0.92)
     .attr('stroke', '#fff')
     .attr('stroke-width', 2)
-    .on('mouseover', function() { d3.select(this).attr('opacity', 1).attr('stroke', '#00ffd5'); })
-    .on('mouseout', function() { d3.select(this).attr('opacity', 0.85).attr('stroke', '#fff'); });
+    .style('filter', 'drop-shadow(0 2px 12px #00ffd544)')
+    .on('mouseover', function(e, d) {
+      d3.select(this).attr('opacity', 1).attr('stroke', '#00ffd5');
+      tooltip.style('opacity', 1).html(`<b>${d.data.name}</b><br>Proficiency: ${d.data.value}/100`)
+        .style('left', (e.pageX + 12) + 'px')
+        .style('top', (e.pageY - 24) + 'px');
+    })
+    .on('mousemove', function(e) {
+      tooltip.style('left', (e.pageX + 12) + 'px').style('top', (e.pageY - 24) + 'px');
+    })
+    .on('mouseout', function() {
+      d3.select(this).attr('opacity', 0.92).attr('stroke', '#fff');
+      tooltip.style('opacity', 0);
+    });
   node.append('text')
     .attr('text-anchor', 'middle')
     .attr('dy', '0.35em')
@@ -724,6 +734,19 @@
     .style('fill', '#232946')
     .style('pointer-events', 'none')
     .text(d => d.data.name);
+  // Tooltip
+  const tooltip = d3.select('body').append('div')
+    .attr('class', 'skills-tooltip')
+    .style('position', 'absolute')
+    .style('background', '#fff')
+    .style('color', '#232946')
+    .style('padding', '8px 16px')
+    .style('border-radius', '8px')
+    .style('box-shadow', '0 2px 12px #00ffd544')
+    .style('font-size', '1em')
+    .style('pointer-events', 'none')
+    .style('opacity', 0)
+    .style('z-index', 9999);
 })();
 </script>
 
@@ -748,6 +771,63 @@ nav a:hover, nav a.active {
   border-bottom: 2px solid #00ffd5;
 }
 .section-skills {
+  background: linear-gradient(120deg, #232946 0%, #00ffd5 100%);
+  padding: 80px 0 60px 0;
+  min-height: 80vh;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.skills-bubble-chart {
+  width: 100%;
+  max-width: 700px;
+  height: 400px;
+  margin: 0 auto 40px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.skills-badges-group {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.08);
+  border-radius: 18px;
+  padding: 32px 24px 18px 24px;
+  box-shadow: 0 4px 24px #00ffd522;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+}
+.skills-badges-title {
+  font-size: 1.15em;
+  font-weight: 700;
+  color: #00ffd5;
+  margin-bottom: 6px;
+}
+.skills-badges-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 8px;
+}
+.skills-badge {
+  display: inline-block;
+  background: linear-gradient(90deg, #00ffd5 60%, #0077cc 100%);
+  color: #232946;
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 8px 22px;
+  font-size: 1em;
+  box-shadow: 0 2px 8px #00ffd522;
+  letter-spacing: 0.2px;
+  transition: background 0.2s, color 0.2s;
+}
+.skills-badge:hover {
+  background: linear-gradient(90deg, #0077cc 0%, #00ffd5 100%);
   color: #fff;
 }
 .section-skills h2, .section-skills h3 {
