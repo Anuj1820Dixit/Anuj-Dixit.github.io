@@ -626,13 +626,13 @@
     };
   }
 
-  // Navbar background toggle on scroll
+  // Navbar background toggle on scroll (improved logic)
   function toggleNavbarBg() {
     const navbar = document.getElementById('main-navbar');
     const homeSection = document.getElementById('home');
     if (!navbar || !homeSection) return;
-    const homeRect = homeSection.getBoundingClientRect();
-    if (homeRect.bottom <= 60) {
+    const homeBottom = homeSection.offsetTop + homeSection.offsetHeight;
+    if (window.scrollY + 60 >= homeBottom) {
       navbar.classList.remove('navbar-transparent');
       navbar.classList.add('navbar-solid');
     } else {
@@ -853,14 +853,22 @@ footer {
   .intro-photo img { width: 160px; height: 160px; }
 }
 .navbar-transparent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   background: transparent;
   box-shadow: none;
-  transition: background 0.3s, box-shadow 0.3s;
+  transition: background 0.3s, box-shadow 0.3s, position 0.3s;
 }
 .navbar-solid {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   background: #fff;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  transition: background 0.3s, box-shadow 0.3s;
+  transition: background 0.3s, box-shadow 0.3s, position 0.3s;
 }
 </style>
 <script>
