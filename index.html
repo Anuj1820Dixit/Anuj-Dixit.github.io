@@ -378,6 +378,7 @@
 <!-- Skills Section -->
 <section id="skills" class="section-skills">
   <h2>Skills</h2>
+  <div id="skills-bubble" style="width:100%;max-width:700px;height:400px;margin:0 auto 32px auto;"></div>
   <div class="skill-section">
     <h3>Technical Skills</h3>
     <ul>
@@ -551,6 +552,7 @@
 
 <!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script src="https://d3js.org/d3.v7.min.js"></script>
 <script>
   particlesJS("particles-js", {
     particles: {
@@ -643,6 +645,66 @@
   }
   window.addEventListener('scroll', toggleNavbarBg);
   window.addEventListener('DOMContentLoaded', toggleNavbarBg);
+
+// D3.js Skills Bubble Chart
+(function() {
+  const skills = [
+    { name: 'Python', value: 95 },
+    { name: 'R', value: 70 },
+    { name: 'C', value: 60 },
+    { name: 'C++', value: 65 },
+    { name: 'SQL', value: 90 },
+    { name: 'Tableau', value: 80 },
+    { name: 'KNIME', value: 60 },
+    { name: 'Kibana', value: 55 },
+    { name: 'n8n', value: 50 },
+    { name: 'Selenium', value: 65 },
+    { name: 'Flask', value: 75 },
+    { name: 'Django', value: 70 },
+    { name: 'FastAPI', value: 60 },
+    { name: 'Looker Studio', value: 55 },
+    { name: 'Pandas', value: 90 },
+    { name: 'NumPy', value: 85 },
+    { name: 'Scikit-learn', value: 80 },
+    { name: 'TensorFlow', value: 70 },
+    { name: 'PyTorch', value: 65 },
+    { name: 'Keras', value: 60 },
+    { name: 'Excel', value: 85 },
+    { name: 'Power BI', value: 75 }
+  ];
+  const width = 700, height = 400;
+  const svg = d3.select('#skills-bubble')
+    .append('svg')
+    .attr('width', '100%')
+    .attr('height', height)
+    .attr('viewBox', `0 0 ${width} ${height}`);
+  const color = d3.scaleOrdinal(d3.schemeSet2);
+  const pack = d3.pack()
+    .size([width, height])
+    .padding(8);
+  const root = d3.hierarchy({ children: skills })
+    .sum(d => d.value);
+  const nodes = pack(root).leaves();
+  const node = svg.selectAll('g')
+    .data(nodes)
+    .enter().append('g')
+    .attr('transform', d => `translate(${d.x},${d.y})`);
+  node.append('circle')
+    .attr('r', d => d.r)
+    .attr('fill', (d, i) => color(i))
+    .attr('opacity', 0.85)
+    .attr('stroke', '#fff')
+    .attr('stroke-width', 2)
+    .on('mouseover', function() { d3.select(this).attr('opacity', 1).attr('stroke', '#00ffd5'); })
+    .on('mouseout', function() { d3.select(this).attr('opacity', 0.85).attr('stroke', '#fff'); });
+  node.append('text')
+    .attr('text-anchor', 'middle')
+    .attr('dy', '0.35em')
+    .style('font-size', d => Math.max(10, d.r/2.2) + 'px')
+    .style('fill', '#232946')
+    .style('pointer-events', 'none')
+    .text(d => d.data.name);
+})();
 </script>
 
 <style>
