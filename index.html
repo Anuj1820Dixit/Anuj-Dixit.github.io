@@ -378,7 +378,9 @@
 <!-- Skills Section -->
 <section id="skills" class="section-skills">
   <h2>Skills</h2>
-  <div id="skills-radar" class="skills-radar-chart"></div>
+  <div id="skills-radar" class="skills-radar-chart">
+    <canvas id="skills-canvas"></canvas>
+  </div>
 </section>
 
 <!-- Education Section -->
@@ -647,130 +649,155 @@
 
 // Radar Chart for Skills
 (function() {
-  const ctx = document.getElementById('skills-radar');
-  if (!ctx) return;
+  console.log('Initializing radar chart...');
   
-  const radarChart = new Chart(ctx, {
-    type: 'radar',
-    data: {
-      labels: [
-        'Python', 'R', 'C/C++', 'SQL',
-        'Pandas', 'NumPy', 'Scikit-learn', 'TensorFlow', 'PyTorch', 'Keras',
-        'Tableau', 'Power BI', 'KNIME', 'Kibana', 'n8n', 'Looker Studio',
-        'Flask', 'Django', 'FastAPI', 'Selenium'
-      ],
-      datasets: [
-        {
-          label: 'Programming Languages',
-          data: [95, 70, 62, 90, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-          backgroundColor: 'rgba(0, 255, 213, 0.2)',
-          borderColor: '#00ffd5',
-          borderWidth: 2,
-          pointBackgroundColor: '#00ffd5',
-          pointBorderColor: '#fff',
-          pointBorderWidth: 2,
-          pointRadius: 4
-        },
-        {
-          label: 'Python Libraries',
-          data: [0, 0, 0, 0, 90, 85, 80, 70, 65, 60, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-          backgroundColor: 'rgba(0, 207, 255, 0.2)',
-          borderColor: '#00cfff',
-          borderWidth: 2,
-          pointBackgroundColor: '#00cfff',
-          pointBorderColor: '#fff',
-          pointBorderWidth: 2,
-          pointRadius: 4
-        },
-        {
-          label: 'BI Tools',
-          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 80, 75, 60, 55, 50, 55, 0, 0, 0, 0],
-          backgroundColor: 'rgba(162, 89, 255, 0.2)',
-          borderColor: '#a259ff',
-          borderWidth: 2,
-          pointBackgroundColor: '#a259ff',
-          pointBorderColor: '#fff',
-          pointBorderWidth: 2,
-          pointRadius: 4
-        },
-        {
-          label: 'Web/Frameworks',
-          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 75, 70, 60, 65],
-          backgroundColor: 'rgba(0, 119, 204, 0.2)',
-          borderColor: '#0077cc',
-          borderWidth: 2,
-          pointBackgroundColor: '#0077cc',
-          pointBorderColor: '#fff',
-          pointBorderWidth: 2,
-          pointRadius: 4
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: {
-          position: 'bottom',
-          labels: {
-            color: '#fff',
-            font: {
-              size: 14,
-              weight: 'bold'
-            },
-            padding: 20,
-            usePointStyle: true,
-            pointStyle: 'circle'
+  // Wait for Chart.js to load
+  if (typeof Chart === 'undefined') {
+    console.error('Chart.js not loaded');
+    return;
+  }
+  
+  const canvas = document.getElementById('skills-canvas');
+  if (!canvas) {
+    console.error('Canvas element not found');
+    return;
+  }
+  
+  const ctx = canvas.getContext('2d');
+  if (!ctx) {
+    console.error('Could not get canvas context');
+    return;
+  }
+  
+  console.log('Creating radar chart...');
+  
+  try {
+    const radarChart = new Chart(ctx, {
+      type: 'radar',
+      data: {
+        labels: [
+          'Python', 'R', 'C/C++', 'SQL',
+          'Pandas', 'NumPy', 'Scikit-learn', 'TensorFlow', 'PyTorch', 'Keras',
+          'Tableau', 'Power BI', 'KNIME', 'Kibana', 'n8n', 'Looker Studio',
+          'Flask', 'Django', 'FastAPI', 'Selenium'
+        ],
+        datasets: [
+          {
+            label: 'Programming Languages',
+            data: [95, 70, 62, 90, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            backgroundColor: 'rgba(0, 255, 213, 0.2)',
+            borderColor: '#00ffd5',
+            borderWidth: 2,
+            pointBackgroundColor: '#00ffd5',
+            pointBorderColor: '#fff',
+            pointBorderWidth: 2,
+            pointRadius: 4
+          },
+          {
+            label: 'Python Libraries',
+            data: [0, 0, 0, 0, 90, 85, 80, 70, 65, 60, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            backgroundColor: 'rgba(0, 207, 255, 0.2)',
+            borderColor: '#00cfff',
+            borderWidth: 2,
+            pointBackgroundColor: '#00cfff',
+            pointBorderColor: '#fff',
+            pointBorderWidth: 2,
+            pointRadius: 4
+          },
+          {
+            label: 'BI Tools',
+            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 80, 75, 60, 55, 50, 55, 0, 0, 0, 0],
+            backgroundColor: 'rgba(162, 89, 255, 0.2)',
+            borderColor: '#a259ff',
+            borderWidth: 2,
+            pointBackgroundColor: '#a259ff',
+            pointBorderColor: '#fff',
+            pointBorderWidth: 2,
+            pointRadius: 4
+          },
+          {
+            label: 'Web/Frameworks',
+            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 75, 70, 60, 65],
+            backgroundColor: 'rgba(0, 119, 204, 0.2)',
+            borderColor: '#0077cc',
+            borderWidth: 2,
+            pointBackgroundColor: '#0077cc',
+            pointBorderColor: '#fff',
+            pointBorderWidth: 2,
+            pointRadius: 4
           }
-        },
-        tooltip: {
-          backgroundColor: 'rgba(35, 41, 70, 0.95)',
-          titleColor: '#00ffd5',
-          bodyColor: '#fff',
-          borderColor: '#00ffd5',
-          borderWidth: 1,
-          cornerRadius: 8,
-          displayColors: false,
-          callbacks: {
-            label: function(context) {
-              const value = context.parsed.r;
-              if (value > 0) {
-                return `${context.label}: ${value}/100`;
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: {
+              color: '#fff',
+              font: {
+                size: 14,
+                weight: 'bold'
+              },
+              padding: 20,
+              usePointStyle: true,
+              pointStyle: 'circle'
+            }
+          },
+          tooltip: {
+            backgroundColor: 'rgba(35, 41, 70, 0.95)',
+            titleColor: '#00ffd5',
+            bodyColor: '#fff',
+            borderColor: '#00ffd5',
+            borderWidth: 1,
+            cornerRadius: 8,
+            displayColors: false,
+            callbacks: {
+              label: function(context) {
+                const value = context.parsed.r;
+                if (value > 0) {
+                  return `${context.label}: ${value}/100`;
+                }
+                return null;
               }
-              return null;
             }
           }
-        }
-      },
-      scales: {
-        r: {
-          beginAtZero: true,
-          max: 100,
-          ticks: {
-            stepSize: 20,
-            color: '#fff',
-            font: {
-              size: 12
+        },
+        scales: {
+          r: {
+            beginAtZero: true,
+            max: 100,
+            ticks: {
+              stepSize: 20,
+              color: '#fff',
+              font: {
+                size: 12
+              },
+              backdropColor: 'transparent'
             },
-            backdropColor: 'transparent'
-          },
-          grid: {
-            color: 'rgba(255, 255, 255, 0.1)'
-          },
-          angleLines: {
-            color: 'rgba(255, 255, 255, 0.1)'
-          },
-          pointLabels: {
-            color: '#fff',
-            font: {
-              size: 11,
-              weight: 'bold'
+            grid: {
+              color: 'rgba(255, 255, 255, 0.1)'
+            },
+            angleLines: {
+              color: 'rgba(255, 255, 255, 0.1)'
+            },
+            pointLabels: {
+              color: '#fff',
+              font: {
+                size: 11,
+                weight: 'bold'
+              }
             }
           }
         }
       }
-    }
-  });
+    });
+    
+    console.log('Radar chart created successfully');
+  } catch (error) {
+    console.error('Error creating radar chart:', error);
+  }
 })();
 </script>
 
@@ -1091,6 +1118,20 @@ footer {
     font-size: 1em;
     padding: 0 2px 2px 2px;
   }
+}
+.skills-radar-chart {
+  width: 100%;
+  max-width: 800px;
+  height: 600px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+#skills-canvas {
+  max-width: 100%;
+  max-height: 100%;
 }
 </style>
 <script>
