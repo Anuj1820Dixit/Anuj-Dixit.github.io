@@ -378,7 +378,7 @@
 <!-- Skills Section -->
 <section id="skills" class="section-skills">
   <h2>Skills</h2>
-  <div id="skills-bubble" class="skills-bubble-chart"></div>
+  <div id="skills-radar" class="skills-radar-chart"></div>
 </section>
 
 <!-- Education Section -->
@@ -551,6 +551,7 @@
 <!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 <script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
   particlesJS("particles-js", {
     particles: {
@@ -644,112 +645,132 @@
   window.addEventListener('scroll', toggleNavbarBg);
   window.addEventListener('DOMContentLoaded', toggleNavbarBg);
 
-// D3.js Skills Bubble Chart (improved)
+// Radar Chart for Skills
 (function() {
-  const skillGroups = [
-    {
-      name: 'Programming Languages',
-      children: [
-        { name: 'Python', value: 95 },
-        { name: 'R', value: 70 },
-        { name: 'C', value: 60 },
-        { name: 'C++', value: 65 },
-        { name: 'SQL', value: 90 }
+  const ctx = document.getElementById('skills-radar');
+  if (!ctx) return;
+  
+  const radarChart = new Chart(ctx, {
+    type: 'radar',
+    data: {
+      labels: [
+        'Python', 'R', 'C/C++', 'SQL',
+        'Pandas', 'NumPy', 'Scikit-learn', 'TensorFlow', 'PyTorch', 'Keras',
+        'Tableau', 'Power BI', 'KNIME', 'Kibana', 'n8n', 'Looker Studio',
+        'Flask', 'Django', 'FastAPI', 'Selenium'
+      ],
+      datasets: [
+        {
+          label: 'Programming Languages',
+          data: [95, 70, 62, 90, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          backgroundColor: 'rgba(0, 255, 213, 0.2)',
+          borderColor: '#00ffd5',
+          borderWidth: 2,
+          pointBackgroundColor: '#00ffd5',
+          pointBorderColor: '#fff',
+          pointBorderWidth: 2,
+          pointRadius: 4
+        },
+        {
+          label: 'Python Libraries',
+          data: [0, 0, 0, 0, 90, 85, 80, 70, 65, 60, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          backgroundColor: 'rgba(0, 207, 255, 0.2)',
+          borderColor: '#00cfff',
+          borderWidth: 2,
+          pointBackgroundColor: '#00cfff',
+          pointBorderColor: '#fff',
+          pointBorderWidth: 2,
+          pointRadius: 4
+        },
+        {
+          label: 'BI Tools',
+          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 80, 75, 60, 55, 50, 55, 0, 0, 0, 0],
+          backgroundColor: 'rgba(162, 89, 255, 0.2)',
+          borderColor: '#a259ff',
+          borderWidth: 2,
+          pointBackgroundColor: '#a259ff',
+          pointBorderColor: '#fff',
+          pointBorderWidth: 2,
+          pointRadius: 4
+        },
+        {
+          label: 'Web/Frameworks',
+          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 75, 70, 60, 65],
+          backgroundColor: 'rgba(0, 119, 204, 0.2)',
+          borderColor: '#0077cc',
+          borderWidth: 2,
+          pointBackgroundColor: '#0077cc',
+          pointBorderColor: '#fff',
+          pointBorderWidth: 2,
+          pointRadius: 4
+        }
       ]
     },
-    {
-      name: 'Python Libraries',
-      children: [
-        { name: 'Pandas', value: 90 },
-        { name: 'NumPy', value: 85 },
-        { name: 'Scikit-learn', value: 80 },
-        { name: 'TensorFlow', value: 70 },
-        { name: 'PyTorch', value: 65 },
-        { name: 'Keras', value: 60 }
-      ]
-    },
-    {
-      name: 'BI Tools',
-      children: [
-        { name: 'Tableau', value: 80 },
-        { name: 'Power BI', value: 75 },
-        { name: 'Looker Studio', value: 55 },
-        { name: 'KNIME', value: 60 },
-        { name: 'Kibana', value: 55 },
-        { name: 'n8n', value: 50 }
-      ]
-    },
-    {
-      name: 'Web/Frameworks',
-      children: [
-        { name: 'Flask', value: 75 },
-        { name: 'Django', value: 70 },
-        { name: 'FastAPI', value: 60 },
-        { name: 'Selenium', value: 65 }
-      ]
-    }
-  ];
-  const width = 900, height = 600;
-  const svg = d3.select('#skills-bubble')
-    .append('svg')
-    .attr('width', '100%')
-    .attr('height', height)
-    .attr('viewBox', `0 0 ${width} ${height}`);
-  // Color palette for groups
-  const groupColors = ['#00ffd5', '#00cfff', '#0077cc', '#a259ff'];
-  const pack = d3.pack()
-    .size([width, height])
-    .padding(12);
-  const root = d3.hierarchy({ children: skillGroups })
-    .sum(d => d.value || d.children.reduce((sum, child) => sum + child.value, 0));
-  const nodes = pack(root).descendants().slice(1);
-  const node = svg.selectAll('g')
-    .data(nodes)
-    .enter().append('g')
-    .attr('transform', d => `translate(${d.x},${d.y})`);
-  node.append('circle')
-    .attr('r', d => d.r)
-    .attr('fill', d => d.children ? groupColors[d.depth - 1] : '#fff')
-    .attr('opacity', d => d.children ? 0.9 : 0.95)
-    .attr('stroke', d => d.children ? '#fff' : groupColors[d.parent.depth - 1])
-    .attr('stroke-width', d => d.children ? 3 : 2)
-    .style('filter', 'drop-shadow(0 4px 16px #00ffd544)')
-    .on('mouseover', function(e, d) {
-      d3.select(this).attr('opacity', 1).attr('stroke', '#00ffd5');
-      if (!d.children) {
-        tooltip.style('opacity', 1).html(`<b>${d.data.name}</b><br>Proficiency: ${d.data.value}/100`)
-          .style('left', (e.pageX + 12) + 'px')
-          .style('top', (e.pageY - 24) + 'px');
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: {
+            color: '#fff',
+            font: {
+              size: 14,
+              weight: 'bold'
+            },
+            padding: 20,
+            usePointStyle: true,
+            pointStyle: 'circle'
+          }
+        },
+        tooltip: {
+          backgroundColor: 'rgba(35, 41, 70, 0.95)',
+          titleColor: '#00ffd5',
+          bodyColor: '#fff',
+          borderColor: '#00ffd5',
+          borderWidth: 1,
+          cornerRadius: 8,
+          displayColors: false,
+          callbacks: {
+            label: function(context) {
+              const value = context.parsed.r;
+              if (value > 0) {
+                return `${context.label}: ${value}/100`;
+              }
+              return null;
+            }
+          }
+        }
+      },
+      scales: {
+        r: {
+          beginAtZero: true,
+          max: 100,
+          ticks: {
+            stepSize: 20,
+            color: '#fff',
+            font: {
+              size: 12
+            },
+            backdropColor: 'transparent'
+          },
+          grid: {
+            color: 'rgba(255, 255, 255, 0.1)'
+          },
+          angleLines: {
+            color: 'rgba(255, 255, 255, 0.1)'
+          },
+          pointLabels: {
+            color: '#fff',
+            font: {
+              size: 11,
+              weight: 'bold'
+            }
+          }
+        }
       }
-    })
-    .on('mousemove', function(e) {
-      tooltip.style('left', (e.pageX + 12) + 'px').style('top', (e.pageY - 24) + 'px');
-    })
-    .on('mouseout', function(e, d) {
-      d3.select(this).attr('opacity', d.children ? 0.9 : 0.95).attr('stroke', d.children ? '#fff' : groupColors[d.parent.depth - 1]);
-      tooltip.style('opacity', 0);
-    });
-  node.append('text')
-    .attr('text-anchor', 'middle')
-    .attr('dy', '0.35em')
-    .style('font-size', d => Math.max(12, d.r/2) + 'px')
-    .style('fill', d => d.children ? '#232946' : '#232946')
-    .style('pointer-events', 'none')
-    .style('font-weight', d => d.children ? 'bold' : 'normal')
-    .text(d => d.data.name);
-  // Tooltip
-  const tooltip = d3.select('body').append('div')
-    .attr('class', 'skills-tooltip')
-    .style('position', 'absolute')
-    .style('background', '#fff')
-    .style('color', '#232946')
-    .style('padding', '8px 16px')
-    .style('border-radius', '8px')
-    .style('box-shadow', '0 2px 12px #00ffd544')
-    .style('font-size', '1em')
-    .style('pointer-events', 'none')
-    .style('opacity', 0)
-    .style('z-index', 9999);
+    }
+  });
 })();
 </script>
 
