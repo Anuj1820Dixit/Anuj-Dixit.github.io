@@ -7,45 +7,214 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="style.css" />
   <style>
-    body { background: #f4f4f9; color: #222; font-family: 'Segoe UI', sans-serif; }
-    .project-container { max-width: 900px; margin: 60px auto; background: #fff; border-radius: 18px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); padding: 40px; }
-    .project-image { width: 100%; max-height: 340px; object-fit: cover; border-radius: 12px; margin-bottom: 24px; }
-    .tech-list { margin: 0; padding: 0; list-style: none; display: flex; gap: 16px; }
-    .tech-list li { background: #e3e8f0; color: #0077cc; padding: 6px 16px; border-radius: 8px; font-weight: 600; font-size: 0.98em; }
-    .back-link { color: #0077cc; text-decoration: none; font-weight: 600; }
-    .back-link:hover { text-decoration: underline; }
-    .github-link { color: #24292f; font-size: 1.2em; margin-left: 8px; }
+    body {
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(120deg, #232946 0%, #1a1a2e 100%);
+      color: #eaeaea;
+    }
+    .project-container {
+      max-width: 950px;
+      margin: 60px auto;
+      background: rgba(30, 41, 59, 0.98);
+      border-radius: 22px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+      padding: 48px 36px 36px 36px;
+      border-left: 8px solid #00cfff;
+      position: relative;
+    }
+    .project-container::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 8px;
+      border-radius: 22px 0 0 22px;
+      background: linear-gradient(180deg, #00cfff 0%, #a259ff 100%);
+      z-index: 1;
+    }
+    .project-container > * { position: relative; z-index: 2; }
+    .project-image {
+      width: 100%;
+      max-height: 400px;
+      object-fit: contain;
+      border-radius: 16px;
+      margin-bottom: 28px;
+      background: #181c2f;
+      box-shadow: 0 4px 24px rgba(0,207,255,0.10), 0 1.5px 8px rgba(162,89,255,0.10);
+      border: 2px solid #232946;
+      padding: 8px;
+      transition: box-shadow 0.3s;
+    }
+    .project-image:hover {
+      box-shadow: 0 8px 32px #00cfff44, 0 2px 12px #a259ff33;
+    }
+    .section-title {
+      color: #00cfff;
+      font-size: 1.35em;
+      margin-top: 36px;
+      margin-bottom: 12px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      border-left: 4px solid #a259ff;
+      padding-left: 12px;
+      background: linear-gradient(90deg, #232946 80%, #a259ff22 100%);
+      border-radius: 6px;
+      display: inline-block;
+    }
+    .feature-list, .data-list {
+      margin-left: 1.2em;
+      margin-bottom: 18px;
+      line-height: 1.7;
+    }
+    .back-link {
+      color: #00cfff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.05em;
+      letter-spacing: 0.2px;
+      margin-bottom: 18px;
+      display: inline-block;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: #a259ff; text-decoration: underline; }
+    .github-link {
+      color: #00cfff;
+      font-size: 1.2em;
+      margin-left: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .github-link:hover { color: #a259ff; }
+    .highlight {
+      background: #232946;
+      border-radius: 6px;
+      padding: 2px 8px;
+      color: #00cfff;
+      font-weight: 600;
+    }
+    .tech-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .tech-list li {
+      background: linear-gradient(135deg, #232946 0%, #1a1a2e 100%);
+      color: #00cfff;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95em;
+      border: 1px solid #00cfff33;
+      transition: all 0.3s;
+    }
+    .tech-list li:hover {
+      background: linear-gradient(135deg, #00cfff22 0%, #a259ff22 100%);
+      border-color: #00cfff;
+      transform: translateY(-2px);
+    }
+    .architecture-section {
+      background: #181c2f;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px 0;
+      border-left: 4px solid #a259ff;
+    }
+    .layer-item {
+      margin: 12px 0;
+      padding: 8px 12px;
+      background: #232946;
+      border-radius: 6px;
+      border-left: 3px solid #00cfff;
+    }
+    .layer-title {
+      color: #00cfff;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
   </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="portfolio.html">Projects</a>
-      <a href="skills.html">Skills</a>
-      <a href="education.html">Education</a>
-      <a href="experience.html">Experience</a>
-    </nav>
-  </header>
   <div class="project-container">
-    <a href="portfolio.html" class="back-link">← Back to Projects</a>
-    <h1>SQL-Data-Warehouse-Project</h1>
+    <a href="index.html#projects" class="back-link">← Back to Portfolio</a>
+    <h1>SQL Data Warehouse & Analytics Project</h1>
     <img src="./portfolio-images/DWH.png" alt="SQL Data Warehouse" class="project-image" />
-    <p><strong>Description:</strong> Designing and implementing a modern data warehouse using SQL Server, encompassing ETL processes, data modeling, and advanced data analytics.</p>
-    <h3>Tech Stack</h3>
+    
+    <p style="font-size: 1.1em; line-height: 1.7; margin-bottom: 24px;">
+      A comprehensive showcase of modern data engineering practices and analytics-driven insights. This project reflects the full cycle of a data warehousing solution, from ingesting raw data to delivering analytical value, structured to mirror real-world use cases and best practices.
+    </p>
+
+    <div class="section-title">🏗️ Data Architecture Strategy</div>
+    <div class="architecture-section">
+      <p>This solution adopts the <span class="highlight">Medallion Architecture</span> design pattern, employing a layered approach for scalability and clarity across data processing stages:</p>
+      
+      <div class="layer-item">
+        <div class="layer-title">Bronze Layer</div>
+        <p>Raw datasets are ingested directly from source files (CSV) and loaded into a SQL Server database without transformation.</p>
+      </div>
+      
+      <div class="layer-item">
+        <div class="layer-title">Silver Layer</div>
+        <p>Intermediate processing takes place here — including data cleansing, formatting, and normalization — to ensure consistency and readiness for modeling.</p>
+      </div>
+      
+      <div class="layer-item">
+        <div class="layer-title">Gold Layer</div>
+        <p>Finalized, business-friendly data is structured into a star schema optimized for querying, reporting, and strategic analysis.</p>
+      </div>
+    </div>
+
+    <div class="section-title">📋 Project Summary</div>
+    <ul class="feature-list">
+      <li><strong>Modern Data Architecture:</strong> Built using Medallion Architecture across three layers (Bronze → Silver → Gold)</li>
+      <li><strong>ETL Processes:</strong> Development of robust extract-transform-load workflows from source to analytics-ready data models</li>
+      <li><strong>Dimensional Modeling:</strong> Fact and dimension tables designed for efficient analytical querying and business intelligence</li>
+      <li><strong>Insight Generation:</strong> Use of SQL queries and reporting tools to surface trends and strategic business metrics</li>
+    </ul>
+
+    <div class="section-title">🛠️ Tools and Resources</div>
+    <p>The entire project setup is free and open-source, leveraging the following platforms and tools:</p>
+    <ul class="feature-list">
+      <li><strong>Datasets:</strong> Download source CSV files for ERP and CRM systems</li>
+      <li><strong>SQL Server Express:</strong> Lightweight, free edition of SQL Server</li>
+      <li><strong>SQL Server Management Studio (SSMS):</strong> GUI for interacting with your SQL Server instance</li>
+      <li><strong>DrawIO:</strong> Create architecture diagrams, data models, and flowcharts</li>
+      <li><strong>Notion Project Guide:</strong> Access to project steps and detailed instructions</li>
+      <li><strong>Notion Template:</strong> Use a pre-designed template for planning your workflow</li>
+    </ul>
+
+    <div class="section-title">🎯 Implementation Plan</div>
+    <div class="architecture-section">
+      <h4 style="color: #00cfff; margin-top: 0;">Data Engineering</h4>
+      <ul class="feature-list">
+        <li><strong>Objective:</strong> Design and implement a modern data warehouse for consolidated reporting using SQL Server</li>
+        <li><strong>Scope:</strong> Source Files: Load ERP and CRM data from CSV files</li>
+        <li><strong>Data Quality:</strong> Clean and reconcile inconsistencies to prepare for integration</li>
+        <li><strong>Unified Model:</strong> Merge datasets into a cohesive schema ready for business consumption</li>
+        <li><strong>Focus:</strong> Only the most recent dataset is considered; historical tracking is outside the scope</li>
+        <li><strong>Documentation:</strong> Comprehensive metadata and modeling notes included to support stakeholders and analysts</li>
+      </ul>
+    </div>
+
+    <div class="section-title">Tech Stack</div>
     <ul class="tech-list">
       <li>SQL Server</li>
-      <li>ETL</li>
-      <li>Data Modeling</li>
-      <li>Analytics</li>
+      <li>ETL Processes</li>
+      <li>Dimensional Modeling</li>
+      <li>Star Schema</li>
+      <li>Data Quality</li>
+      <li>Business Intelligence</li>
+      <li>Data Analytics</li>
+      <li>Medallion Architecture</li>
     </ul>
-    <h3>Key Features</h3>
-    <ul>
-      <li>End-to-end data warehouse design</li>
-      <li>ETL process implementation</li>
-      <li>Advanced analytics and reporting</li>
-    </ul>
-    <p><a href="#" class="github-link"><i class="fab fa-github"></i> View on GitHub</a></p>
+
+    <p style="margin-top: 32px;">
+      <a href="#" class="github-link"><i class="fab fa-github"></i> View on GitHub</a>
+    </p>
   </div>
 </body>
 </html> 
