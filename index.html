@@ -379,22 +379,6 @@
 <section id="skills" class="section-skills">
   <h2>Skills</h2>
   <div id="skills-bubble" class="skills-bubble-chart"></div>
-  <div class="skills-badges-group">
-    <div class="skills-badges-title">Languages</div>
-    <div class="skills-badges-row">
-      <span class="skills-badge">Hindi</span>
-      <span class="skills-badge">English</span>
-    </div>
-    <div class="skills-badges-title">Interests</div>
-    <div class="skills-badges-row">
-      <span class="skills-badge">Meditation</span>
-      <span class="skills-badge">Chess</span>
-      <span class="skills-badge">Cricket</span>
-      <span class="skills-badge">Football</span>
-      <span class="skills-badge">Reading</span>
-      <span class="skills-badge">Social Work</span>
-    </div>
-  </div>
 </section>
 
 <!-- Education Section -->
@@ -705,7 +689,7 @@
       ]
     }
   ];
-  const width = 700, height = 400;
+  const width = 900, height = 600;
   const svg = d3.select('#skills-bubble')
     .append('svg')
     .attr('width', '100%')
@@ -715,7 +699,7 @@
   const groupColors = ['#00ffd5', '#00cfff', '#0077cc', '#a259ff'];
   const pack = d3.pack()
     .size([width, height])
-    .padding(8);
+    .padding(12);
   const root = d3.hierarchy({ children: skillGroups })
     .sum(d => d.value || d.children.reduce((sum, child) => sum + child.value, 0));
   const nodes = pack(root).descendants().slice(1);
@@ -726,10 +710,10 @@
   node.append('circle')
     .attr('r', d => d.r)
     .attr('fill', d => d.children ? groupColors[d.depth - 1] : '#fff')
-    .attr('opacity', d => d.children ? 0.85 : 0.92)
+    .attr('opacity', d => d.children ? 0.9 : 0.95)
     .attr('stroke', d => d.children ? '#fff' : groupColors[d.parent.depth - 1])
     .attr('stroke-width', d => d.children ? 3 : 2)
-    .style('filter', 'drop-shadow(0 2px 12px #00ffd544)')
+    .style('filter', 'drop-shadow(0 4px 16px #00ffd544)')
     .on('mouseover', function(e, d) {
       d3.select(this).attr('opacity', 1).attr('stroke', '#00ffd5');
       if (!d.children) {
@@ -742,13 +726,13 @@
       tooltip.style('left', (e.pageX + 12) + 'px').style('top', (e.pageY - 24) + 'px');
     })
     .on('mouseout', function(e, d) {
-      d3.select(this).attr('opacity', d.children ? 0.85 : 0.92).attr('stroke', d.children ? '#fff' : groupColors[d.parent.depth - 1]);
+      d3.select(this).attr('opacity', d.children ? 0.9 : 0.95).attr('stroke', d.children ? '#fff' : groupColors[d.parent.depth - 1]);
       tooltip.style('opacity', 0);
     });
   node.append('text')
     .attr('text-anchor', 'middle')
     .attr('dy', '0.35em')
-    .style('font-size', d => Math.max(10, d.r/2.2) + 'px')
+    .style('font-size', d => Math.max(12, d.r/2) + 'px')
     .style('fill', d => d.children ? '#232946' : '#232946')
     .style('pointer-events', 'none')
     .style('font-weight', d => d.children ? 'bold' : 'normal')
@@ -792,18 +776,18 @@ nav a:hover, nav a.active {
 .section-skills {
   background: linear-gradient(120deg, #232946 0%, #00ffd5 100%);
   padding: 80px 0 60px 0;
-  min-height: 80vh;
+  min-height: 90vh;
   color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
 }
 .skills-bubble-chart {
   width: 100%;
-  max-width: 700px;
-  height: 400px;
-  margin: 0 auto 40px auto;
+  max-width: 900px;
+  height: 600px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
