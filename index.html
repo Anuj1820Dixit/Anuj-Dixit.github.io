@@ -676,8 +676,8 @@
       type: 'radar',
       data: {
         labels: [
-          'Python', 'R', 'C/C++', 'SQL',
-          'Pandas', 'NumPy', 'Scikit-learn', 'TensorFlow', 'PyTorch', 'Keras',
+          'Python', 'R', 'C/C++', 'SQL', 'Excel',
+          'Pandas', 'NumPy', 'Scikit-learn', 'TensorFlow', 'PyTorch',
           'Tableau', 'Power BI', 'KNIME', 'Kibana', 'n8n', 'Looker Studio',
           'Flask', 'Django', 'FastAPI', 'Selenium'
         ],
@@ -687,44 +687,55 @@
             data: [95, 70, 62, 90, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             backgroundColor: 'rgba(0, 255, 213, 0.2)',
             borderColor: '#00ffd5',
-            borderWidth: 2,
+            borderWidth: 3,
             pointBackgroundColor: '#00ffd5',
             pointBorderColor: '#fff',
-            pointBorderWidth: 2,
-            pointRadius: 4
+            pointBorderWidth: 3,
+            pointRadius: 6
           },
           {
             label: 'Python Libraries',
-            data: [0, 0, 0, 0, 90, 85, 80, 70, 65, 60, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            data: [0, 0, 0, 0, 0, 90, 85, 80, 70, 65, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             backgroundColor: 'rgba(0, 207, 255, 0.2)',
             borderColor: '#00cfff',
-            borderWidth: 2,
+            borderWidth: 3,
             pointBackgroundColor: '#00cfff',
             pointBorderColor: '#fff',
-            pointBorderWidth: 2,
-            pointRadius: 4
+            pointBorderWidth: 3,
+            pointRadius: 6
           },
           {
             label: 'BI Tools',
             data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 80, 75, 60, 55, 50, 55, 0, 0, 0, 0],
             backgroundColor: 'rgba(162, 89, 255, 0.2)',
             borderColor: '#a259ff',
-            borderWidth: 2,
+            borderWidth: 3,
             pointBackgroundColor: '#a259ff',
             pointBorderColor: '#fff',
-            pointBorderWidth: 2,
-            pointRadius: 4
+            pointBorderWidth: 3,
+            pointRadius: 6
           },
           {
             label: 'Web/Frameworks',
             data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 75, 70, 60, 65],
             backgroundColor: 'rgba(0, 119, 204, 0.2)',
             borderColor: '#0077cc',
-            borderWidth: 2,
+            borderWidth: 3,
             pointBackgroundColor: '#0077cc',
             pointBorderColor: '#fff',
-            pointBorderWidth: 2,
-            pointRadius: 4
+            pointBorderWidth: 3,
+            pointRadius: 6
+          },
+          {
+            label: 'Office Tools',
+            data: [0, 0, 0, 0, 90, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            backgroundColor: 'rgba(255, 193, 7, 0.2)',
+            borderColor: '#ffc107',
+            borderWidth: 3,
+            pointBackgroundColor: '#ffc107',
+            pointBorderColor: '#fff',
+            pointBorderWidth: 3,
+            pointRadius: 6
           }
         ]
       },
@@ -737,10 +748,10 @@
             labels: {
               color: '#fff',
               font: {
-                size: 14,
+                size: 16,
                 weight: 'bold'
               },
-              padding: 20,
+              padding: 25,
               usePointStyle: true,
               pointStyle: 'circle'
             }
@@ -753,6 +764,13 @@
             borderWidth: 1,
             cornerRadius: 8,
             displayColors: false,
+            titleFont: {
+              size: 16,
+              weight: 'bold'
+            },
+            bodyFont: {
+              size: 14
+            },
             callbacks: {
               label: function(context) {
                 const value = context.parsed.r;
@@ -772,22 +790,26 @@
               stepSize: 20,
               color: '#fff',
               font: {
-                size: 12
+                size: 14,
+                weight: 'bold'
               },
               backdropColor: 'transparent'
             },
             grid: {
-              color: 'rgba(255, 255, 255, 0.1)'
+              color: 'rgba(255, 255, 255, 0.15)',
+              lineWidth: 1
             },
             angleLines: {
-              color: 'rgba(255, 255, 255, 0.1)'
+              color: 'rgba(255, 255, 255, 0.15)',
+              lineWidth: 1
             },
             pointLabels: {
               color: '#fff',
               font: {
-                size: 11,
+                size: 13,
                 weight: 'bold'
-              }
+              },
+              padding: 15
             }
           }
         }
@@ -822,7 +844,7 @@ nav a:hover, nav a.active {
   border-bottom: 2px solid #00ffd5;
 }
 .section-skills {
-  background: linear-gradient(120deg, #232946 0%, #00ffd5 100%);
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
   padding: 80px 0 60px 0;
   min-height: 90vh;
   color: #fff;
@@ -1121,8 +1143,8 @@ footer {
 }
 .skills-radar-chart {
   width: 100%;
-  max-width: 800px;
-  height: 600px;
+  max-width: 1000px;
+  height: 700px;
   margin: 0 auto;
   display: flex;
   align-items: center;
